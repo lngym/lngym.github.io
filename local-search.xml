@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>互娱笔试T3小记</title>
+    <link href="/2025/05/07/%E4%BA%92%E5%A8%B1%E7%AC%94%E8%AF%95T3%E5%B0%8F%E8%AE%B0/"/>
+    <url>/2025/05/07/%E4%BA%92%E5%A8%B1%E7%AC%94%E8%AF%95T3%E5%B0%8F%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p>互娱笔试 T3 </p><p>题目描述：给定方程 $Ax+By+Cz+Dw&#x3D;N$，给定 $A,B,C,D,N$，求字典序最小的整数四元组 $(x,y,z,w)$ 使方程成立，且 $x,y,z,w\in [0,2500]$，若不存在，输出<code>-1</code>。 </p><p>范围约定：$0\leq A,B,C,D,N\leq 10^9$。 时空限制：3s，131MB。 </p><p>背景：拿到此题时我还有 1h 的时间，前两题迅速切掉，感觉一路顺风顺水。 </p><p>思路：看到范围知道暴力是立方级别的一定会超时，所以考虑优化。 </p><p>我们考虑只遍历 $x,y$，则设 $M&#x3D;Ax+By$，如果能在常数或者对数时间复杂度内判断出是否存在合法的 $z,w$ 能够满足<br>$$<br>Cz+Dw&#x3D;N-M<br>$$<br>即可。若 $N-M&lt;0$，显然不存在，于是我们接下来只考虑 $N-M\geq 0$ 的情况。</p><p>若 $\gcd(C,D)\nmid (N-M)$，易知一定不存在合法的 $z,w$，下面考虑 $\gcd(C,D)\mid (N-M)$ 的情况。 </p><p>等式两边同除 $\gcd(C,D)$，有 $C’z+D’w&#x3D;(N-M)’$，其中<br>$$<br>C&#x3D;C’\cdot\gcd(C,D)<br>$$</p><p>$$<br>D&#x3D;D’\cdot\gcd(C,D)<br>$$</p><p>$$<br>N-M&#x3D;(N-M)’\cdot\gcd(C,D)<br>$$</p><p>于是有 $\gcd(C’,D’)&#x3D;1$，由裴蜀定理可知，若 $z,w$ 没有 $0\sim 2500$ 的限制，则一定存在这样的 $z,w$，使得上式成立。</p><p>解决方案很简单，先凑出 $C’z_1+D’w_1&#x3D;1$，再令<br>$$<br>z&#x3D;z_1\cdot(N-M)’<br>$$</p><p>$$<br>w&#x3D;w_1\cdot(N-M)’<br>$$</p><p>即可。关于如何求解这样的 $z_1,w_1$，逆元就好了。</p><p>由费马小定理，取 $z_1$ 为 $C’$ 在模 $D’$ 意义下的逆元，快速幂即可，时间复杂度 $O(\log D’)$，即<br>$$<br>z_1&#x3D;C’^{D’-2} \mod D’<br>$$<br>则<br>$$<br>\begin{aligned} w_1&amp;&#x3D;-\displaystyle\frac{C’z_1-1}{D’} \ &amp;&#x3D;-\displaystyle\frac{C’(C’^{D’-2}\mod D’)-1}{D’} \end{aligned}<br>$$<br>于是<br>$$<br>z&#x3D;(C’^{D’-2} \mod D’)(N-M)’<br>$$</p><p>$$<br>w&#x3D;-\displaystyle\frac{C’(C’^{D’-2}\mod D’)-1}{D’}(N-M)’<br>$$</p><p>但这个时候的 $w$ 是负数，我们尝试对原方程进行变型，化为<br>$$<br>C’(z-kD’)+D’(w+kC’)&#x3D;(N-M)’<br>$$<br>于是只需判断是否存在这样的 $k$，满足不等式组<br>$$<br>\begin{cases} 0\leq z-kD’\leq 2500 \ 0\leq w+kC’\leq 2500 \end{cases}<br>$$<br>于是<br>$$<br>\begin{aligned} k_{\min}&amp;&#x3D;\max(\displaystyle\frac{z-2500}{D’},-\displaystyle\frac{w}{C’}) \ &amp;&#x3D;\max(\displaystyle\frac{(C’^{D’-2} \mod D’)(N-M)’-2500}{D’},\displaystyle\frac{(C’^{D’-2} \mod D’)(N-M)’-\displaystyle\frac{(N-M)’}{C’}}{D’}) \end{aligned}<br>$$</p><p>$$<br>\begin{aligned} k_{\max}&amp;&#x3D;\min(\displaystyle\frac{2500-w}{C’},\displaystyle\frac{z}{D’}) \ &amp;&#x3D;\min(\displaystyle\frac{(C’^{D’-2} \mod D’)(N-M)’-\displaystyle\frac{(N-M)’-2500D’}{C’}}{D’},\displaystyle\frac{(C’^{D’-2} \mod D’)(N-M)’}{D’}) \end{aligned}<br>$$</p><p>可以看到，$k_{\min}$ 以 $\displaystyle\frac{(N-M)’}{C’}&#x3D;\displaystyle\frac{N-M}{C}$ 是否大于 $2500$ 为界分为两种，$k_{\max}$ 以 $\displaystyle\frac{(N-M)’}{D’}&#x3D;\displaystyle\frac{N-M}{D}$ 是否大于 $2500$ 为界分为两种。 </p><p>最后只需判断是否满足 $k_{\max}\geq k_{\min}$ 且在 $[k_{\min},k_{\max}]$ 中存在整数即可。若不满足输出 <code>-1</code>，否则找到最大的合法 $k$，带入求解 $z,w$ 即可（为什么是最大的？因为字典序要尽量小，$z$ 尽量小）。</p><p>整体复杂度 $O(2500^2\log D)$，3s足以通过。</p><p>尾记：是一道很好的题，值得记录。但很难想象本人考场上前面全部推了出来，到解不等式链的时候化简出错导致功亏一篑。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+      <tag>数学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>随笔（一）</title>
     <link href="/2025/05/06/%E9%9A%8F%E7%AC%94%E4%B8%80/"/>
     <url>/2025/05/06/%E9%9A%8F%E7%AC%94%E4%B8%80/</url>
@@ -13,7 +40,7 @@
     
     <categories>
       
-      <category>简介</category>
+      <category>随笔</category>
       
     </categories>
     
