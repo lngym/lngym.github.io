@@ -44,27 +44,72 @@
 
 <!-- 你的自定义CSS START -->
 <style>
-/* 增强代码可读性 */
+/* 基础代码块样式 */
 .hljs {
   background: #2d2d2d !important;
-  border-radius: 8px; /* 可选：添加圆角 */
-  padding: 1.2em !important; /* 增加内边距 */
+  border-radius: 8px;
+  padding: 1.25em !important;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border-left: 4px solid #3eaf7c;
 }
 
-/* 语法高亮调整 */
-.hljs-keyword,
-.hljs-built_in {
+/* 通用语法元素 */
+.hljs-keyword,        /* 关键字：if, else, return 等 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量：true, false */
+.hljs-built_in {      /* 内置函数/类 */
   color: #c678dd !important;
-  font-weight: bold; /* 加粗关键字 */
+  font-weight: bold;
 }
 
-.hljs-string {
+.hljs-string,         /* 字符串 */
+.hljs-regexp,         /* 正则表达式 */
+.hljs-addition {      /* Markdown添加内容 */
   color: #98c379 !important;
-  background: rgba(152, 195, 121, 0.1); /* 字符串浅色背景 */
+  background: rgba(152, 195, 121, 0.08);
 }
 
-.hljs-number {
+.hljs-number,         /* 数字 */
+.hljs-meta,           /* 元数据 */
+.hljs-link {          /* 链接 */
   color: #d19a66 !important;
+}
+
+.hljs-comment,        /* 注释 */
+.hljs-quote {         /* 引用 */
+  color: #5c6370 !important;
+  font-style: italic;
+}
+
+.hljs-doctag,         /* 文档标签 */
+.hljs-template-variable, /* 模板变量 */
+.hljs-variable {      /* 变量 */
+  color: #e06c75 !important;
+}
+
+.hljs-title,          /* 标题/类名 */
+.hljs-section,        /* 章节标题 */
+.hljs-type {          /* 类型声明 */
+  color: #61afef !important;
+}
+
+.hljs-symbol,         /* 符号 */
+.hljs-bullet,         /* 列表符号 */
+.hljs-attribute {     /* HTML属性 */
+  color: #56b6c2 !important;
+}
+
+.hljs-emphasis {      /* 强调 */
+  font-style: italic;
+}
+
+.hljs-strong {        /* 加粗强调 */
+  font-weight: bold;
+}
+
+.hljs-deletion {      /* 删除内容 */
+  background: rgba(224, 108, 117, 0.08);
 }
 
 /* 行号样式 */
@@ -72,14 +117,43 @@
   color: #7d7d7d !important;
   padding-right: 15px !important;
   text-align: right;
+  user-select: none;
 }
 
-/* 光标悬停效果 */
-.hljs:hover {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+/* 特殊语言增强 */
+.hljs-params,         /* 函数参数 */
+.hljs-variable.language_ {  /* this, super等 */
+  color: #e5c07b !important;
 }
-</style>
-<!-- 你的自定义CSS END -->
+
+.hljs-meta .hljs-keyword,  /* 预处理指令 */
+.hljs-meta .hljs-string {
+  color: #c678dd !important;
+}
+
+/* 光标交互效果 */
+.hljs:hover {
+  box-shadow: 0 0 0 2px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* 选中文本样式 */
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 控制台/Shell特定样式 */
+.hljs-meta.prompt_ {  /* 命令行提示符 */
+  color: #56b6c2 !important;
+}
+
+/* 标记重要部分 */
+.hljs-mark {
+  background: rgba(229, 192, 123, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+</style><!-- 你的自定义CSS END -->
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 

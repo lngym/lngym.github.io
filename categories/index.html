@@ -37,27 +37,72 @@
 
 <!-- 你的自定义CSS START -->
 <style>
-/* 增强代码可读性 */
+/* 基础代码块样式 */
 .hljs {
   background: #2d2d2d !important;
-  border-radius: 8px; /* 可选：添加圆角 */
-  padding: 1.2em !important; /* 增加内边距 */
+  border-radius: 8px;
+  padding: 1.25em !important;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border-left: 4px solid #3eaf7c;
 }
 
-/* 语法高亮调整 */
-.hljs-keyword,
-.hljs-built_in {
+/* 通用语法元素 */
+.hljs-keyword,        /* 关键字：if, else, return 等 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量：true, false */
+.hljs-built_in {      /* 内置函数/类 */
   color: #c678dd !important;
-  font-weight: bold; /* 加粗关键字 */
+  font-weight: bold;
 }
 
-.hljs-string {
+.hljs-string,         /* 字符串 */
+.hljs-regexp,         /* 正则表达式 */
+.hljs-addition {      /* Markdown添加内容 */
   color: #98c379 !important;
-  background: rgba(152, 195, 121, 0.1); /* 字符串浅色背景 */
+  background: rgba(152, 195, 121, 0.08);
 }
 
-.hljs-number {
+.hljs-number,         /* 数字 */
+.hljs-meta,           /* 元数据 */
+.hljs-link {          /* 链接 */
   color: #d19a66 !important;
+}
+
+.hljs-comment,        /* 注释 */
+.hljs-quote {         /* 引用 */
+  color: #5c6370 !important;
+  font-style: italic;
+}
+
+.hljs-doctag,         /* 文档标签 */
+.hljs-template-variable, /* 模板变量 */
+.hljs-variable {      /* 变量 */
+  color: #e06c75 !important;
+}
+
+.hljs-title,          /* 标题/类名 */
+.hljs-section,        /* 章节标题 */
+.hljs-type {          /* 类型声明 */
+  color: #61afef !important;
+}
+
+.hljs-symbol,         /* 符号 */
+.hljs-bullet,         /* 列表符号 */
+.hljs-attribute {     /* HTML属性 */
+  color: #56b6c2 !important;
+}
+
+.hljs-emphasis {      /* 强调 */
+  font-style: italic;
+}
+
+.hljs-strong {        /* 加粗强调 */
+  font-weight: bold;
+}
+
+.hljs-deletion {      /* 删除内容 */
+  background: rgba(224, 108, 117, 0.08);
 }
 
 /* 行号样式 */
@@ -65,14 +110,43 @@
   color: #7d7d7d !important;
   padding-right: 15px !important;
   text-align: right;
+  user-select: none;
 }
 
-/* 光标悬停效果 */
-.hljs:hover {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+/* 特殊语言增强 */
+.hljs-params,         /* 函数参数 */
+.hljs-variable.language_ {  /* this, super等 */
+  color: #e5c07b !important;
 }
-</style>
-<!-- 你的自定义CSS END -->
+
+.hljs-meta .hljs-keyword,  /* 预处理指令 */
+.hljs-meta .hljs-string {
+  color: #c678dd !important;
+}
+
+/* 光标交互效果 */
+.hljs:hover {
+  box-shadow: 0 0 0 2px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* 选中文本样式 */
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 控制台/Shell特定样式 */
+.hljs-meta.prompt_ {  /* 命令行提示符 */
+  color: #56b6c2 !important;
+}
+
+/* 标记重要部分 */
+.hljs-mark {
+  background: rgba(229, 192, 123, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+</style><!-- 你的自定义CSS END -->
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -398,22 +472,22 @@ mjx-container[display="true"] + br {
     
     <div class="category row nomargin-x">
       <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="围棋"
-        id="heading-64408f17859127e816aa7aabcbf8cbc9" role="tab" data-toggle="collapse" href="#collapse-64408f17859127e816aa7aabcbf8cbc9"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔试"
+        id="heading-88646656dabd06ad6f722a7d36354e0e" role="tab" data-toggle="collapse" href="#collapse-88646656dabd06ad6f722a7d36354e0e"
         aria-expanded="false"
       >
-        围棋
+        笔试
         <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-        <a href="/categories/%E5%9B%B4%E6%A3%8B/" class="category-count col-2 col-md-1 col-xm-1">
+        <a href="/categories/%E7%AC%94%E8%AF%95/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
           <span>1</span>
         </a>
       
-      <div class="category-collapse collapse " id="collapse-64408f17859127e816aa7aabcbf8cbc9"
-           role="tabpanel" aria-labelledby="heading-64408f17859127e816aa7aabcbf8cbc9">
+      <div class="category-collapse collapse " id="collapse-88646656dabd06ad6f722a7d36354e0e"
+           role="tabpanel" aria-labelledby="heading-88646656dabd06ad6f722a7d36354e0e">
         
         
           
@@ -422,52 +496,10 @@ mjx-container[display="true"] + br {
     
       
       
-        <a href="/2024/12/27/%E5%9B%B4%E6%A3%8B%E8%87%AA%E6%88%98%E8%A7%A3%E8%AF%B4with%E5%AE%89%E5%BE%B7%E9%87%8C%EF%BC%88%E4%B8%80%EF%BC%89/" title="围棋自战解说with安德里（一）"
+        <a href="/2025/05/07/%E4%BA%92%E5%A8%B1%E7%AC%94%E8%AF%95T3%E5%B0%8F%E8%AE%B0/" title="互娱笔试T3小记"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">围棋自战解说with安德里（一）</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
-        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
-        aria-expanded="false"
-      >
-        刷题
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-fdacafc46605602f778fa704d63aa71b"
-           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2024/08/12/%E6%B4%9B%E8%B0%B7P10868%E9%A2%98%E8%A7%A3/" title="洛谷P10868题解"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">洛谷P10868题解</span>
+          <span class="category-post">互娱笔试T3小记</span>
         </a>
       
     
@@ -566,22 +598,22 @@ mjx-container[display="true"] + br {
     
     <div class="category row nomargin-x">
       <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔试"
-        id="heading-88646656dabd06ad6f722a7d36354e0e" role="tab" data-toggle="collapse" href="#collapse-88646656dabd06ad6f722a7d36354e0e"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="围棋"
+        id="heading-64408f17859127e816aa7aabcbf8cbc9" role="tab" data-toggle="collapse" href="#collapse-64408f17859127e816aa7aabcbf8cbc9"
         aria-expanded="false"
       >
-        笔试
+        围棋
         <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-        <a href="/categories/%E7%AC%94%E8%AF%95/" class="category-count col-2 col-md-1 col-xm-1">
+        <a href="/categories/%E5%9B%B4%E6%A3%8B/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
           <span>1</span>
         </a>
       
-      <div class="category-collapse collapse " id="collapse-88646656dabd06ad6f722a7d36354e0e"
-           role="tabpanel" aria-labelledby="heading-88646656dabd06ad6f722a7d36354e0e">
+      <div class="category-collapse collapse " id="collapse-64408f17859127e816aa7aabcbf8cbc9"
+           role="tabpanel" aria-labelledby="heading-64408f17859127e816aa7aabcbf8cbc9">
         
         
           
@@ -590,10 +622,52 @@ mjx-container[display="true"] + br {
     
       
       
-        <a href="/2025/05/07/%E4%BA%92%E5%A8%B1%E7%AC%94%E8%AF%95T3%E5%B0%8F%E8%AE%B0/" title="互娱笔试T3小记"
+        <a href="/2024/12/27/%E5%9B%B4%E6%A3%8B%E8%87%AA%E6%88%98%E8%A7%A3%E8%AF%B4with%E5%AE%89%E5%BE%B7%E9%87%8C%EF%BC%88%E4%B8%80%EF%BC%89/" title="围棋自战解说with安德里（一）"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">互娱笔试T3小记</span>
+          <span class="category-post">围棋自战解说with安德里（一）</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
+        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
+        aria-expanded="false"
+      >
+        刷题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fdacafc46605602f778fa704d63aa71b"
+           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/12/%E6%B4%9B%E8%B0%B7P10868%E9%A2%98%E8%A7%A3/" title="洛谷P10868题解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">洛谷P10868题解</span>
         </a>
       
     
