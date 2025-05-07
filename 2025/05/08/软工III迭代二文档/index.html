@@ -26,53 +26,53 @@
 <meta property="og:site_name" content="lngym&#39;s Blog">
 <meta property="og:description" content="软工三迭代二设计文档 撰写人员：吴俊宏、戴冯洋、顾益铭 项目启动文档 项目名称 RAGQuest：基于 RAG 的智能问答系统。 Prompt 评估平台：用于基于 RAGAS 框架，对检索增强生成（RAG）系统的回答质量进行自动化评估，支持多个关键指标的综合测量。 项目背景 随着大语言模型（LLM）的广泛应用，基于检索增强生成（RAG, Retrieval-Augmented Generation">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png">
-<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png">
+<meta property="og:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png">
 <meta property="article:published_time" content="2025-05-07T19:05:44.000Z">
 <meta property="article:modified_time" content="2025-05-07T19:27:55.691Z">
 <meta property="article:author" content="lngym">
 <meta property="article:tag" content="软工III">
 <meta property="article:tag" content="文档">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
+<meta name="twitter:image" content="https://lngym.github.io/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
   
   
   
@@ -1453,16 +1453,16 @@ mjx-container[display="true"] + br {
 <h2 id="产品概述">产品概述</h2>
 <p>本项目旨在开发一个基于 RAG（Retrieval-Augmented Generation）技术的智能问答系统，名为“RagQuest”。该系统结合了语义搜索与大语言模型生成能力，能够基于知识库中的文档内容进行高质量的问答对话，适用于企业知识管理、教育培训、自助客服等场景。</p>
 <p>RAG 架构图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png" srcset="/img/loading.gif" lazyload alt="d122ccfb5b3ef5d4310dfa28e94e83a3"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png" srcset="/img/loading.gif" lazyload alt="d122ccfb5b3ef5d4310dfa28e94e83a3"></p>
 <p>评估平台架构图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png" srcset="/img/loading.gif" lazyload alt="31736ab857688683f063f082d602aace"></p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png" srcset="/img/loading.gif" lazyload alt="b8b895fc4e92dc0c23ba5147759350d8"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png" srcset="/img/loading.gif" lazyload alt="31736ab857688683f063f082d602aace"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png" srcset="/img/loading.gif" lazyload alt="b8b895fc4e92dc0c23ba5147759350d8"></p>
 <h2 id="体系结构设计概述">体系结构设计概述</h2>
 <p>RAGAS 部分系统整体采用前后端分离架构，后端基于 SpringBoot 实现，前端采用 Vue 3 架构。</p>
 <p>Evaluator 部分采用前后端分离架构，后端基于 FastAPI 实现，前端采用 Vue 3 架构。</p>
 <h2 id="结构视角">结构视角</h2>
 <h3 id="RAG-搭建过程">RAG 搭建过程</h3>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png" srcset="/img/loading.gif" lazyload alt="b74a4a615cdb78028cf5a9f914db4604"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png" srcset="/img/loading.gif" lazyload alt="b74a4a615cdb78028cf5a9f914db4604"></p>
 <h3 id="RAG-应用业务逻辑层的分解">RAG 应用业务逻辑层的分解</h3>
 <table>
 <thead>
@@ -1519,54 +1519,54 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>开发包图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png" srcset="/img/loading.gif" lazyload alt="5e6ae3a6871e00cf8ebb5d2a575fb4c4"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png" srcset="/img/loading.gif" lazyload alt="5e6ae3a6871e00cf8ebb5d2a575fb4c4"></p>
 <h4 id="config">config</h4>
 <h5 id="模块概述">模块概述</h5>
 <p>config 模块是系统的基础设施配置中心，负责整合 SpringBoot 框架能力与项目特定配置需求。</p>
 <p>核心职责为：多数据源管理、安全认证体系、框架整合配置、接口安全策略。</p>
 <h5 id="整体结构">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png" srcset="/img/loading.gif" lazyload alt="dcf3c9a4d6343f6f0ab23817be760242"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png" srcset="/img/loading.gif" lazyload alt="dcf3c9a4d6343f6f0ab23817be760242"></p>
 <h4 id="controller">controller</h4>
 <h5 id="模块概述-2">模块概述</h5>
 <p>controller 模块负责处理 HTTP 请求和响应。</p>
 <p>核心职责包括路由处理、参数绑定、权限控制和响应封装。</p>
 <h5 id="整体结构-2">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png" srcset="/img/loading.gif" lazyload alt="0a9d3f03c96ef1d8ccf588ac43a36790"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png" srcset="/img/loading.gif" lazyload alt="0a9d3f03c96ef1d8ccf588ac43a36790"></p>
 <h4 id="exception">exception</h4>
 <h5 id="模块概述-3">模块概述</h5>
 <p>exception 模块负责对异常进行集中处理，给前端或调用者提供统一、规范的错误响应。</p>
 <p>核心职责为捕获所有异常。</p>
 <h5 id="整体结构-3">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png" srcset="/img/loading.gif" lazyload alt="c9b3070fbeba0007aee9499bda010b81"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png" srcset="/img/loading.gif" lazyload alt="c9b3070fbeba0007aee9499bda010b81"></p>
 <h4 id="repository">repository</h4>
 <h5 id="模块概述-4">模块概述</h5>
 <p>repository 模块主要负责与数据库进行交互，承担数据持久化的任务。它为上层服务提供数据的增删改查等操作，保证数据能在应用程序和数据库之间正确流转。</p>
 <p>核心职责是通过不同的 repository 类实现与数据库的交互，包括基本的 CRUD 操作、自定义查询和批量插入等功能。</p>
 <h5 id="整体结构-4">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png" srcset="/img/loading.gif" lazyload alt="fd14d3431321f045c179dfb3abc5015f"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png" srcset="/img/loading.gif" lazyload alt="fd14d3431321f045c179dfb3abc5015f"></p>
 <h4 id="postgresRepository">postgresRepository</h4>
 <h5 id="模块概述-5">模块概述</h5>
 <p>postgresRepository 模块主要负责与 PostgreSQL 数据库进行交互，处理与知识块数据相关的存储、查询等操作。</p>
 <h5 id="整体结构-5">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png" srcset="/img/loading.gif" lazyload alt="e975699ed9a42a29e56930990ee756cd"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png" srcset="/img/loading.gif" lazyload alt="e975699ed9a42a29e56930990ee756cd"></p>
 <h4 id="model">model</h4>
 <h5 id="模块概述-6">模块概述</h5>
 <p>model 模块承担着将数据库中的数据映射到 Java 对象，以及在应用程序和数据库之间进行数据交互的重要任务。</p>
 <p>核心职责为：定义数据库实体、管理实体生命周期、处理实体关联关系、实现数据转换方法。</p>
 <h5 id="整体结构-6">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png" srcset="/img/loading.gif" lazyload alt="634465c63ff9ccc4ef2fc16d3c639613"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png" srcset="/img/loading.gif" lazyload alt="634465c63ff9ccc4ef2fc16d3c639613"></p>
 <h4 id="model-vo">model.vo</h4>
 <h5 id="模块概述-7">模块概述</h5>
 <p>model.vo 模块用于前端展示或接口传输，封装业务层返回的数据。</p>
 <p>核心职责为：封装业务数据、定义接口响应格式、支持前后端交互。</p>
 <h5 id="整体结构-7">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png" srcset="/img/loading.gif" lazyload alt="bc7644f707c50d118de18477ca54a1d5"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png" srcset="/img/loading.gif" lazyload alt="bc7644f707c50d118de18477ca54a1d5"></p>
 <h4 id="service">service</h4>
 <h5 id="模块概述-8">模块概述</h5>
 <p>service 模块在项目里处于业务逻辑处理的核心位置，衔接了控制器层与数据访问层，负责实现具体的业务功能。</p>
 <p>核心职责为：业务逻辑实现、数据交互协调、外部服务调用、数据导入处理。</p>
 <h5 id="整体结构-8">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png" srcset="/img/loading.gif" lazyload alt="795cf4e4fd56e2d658bab8d1ac8be6f4"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png" srcset="/img/loading.gif" lazyload alt="795cf4e4fd56e2d658bab8d1ac8be6f4"></p>
 <h5 id="关键方法">关键方法</h5>
 <ul>
 <li>知识库构建</li>
@@ -1582,7 +1582,7 @@ mjx-container[display="true"] + br {
 <h5 id="模块概述-9">模块概述</h5>
 <p>serviceImpl 模块作为 service 接口的具体实现层，承担着将业务逻辑具体化、与数据访问层交互以及调用外部服务来完成复杂业务功能的需求。</p>
 <h5 id="整体结构-9">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png" srcset="/img/loading.gif" lazyload alt="0a0b36a90867440d02a4a1e70518b5e4"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png" srcset="/img/loading.gif" lazyload alt="0a0b36a90867440d02a4a1e70518b5e4"></p>
 <h5 id="关键方法-2">关键方法</h5>
 <ul>
 <li>问答生成</li>
@@ -1594,7 +1594,7 @@ mjx-container[display="true"] + br {
 <p>utils 模块在整个项目里主要承担辅助性、通用性的功能需求，为其他模块提供基础支持，以保障项目的正常运行和功能的顺利实现。</p>
 <p>核心职责为与 ZhipuAI 接口进行交互，为项目中的聊天服务等业务模块提供了获取 AI 回答的能力。</p>
 <h5 id="整体结构-10">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png" srcset="/img/loading.gif" lazyload alt="e173b8cf6ab5e2dcc9b96eb4f32edf16"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png" srcset="/img/loading.gif" lazyload alt="e173b8cf6ab5e2dcc9b96eb4f32edf16"></p>
 <h3 id="RAG-应用展示层的分解">RAG 应用展示层的分解</h3>
 <table>
 <thead>
@@ -1631,43 +1631,43 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>开发包图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png" srcset="/img/loading.gif" lazyload alt="f370932423cf199294c69a9dd332edb9"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png" srcset="/img/loading.gif" lazyload alt="f370932423cf199294c69a9dd332edb9"></p>
 <h4 id="ChatDashBoard">ChatDashBoard</h4>
 <h5 id="模块概述-11">模块概述</h5>
 <p>ChatDashBoard 模块主要用于与 AI 对话，并管理多会话状态。</p>
 <p>核心职责为：会话管理、消息处理、状态同步。</p>
 <h5 id="整体结构-11">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png" srcset="/img/loading.gif" lazyload alt="14853c4e8eca70d87d2a40af2b15cce4"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png" srcset="/img/loading.gif" lazyload alt="14853c4e8eca70d87d2a40af2b15cce4"></p>
 <h4 id="UserLogin">UserLogin</h4>
 <h5 id="模块概述-12">模块概述</h5>
 <p>UserLogin 模块主要用于实现用户凭证验证，并提供安全登录流程，支持登录状态持久化。</p>
 <p>主要职责为：认证流程控制、安全信息管理、UI 交互协调。</p>
 <h5 id="整体结构-12">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png" srcset="/img/loading.gif" lazyload alt="061acc0e3281c418a5f6966526c5678c"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png" srcset="/img/loading.gif" lazyload alt="061acc0e3281c418a5f6966526c5678c"></p>
 <h4 id="UserRegister">UserRegister</h4>
 <h5 id="模块概述-13">模块概述</h5>
 <p>UserRegister 模块主要用于新用户注册，采集用户信息并验证。</p>
 <p>主要职责为：注册流程控制。</p>
 <h5 id="整体结构-13">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png" srcset="/img/loading.gif" lazyload alt="48bed4b716a8e957952bc4670e0650d3"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png" srcset="/img/loading.gif" lazyload alt="48bed4b716a8e957952bc4670e0650d3"></p>
 <h4 id="index">index</h4>
 <h5 id="模块概述-14">模块概述</h5>
 <p>index 模块主要负责路由模块负责管理应用的不同页面之间的导航，定义 URL 路径与组件的映射关系，以及处理路由相关的逻辑。</p>
 <p>主要职责为：认证隔离、会话保持。</p>
 <h5 id="整体结构-14">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png" srcset="/img/loading.gif" lazyload alt="619077a0d320401ce27e3aaf1d8ae14b"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png" srcset="/img/loading.gif" lazyload alt="619077a0d320401ce27e3aaf1d8ae14b"></p>
 <h4 id="ChatsAPI">ChatsAPI</h4>
 <h5 id="模块概述-15">模块概述</h5>
 <p>ChatsAPI 模块主要承担与聊天功能相关的 API 请求操作。</p>
 <p>主要职责为：获取会话相关信息、创建新会话、获取聊天消息、向 AI 发送消息。</p>
 <h5 id="整体结构-15">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png" srcset="/img/loading.gif" lazyload alt="1e0f7df1740f52c0db3a30a4f8323df5"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png" srcset="/img/loading.gif" lazyload alt="1e0f7df1740f52c0db3a30a4f8323df5"></p>
 <h4 id="UserAPI">UserAPI</h4>
 <h5 id="模块概述-16">模块概述</h5>
 <p>ChatsAPI 模块主要承担与用户功能相关的 API 请求操作。</p>
 <p>主要职责为：处理用户登录和注册。</p>
 <h5 id="整体结构-16">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png" srcset="/img/loading.gif" lazyload alt="461d83af3982c7f2e432b70f6f5c26b7"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png" srcset="/img/loading.gif" lazyload alt="461d83af3982c7f2e432b70f6f5c26b7"></p>
 <h3 id="Prompt-评估业务逻辑层的分解">Prompt 评估业务逻辑层的分解</h3>
 <table>
 <thead>
@@ -1700,13 +1700,13 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>开发包图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png" srcset="/img/loading.gif" lazyload alt="8de4974c02345e684e24ae0adf2ed88b"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png" srcset="/img/loading.gif" lazyload alt="8de4974c02345e684e24ae0adf2ed88b"></p>
 <h4 id="app">app</h4>
 <h5 id="模块概述-17">模块概述</h5>
 <p>app 模块主要承担 RAG 迭代管理和评估流程控制以及数据可视化支持。</p>
 <p>主要职责是管理评估平台的后端核心业务逻辑。</p>
 <h5 id="整体结构-17">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png" srcset="/img/loading.gif" lazyload alt="7ea162b34cc3249cdf85443f5634769c"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png" srcset="/img/loading.gif" lazyload alt="7ea162b34cc3249cdf85443f5634769c"></p>
 <h5 id="关键函数">关键函数</h5>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_evaluation</span>(<span class="hljs-params"></span><br><span class="hljs-params">        iteration_id: <span class="hljs-built_in">int</span> = Form(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        name: <span class="hljs-built_in">str</span> = Form(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        description: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = Form(<span class="hljs-params"><span class="hljs-literal">None</span></span>),</span><br><span class="hljs-params">        data_file: UploadFile = File(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        db: Session = Depends(<span class="hljs-params">get_db</span>)</span><br><span class="hljs-params"></span>):<br>    <span class="hljs-string">"""上传数据并评估RAG性能"""</span><br>    <span class="hljs-comment"># 检查迭代是否存在</span><br>    iteration = db.query(models.Iteration).<span class="hljs-built_in">filter</span>(models.Iteration.<span class="hljs-built_in">id</span> == iteration_id).first()<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> iteration:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">"Iteration not found"</span>)<br><br>    <span class="hljs-comment"># 读取上传的数据</span><br>    contents = <span class="hljs-keyword">await</span> data_file.read()<br><br>    <span class="hljs-comment"># 解析数据格式 (假设是JSON格式)</span><br>    <span class="hljs-keyword">try</span>:<br>        data = json.loads(contents)<br>        <span class="hljs-comment"># 验证数据结构</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">all</span>(key <span class="hljs-keyword">in</span> data <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-string">"questions"</span>, <span class="hljs-string">"answers"</span>, <span class="hljs-string">"contexts"</span>]):<br>            <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">400</span>,<br>                                detail=<span class="hljs-string">"Invalid data format. Required fields: questions, answers, contexts"</span>)<br><br>        <span class="hljs-comment"># 执行RAGAS评估 (添加重试机制)</span><br>        max_retries = <span class="hljs-number">3</span><br>        retry_count = <span class="hljs-number">0</span><br>        last_error = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">while</span> retry_count &lt; max_retries:<br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-comment"># 确保上下文格式正确</span><br>                <span class="hljs-comment"># 检查contexts是否是字符串列表的列表</span><br>                <span class="hljs-keyword">if</span> data[<span class="hljs-string">"contexts"</span>] <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(data[<span class="hljs-string">"contexts"</span>][<span class="hljs-number">0</span>], <span class="hljs-built_in">list</span>):<br>                    <span class="hljs-comment"># 如果contexts是字符串列表而不是字符串列表的列表，则转换它</span><br>                    data[<span class="hljs-string">"contexts"</span>] = [[ctx] <span class="hljs-keyword">for</span> ctx <span class="hljs-keyword">in</span> data[<span class="hljs-string">"contexts"</span>]]<br><br>                metrics = evaluate_rag_data(data[<span class="hljs-string">"questions"</span>], data[<span class="hljs-string">"answers"</span>], data[<span class="hljs-string">"contexts"</span>])<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                last_error = e<br>                retry_count += <span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> retry_count &gt;= max_retries:<br>                    <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">500</span>,<br>                                        detail=<span class="hljs-string">f"Failed to evaluate after <span class="hljs-subst">{max_retries}</span> attempts: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Evaluation attempt <span class="hljs-subst">{retry_count}</span> failed: <span class="hljs-subst">{e}</span>. Retrying..."</span>)<br>                <span class="hljs-keyword">import</span> time<br>                time.sleep(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 短暂暂停后重试</span><br><br>        <span class="hljs-comment"># 保存评估结果</span><br>        db_evaluation = models.Evaluation(<br>            iteration_id=iteration_id,<br>            name=name,<br>            description=description,<br>            data=contents.decode(),<br>            faithfulness=metrics.faithfulness,<br>            answer_relevancy=metrics.answer_relevancy,<br>            context_precision=metrics.context_precision,<br>            context_recall=metrics.context_recall<br>        )<br>        db.add(db_evaluation)<br>        db.commit()<br>        db.refresh(db_evaluation)<br><br>        <span class="hljs-keyword">return</span> db_evaluation<br>    <span class="hljs-keyword">except</span> json.JSONDecodeError:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">400</span>, detail=<span class="hljs-string">"Invalid JSON format"</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">500</span>, detail=<span class="hljs-string">f"Evaluation failed: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br></code></pre></td></tr></table></figure>
 <p>提供和前端交互的创建评估的 API。</p>
@@ -1715,13 +1715,13 @@ mjx-container[display="true"] + br {
 <p>schemas 模块主要承担 API 的数据验证和序列化，主要用于定义传输的数据类型。</p>
 <p>主要职责包括验证 API 请求数据、序列化数据库模型到响应，以及定义数据传输对象。</p>
 <h5 id="整体结构-18">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png" srcset="/img/loading.gif" lazyload alt="89118e161a5411e77d4137bf00ec0347"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png" srcset="/img/loading.gif" lazyload alt="89118e161a5411e77d4137bf00ec0347"></p>
 <h4 id="ragas-evaluator">ragas_evaluator</h4>
 <h5 id="模块概述-19">模块概述</h5>
 <p>ragas_evaluator 模块主要承担自动化评估流程、多维度指标计算和 AI 适配。</p>
 <p>主要职责为：评估流程控制、评估指标计算、接入 AI 模型。</p>
 <h5 id="整体结构-19">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png" srcset="/img/loading.gif" lazyload alt="89118e161a5411e77d4137bf00ec0347"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png" srcset="/img/loading.gif" lazyload alt="89118e161a5411e77d4137bf00ec0347"></p>
 <h5 id="关键函数-2">关键函数</h5>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">evaluate_rag_data</span>(<span class="hljs-params"></span><br><span class="hljs-params">        questions: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>],</span><br><span class="hljs-params">        answers: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>],</span><br><span class="hljs-params">        contexts: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]]</span><br><span class="hljs-params"></span>) -&gt; RagasResult:<br>    <span class="hljs-string">"""</span><br><span class="hljs-string">    使用RAGAS评估RAG系统的性能（智谱AI版本）</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        questions: 评估问题列表</span><br><span class="hljs-string">        answers: RAG系统生成的回答列表</span><br><span class="hljs-string">        contexts: 每个问题的上下文列表（每个元素是字符串列表）</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        RagasResult: 包含各项评估指标的结果对象</span><br><span class="hljs-string">    """</span><br>    <span class="hljs-comment"># 参数校验</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">all</span>(<span class="hljs-built_in">len</span>(questions) == <span class="hljs-built_in">len</span>(lst) <span class="hljs-keyword">for</span> lst <span class="hljs-keyword">in</span> [answers, contexts]):<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"输入数据长度不一致"</span>)<br><br>    <span class="hljs-comment"># 初始化API密钥</span><br>    api_key = os.getenv(<span class="hljs-string">"ZHIPUAI_API_KEY"</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> api_key:<br>        <span class="hljs-keyword">raise</span> EnvironmentError(<span class="hljs-string">"ZHIPUAI_API_KEY 环境变量未设置"</span>)<br><br>    <span class="hljs-comment"># 初始化模型</span><br>    chat_model = ChatZhipuAI(model=<span class="hljs-string">"glm-4-flash"</span>, api_key=api_key)<br>    embedding_model = ZhipuAIEmbeddings(model=<span class="hljs-string">"embedding-3"</span>, api_key=api_key)<br><br>    <span class="hljs-comment"># 包装模型供RAGAS使用</span><br>    ragas_llm = LangchainLLMWrapper(chat_model)<br>    ragas_embeddings = LangchainEmbeddingsWrapper(embedding_model)<br><br>    <span class="hljs-comment"># 准备数据集 - 处理上下文格式</span><br>    dataset_dict = {<br>        <span class="hljs-string">"question"</span>: questions,<br>        <span class="hljs-string">"answer"</span>: answers,<br>        <span class="hljs-string">"reference"</span>: [<span class="hljs-string">"\n"</span>.join(ctx) <span class="hljs-keyword">for</span> ctx <span class="hljs-keyword">in</span> contexts],<br>        <span class="hljs-string">"contexts"</span>: contexts<br>    }<br><br>    <span class="hljs-comment"># 创建数据集</span><br>    dataset = Dataset.from_dict(dataset_dict)<br><br>    <span class="hljs-comment"># 执行评估</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 使用RAGAS的evaluate函数</span><br>        result = ragas.evaluate(<br>            dataset,<br>            metrics=[<br>                ragas.metrics.faithfulness,<br>                ragas.metrics.answer_relevancy,<br>                ragas.metrics.context_precision,<br>                ragas.metrics.context_recall<br>            ],<br>            llm=ragas_llm,<br>            embeddings=ragas_embeddings<br>        )<br><br>        <span class="hljs-comment"># 提取结果</span><br>        <span class="hljs-comment"># 修改后的返回结果部分（取指标的平均值）</span><br>        <span class="hljs-keyword">return</span> RagasResult(<br>            faithfulness=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'faithfulness'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'faithfulness'</span>]),<br>            answer_relevancy=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'answer_relevancy'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'answer_relevancy'</span>]),<br>            context_precision=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'context_precision'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'context_precision'</span>]),<br>            context_recall=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'context_recall'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'context_recall'</span>])<br>        )<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">f"评估过程出错: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br></code></pre></td></tr></table></figure>
 <p>使用 RAGAS 评估 RAG 系统的性能（智谱 AI 版本）。</p>
@@ -1730,13 +1730,13 @@ mjx-container[display="true"] + br {
 <p>models 模块主要负责管理不同迭代版本和评估数据持久化。</p>
 <p>主要职责是定义 ORM 模型，存储数据。</p>
 <h5 id="整体结构-20">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png" srcset="/img/loading.gif" lazyload alt="2fd562bd9e4f2ee585c54878ad564b65"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png" srcset="/img/loading.gif" lazyload alt="2fd562bd9e4f2ee585c54878ad564b65"></p>
 <h4 id="database">database</h4>
 <h5 id="模块概述-21">模块概述</h5>
 <p>database 模块主要负责数据库连接管理和会话工厂管理。</p>
 <p>主要职责为：配置数据库连接，使用 SQLAlchemy 创建引擎和会话工厂。</p>
 <h5 id="整体结构-21">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png" srcset="/img/loading.gif" lazyload alt="53a2e4746319f5f2514f84de1fc76565"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png" srcset="/img/loading.gif" lazyload alt="53a2e4746319f5f2514f84de1fc76565"></p>
 <h3 id="Prompt-评估展示层的分解">Prompt 评估展示层的分解</h3>
 <table>
 <thead>
@@ -1777,29 +1777,29 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 <p>开发包图：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png" srcset="/img/loading.gif" lazyload alt="ceea94812228ab9b68a5bf0d0dff4873"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png" srcset="/img/loading.gif" lazyload alt="ceea94812228ab9b68a5bf0d0dff4873"></p>
 <h4 id="app-2">app</h4>
 <h5 id="模块概述-22">模块概述</h5>
 <p>app 模块作为父界面，用于展示通用的模块以及入口的作用。</p>
 <p>主要职责：展示通用模块，作为程序入口。</p>
 <h5 id="整体结构-22">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png" srcset="/img/loading.gif" lazyload alt="c6bc39476ea1cb225fa85cfa991e8183"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png" srcset="/img/loading.gif" lazyload alt="c6bc39476ea1cb225fa85cfa991e8183"></p>
 <h4 id="index-2">index</h4>
 <h5 id="模块概述-23">模块概述</h5>
 <p>index 模块主要负责路由模块负责管理应用的不同页面之间的导航，定义 URL 路径与组件的映射关系，以及处理路由相关的逻辑。</p>
 <p>主要职责为：导入依赖、定义路由规则、创建路由实例、导出路由实例。</p>
 <h5 id="整体结构-23">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png" srcset="/img/loading.gif" lazyload alt="025fe688d3b9aa6426d5b00378a9c81b"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png" srcset="/img/loading.gif" lazyload alt="025fe688d3b9aa6426d5b00378a9c81b"></p>
 <h4 id="Dashboard">Dashboard</h4>
 <h5 id="模块概述-24">模块概述</h5>
 <p>Dashboard 模块主要负责展示评估结果。</p>
 <h5 id="整体结构-24">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png" srcset="/img/loading.gif" lazyload alt="3437b43699669870ccf883262881025c"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png" srcset="/img/loading.gif" lazyload alt="3437b43699669870ccf883262881025c"></p>
 <h4 id="IterationManagement">IterationManagement</h4>
 <h5 id="模块概述-25">模块概述</h5>
 <p>IterationManagement 模块主要负责迭代管理，用于展示和管理多个迭代。</p>
 <h5 id="整体结构-25">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png" srcset="/img/loading.gif" lazyload alt="c062c642241b941087f68cadebc97825"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png" srcset="/img/loading.gif" lazyload alt="c062c642241b941087f68cadebc97825"></p>
 <h5 id="关键函数-3">关键函数</h5>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建新迭代</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">createIteration</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {<br>  <span class="hljs-keyword">if</span> (!iterationForm.<span class="hljs-property">value</span>.<span class="hljs-property">name</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请输入迭代名称'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  submitLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span><br>  <span class="hljs-keyword">try</span> {<br>    <span class="hljs-comment">// eslint-disable-next-line no-unused-vars</span><br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">post</span>(<span class="hljs-string">'http://localhost:8000/iterations/'</span>, iterationForm.<span class="hljs-property">value</span>)<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">success</span>(<span class="hljs-string">'创建迭代成功'</span>)<br>    dialogVisible.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span><br><br>    <span class="hljs-comment">// 重置表单</span><br>    iterationForm.<span class="hljs-property">value</span> = {<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>,<br>      <span class="hljs-attr">description</span>: <span class="hljs-string">''</span><br>    }<br><br>    <span class="hljs-comment">// 刷新数据</span><br>    <span class="hljs-title function_">fetchData</span>()<br>  } <span class="hljs-keyword">catch</span> (error) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'创建迭代失败:'</span>, error)<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'创建迭代失败'</span>)<br>  } <span class="hljs-keyword">finally</span> {<br>    submitLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span><br>  }<br>}<br></code></pre></td></tr></table></figure>
 <p>用于创建新迭代。</p>
@@ -1807,7 +1807,7 @@ mjx-container[display="true"] + br {
 <h5 id="模块概述-26">模块概述</h5>
 <p>DataUpload 模块主要负责上传迭代数据。</p>
 <h5 id="整体结构-26">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png" srcset="/img/loading.gif" lazyload alt="09ce346a9a61431c70cb51e1e432bd62"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png" srcset="/img/loading.gif" lazyload alt="09ce346a9a61431c70cb51e1e432bd62"></p>
 <h5 id="关键函数-4">关键函数</h5>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 提交上传</span><br><span class="hljs-keyword">const</span> submitUpload = async () =&gt; {<br>  <span class="hljs-comment">// 表单验证</span><br>  <span class="hljs-keyword">if</span> (!uploadForm.value.iteration_id) {<br>    ElMessage.warning(<span class="hljs-string">'请选择迭代版本'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">if</span> (!uploadForm.value.name) {<br>    ElMessage.warning(<span class="hljs-string">'请输入评估名称'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">if</span> (!uploadFile.value) {<br>    ElMessage.warning(<span class="hljs-string">'请上传数据文件'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-comment">// 验证文件格式</span><br>  <span class="hljs-keyword">if</span> (uploadFile.value.<span class="hljs-keyword">type</span> !== <span class="hljs-string">'application/json'</span>) {<br>    ElMessage.warning(<span class="hljs-string">'请上传JSON格式的文件'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  uploading.value = <span class="hljs-literal">true</span><br><br>  try {<br>    <span class="hljs-comment">// 创建FormData</span><br>    <span class="hljs-keyword">const</span> formData = <span class="hljs-built_in">new</span> FormData()<br>    formData.<span class="hljs-built_in">append</span>(<span class="hljs-string">'iteration_id'</span>, uploadForm.value.iteration_id)<br>    formData.<span class="hljs-built_in">append</span>(<span class="hljs-string">'name'</span>, uploadForm.value.name)<br>    <span class="hljs-keyword">if</span> (uploadForm.value.description) {<br>      formData.<span class="hljs-built_in">append</span>(<span class="hljs-string">'description'</span>, uploadForm.value.description)<br>    }<br>    formData.<span class="hljs-built_in">append</span>(<span class="hljs-string">'data_file'</span>, uploadFile.value)<br><br>    <span class="hljs-comment">// 发送请求</span><br>    <span class="hljs-comment">// eslint-disable-next-line no-unused-vars</span><br>    <span class="hljs-keyword">const</span> response = await axios.post(<span class="hljs-string">'http://localhost:8000/evaluations/'</span>,<br>        formData,<br>        {<br>          headers: {<br>            <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span><br>          }<br>        }<br>    )<br><br>    ElMessage.success(<span class="hljs-string">'评估提交成功'</span>)<br><br>    <span class="hljs-comment">// 导航到仪表板</span><br>    router.push(<span class="hljs-string">'/'</span>)<br>  } catch (<span class="hljs-type">error</span>) {<br>    console.<span class="hljs-type">error</span>(<span class="hljs-string">'提交评估失败:'</span>, <span class="hljs-type">error</span>)<br><br>    <span class="hljs-comment">// 显示错误信息</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-type">error</span>.response &amp;&amp; <span class="hljs-type">error</span>.response.data &amp;&amp; <span class="hljs-type">error</span>.response.data.detail) {<br>      ElMessage.<span class="hljs-type">error</span>(<span class="hljs-string">`提交失败: ${error.response.data.detail}`</span>)<br>    } <span class="hljs-keyword">else</span> {<br>      ElMessage.<span class="hljs-type">error</span>(<span class="hljs-string">'提交评估失败，请检查数据格式'</span>)<br>    }<br>  } finally {<br>    uploading.value = <span class="hljs-literal">false</span><br>  }<br>}<br></code></pre></td></tr></table></figure>
 <p>用于提交上传。</p>
@@ -1815,7 +1815,7 @@ mjx-container[display="true"] + br {
 <h5 id="模块概述-27">模块概述</h5>
 <p>CompareView 模块用于比较不同的迭代。</p>
 <h5 id="整体结构-27">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png" srcset="/img/loading.gif" lazyload alt="a76f8e213f0a9489271201647d5242c3"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png" srcset="/img/loading.gif" lazyload alt="a76f8e213f0a9489271201647d5242c3"></p>
 <h5 id="关键函数-5">关键函数</h5>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 比较选定的迭代</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">compareIterations</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {<br>  <span class="hljs-keyword">if</span> (selectedIterations.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-number">2</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请至少选择两个迭代进行比较'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">try</span> {<br>    <span class="hljs-comment">// 将数组转换为 "iteration_ids=1&amp;iteration_ids=2"</span><br>    <span class="hljs-keyword">const</span> queryString = selectedIterations.<span class="hljs-property">value</span><br>        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> <span class="hljs-string">`iteration_ids=<span class="hljs-subst">${id}</span>`</span>)<br>        .<span class="hljs-title function_">join</span>(<span class="hljs-string">'&amp;'</span>);<br><br>    <span class="hljs-keyword">const</span> url = <span class="hljs-string">`http://localhost:8000/metrics/compare/?<span class="hljs-subst">${queryString}</span>`</span>;<br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(url);<br><br>    comparisonData.<span class="hljs-property">value</span> = response.<span class="hljs-property">data</span>;<br>  } <span class="hljs-keyword">catch</span> (error) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'比较数据获取失败:'</span>, error);<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'比较数据获取失败'</span>);<br>  }<br>}<br></code></pre></td></tr></table></figure>
 <p>用于比较选定的迭代。</p>
@@ -1824,17 +1824,17 @@ mjx-container[display="true"] + br {
 <p>api 模块主要承担所有的 API 请求操作。</p>
 <p>主要职责为：与后端交互，传递迭代和评估信息。</p>
 <h5 id="整体结构-28">整体结构</h5>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png" srcset="/img/loading.gif" lazyload alt="a092636028e91950335a92838c9c698a"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png" srcset="/img/loading.gif" lazyload alt="a092636028e91950335a92838c9c698a"></p>
 <h2 id="依赖视角">依赖视角</h2>
 <p>下图是项目中各个包之间的依赖关系。</p>
 <p>RAG 应用业务逻辑层：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png" srcset="/img/loading.gif" lazyload alt="2a72d9b081f8eea85e6725fab273da89"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png" srcset="/img/loading.gif" lazyload alt="2a72d9b081f8eea85e6725fab273da89"></p>
 <p>RAG 应用展示层：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png" srcset="/img/loading.gif" lazyload alt="669829148392155a6884f5f02ffecc3b"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png" srcset="/img/loading.gif" lazyload alt="669829148392155a6884f5f02ffecc3b"></p>
 <p>Prompt 评估业务逻辑层：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png" srcset="/img/loading.gif" lazyload alt="a9b887608b9f77fbf117d3b0b0f61c2a"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png" srcset="/img/loading.gif" lazyload alt="a9b887608b9f77fbf117d3b0b0f61c2a"></p>
 <p>Prompt 评估展示层：</p>
-<p><img src="./%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png" srcset="/img/loading.gif" lazyload alt="5df7fe845a3fa3dd45de1a59b37e55c9"></p>
+<p><img src="/2025/05/08/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png" srcset="/img/loading.gif" lazyload alt="5df7fe845a3fa3dd45de1a59b37e55c9"></p>
 
                 
               </div>
