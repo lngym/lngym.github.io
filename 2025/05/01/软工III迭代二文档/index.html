@@ -92,6 +92,7 @@
   line-height: 1.6;
   font-family: 'Fira Code', 'Consolas', monospace;
   border-left: 4px solid #3eaf7c;
+  color: #d3d3d3 !important; /* 新增：默认白灰色 */
 }
 
 /* 通用语法元素 */
@@ -140,6 +141,17 @@
   color: #56b6c2 !important;
 }
 
+.hljs-params,         /* 函数参数 */
+.hljs-variable.language_ {  /* this, super等 */
+  color: #e5c07b !important;
+}
+
+.hljs-meta .hljs-keyword,  /* 预处理指令 */
+.hljs-meta .hljs-string {
+  color: #c678dd !important;
+}
+
+/* 文本修饰 */
 .hljs-emphasis {      /* 强调 */
   font-style: italic;
 }
@@ -160,28 +172,6 @@
   user-select: none;
 }
 
-/* 特殊语言增强 */
-.hljs-params,         /* 函数参数 */
-.hljs-variable.language_ {  /* this, super等 */
-  color: #e5c07b !important;
-}
-
-.hljs-meta .hljs-keyword,  /* 预处理指令 */
-.hljs-meta .hljs-string {
-  color: #c678dd !important;
-}
-
-/* 光标交互效果 */
-.hljs:hover {
-  box-shadow: 0 0 0 2px rgba(58, 175, 124, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* 选中文本样式 */
-.hljs::selection {
-  background: rgba(97, 175, 239, 0.3);
-}
-
 /* 控制台/Shell特定样式 */
 .hljs-meta.prompt_ {  /* 命令行提示符 */
   color: #56b6c2 !important;
@@ -193,7 +183,23 @@
   padding: 0 2px;
   border-radius: 2px;
 }
-</style><!-- 你的自定义CSS END -->
+
+/* 交互效果 */
+.hljs:hover {
+  box-shadow: 0 0 0 2px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 确保所有未定义语法元素保持白灰色 */
+.hljs *:not(.hljs-keyword):not(.hljs-string):not(.hljs-number):not(.hljs-comment):not(.hljs-title):not(.hljs-params):not(.hljs-variable):not(.hljs-doctag):not(.hljs-template-variable):not(.hljs-type):not(.hljs-section):not(.hljs-symbol):not(.hljs-bullet):not(.hljs-attribute):not(.hljs-meta):not(.hljs-link):not(.hljs-addition):not(.hljs-regexp):not(.hljs-literal):not(.hljs-built_in):not(.hljs-selector-tag):not(.hljs-quote) {
+  color: inherit !important;
+}
+</style>
+<!-- 你的自定义CSS END -->
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
