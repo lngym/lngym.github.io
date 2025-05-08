@@ -209,129 +209,6 @@ pre[class*="language-"] {
   font-weight: bold;
 }
 
-/* 5. 语言特定规则 */
-/* JavaScript */
-.javascript .hljs-property,
-.javascript .hljs-attr,
-.javascript .hljs-title.function,
-.javascript .hljs-variable.property_ {
-  color: #e06c75 !important;
-}
-
-.javascript .hljs-keyword.module,
-.javascript .hljs-built_in,
-.javascript .hljs-template-string .hljs-name {
-  color: #56b6c2 !important;
-}
-
-/* Python */
-.python .hljs-decorator,
-.python .hljs-meta,
-.python .hljs-function .hljs-title,
-.python .hljs-title.function {
-  color: #61afef !important;
-}
-
-.python .hljs-name[class*="self"] {
-  color: #e5c07b !important;
-  font-style: italic;
-}
-
-/* Java */
-.java .hljs-title.class_,
-.java .hljs-title.class,
-.java .hljs-type {
-  color: #e5c07b !important;
-  font-weight: bold;
-}
-
-.java .hljs-variable,
-.java .hljs-name,
-.java .hljs-params {
-  color: #e06c75 !important;
-}
-
-/* 增加C++语言特定规则 */
-.cpp .hljs-keyword,
-.cpp .hljs-meta .hljs-keyword,
-.cpp .hljs-meta-keyword {
-  color: #c678dd !important;
-  font-weight: bold;
-}
-
-.cpp .hljs-title.function,
-.cpp .hljs-function .hljs-title,
-.cpp .hljs-function .hljs-name {
-  color: #61afef !important;
-}
-
-.cpp .hljs-title.class,
-.cpp .hljs-title.class_,
-.cpp .hljs-class .hljs-title {
-  color: #e5c07b !important;
-  font-weight: bold;
-}
-
-.cpp .hljs-built_in,
-.cpp .hljs-type,
-.cpp .hljs-keyword[class*="int"],
-.cpp .hljs-keyword[class*="float"],
-.cpp .hljs-keyword[class*="double"],
-.cpp .hljs-keyword[class*="char"],
-.cpp .hljs-keyword[class*="bool"],
-.cpp .hljs-keyword[class*="void"] {
-  color: #e5c07b !important;
-}
-
-.cpp .hljs-variable,
-.cpp .hljs-operator,
-.cpp .hljs-params .hljs-variable,
-.cpp .hljs-name:not([class*="function"]):not([class*="class"]) {
-  color: #e06c75 !important;
-}
-
-.cpp .hljs-string,
-.cpp .hljs-string .hljs-subst {
-  color: #98c379 !important;
-}
-
-/* C++模板和命名空间 */
-.cpp .hljs-meta,
-.cpp .hljs-meta .hljs-string,
-.cpp .hljs-meta .hljs-keyword {
-  color: #c678dd !important;
-}
-
-.cpp .hljs-preprocessor,
-.cpp .hljs-meta .hljs-preprocessor,
-.cpp .hljs-meta-preprocessor {
-  color: #c678dd !important;
-  font-style: italic;
-}
-
-.cpp .hljs-meta .hljs-string {
-  color: #98c379 !important;
-}
-
-.cpp .hljs-operator,
-.cpp .hljs-punctuation.operator {
-  color: #56b6c2 !important;
-  font-weight: bold;
-}
-
-/* 命名空间 */
-.cpp .hljs-keyword + .hljs-title.namespace_,
-.cpp .hljs-keyword + .hljs-title.namespace {
-  color: #e5c07b !important;
-}
-
-/* 指针和引用符号 */
-.cpp .hljs-operator[class*="pointer"],
-.cpp .hljs-operator[class*="reference"] {
-  color: #56b6c2 !important;
-  font-weight: bold;
-}
-
 /* 字段名 */
 .hljs-attribute,
 .hljs-name.field_,
@@ -359,18 +236,7 @@ pre[class*="language-"] {
 .hljs-keyword[class*="void"],
 .hljs-keyword[class*="String"],
 .hljs-keyword[class*="wchar"],
-.hljs-keyword[class*="size_t"],
-/* SQL类型 */
-.hljs-keyword[class*="VARCHAR"],
-.hljs-keyword[class*="INTEGER"],
-.hljs-keyword[class*="TEXT"],
-.hljs-keyword[class*="DATE"],
-.hljs-keyword[class*="DATETIME"],
-.hljs-keyword[class*="TIMESTAMP"],
-.hljs-keyword[class*="BOOLEAN"],
-.hljs-keyword[class*="DECIMAL"],
-.hljs-keyword[class*="FLOAT"],
-.hljs-keyword[class*="BLOB"] {
+.hljs-keyword[class*="size_t"] {
   color: #e5c07b !important;
 }
 
