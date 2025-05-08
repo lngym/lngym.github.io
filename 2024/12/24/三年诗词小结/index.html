@@ -264,8 +264,13 @@
   font-weight: bold;
 }
 
-/* ================ 兜底规则 ================ */
-.hljs *:not(.hljs-keyword):not(.hljs-string):not(.hljs-number):not(.hljs-comment):not(.hljs-title):not(.hljs-params):not(.hljs-variable):not(.hljs-doctag):not(.hljs-template-variable):not(.hljs-type):not(.hljs-section):not(.hljs-symbol):not(.hljs-bullet):not(.hljs-attribute):not(.hljs-meta):not(.hljs-link):not(.hljs-addition):not(.hljs-regexp):not(.hljs-literal):not(.hljs-built_in):not(.hljs-selector-tag):not(.hljs-quote):not(.hljs-function):not(.hljs-class):not(.hljs-struct):not(.hljs-operator):not(.hljs-punctuation):not(.hljs-attr):not(.hljs-property):not(.hljs-namespace) {
+/* ================ 更新后的兜底规则 ================ */
+.hljs *:not(.hljs-keyword):not(.hljs-string):not(.hljs-number):not(.hljs-comment):not(.hljs-title):not(.hljs-params):not(.hljs-variable):not(.hljs-doctag):not(.hljs-template-variable):not(.hljs-type):not(.hljs-section):not(.hljs-symbol):not(.hljs-bullet):not(.hljs-attribute):not(.hljs-meta):not(.hljs-link):not(.hljs-addition):not(.hljs-regexp):not(.hljs-literal):not(.hljs-built_in):not(.hljs-selector-tag):not(.hljs-quote):not(.hljs-function):not(.hljs-class):not(.hljs-struct):not(.hljs-operator):not(.hljs-punctuation):not(.hljs-attr):not(.hljs-property):not(.hljs-namespace)
+/* ================ 新增 SQL 排除项 ================ */
+:not(.hljs-sql-keyword):not(.hljs-sql-function):not(.hljs-sql-string):not(.hljs-sql-quote):not(.hljs-sql-number):not(.hljs-sql-type):not(.hljs-sql-comment):not(.hljs-sql-doctag):not(.hljs-sql-variable):not(.hljs-sql-params):not(.hljs-sql-table):not(.hljs-sql-column)
+/* ================ 新增 Bash/Shell 排除项 ================ */
+:not(.hljs-bash-built_in):not(.hljs-bash-keyword):not(.hljs-bash-string):not(.hljs-bash-escape):not(.hljs-bash-number):not(.hljs-bash-params):not(.hljs-bash-comment):not(.hljs-shebang):not(.hljs-bash-variable):not(.hljs-envvar):not(.hljs-bash-function):not(.hljs-bash-title):not(.hljs-bash-operator)
+{
   color: inherit !important;
 }
 </style>
