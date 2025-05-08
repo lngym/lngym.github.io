@@ -34,10 +34,7 @@
 <!-- 插入Highlight.js -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/shell.min.js"></script>
-<script>hljs.highlightAll();</script>
+
 
 <!-- 你的自定义CSS START -->
 <style>
@@ -49,112 +46,371 @@
   line-height: 1.6;
   font-family: 'Fira Code', 'Consolas', monospace;
   border-left: 4px solid #3eaf7c;
-  color: #d3d3d3 !important; /* 默认白灰色 */
+  color: #d3d3d3 !important;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* ================ 语法元素高亮规则 ================ */
+/* ================ 增强的通用选择器 ================ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d3d3d3 !important;
+}
 
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d !important;
+}
+
+
+/* ================ 语法元素高亮规则 ================ */
 /* 1. 基础语法元素 */
 .hljs-keyword,        /* 关键字 */
-.hljs-selector-tag {  /* CSS选择器 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量true/false/null */
+.hljs-doctag,         /* 文档标记 */
+.hljs-title.class_,   /* 类名 */
+.hljs-title.class,    /* 类名(备用) */
+.hljs-title.function_ /* 函数名 */ {
   color: #c678dd !important;
   font-weight: bold;
 }
 
-.hljs-built_in,       /* 内置函数/类 */
-.hljs-literal {       /* 字面量 */
-  color: #d19a66 !important;
+/* 内置对象和函数 */
+.hljs-built_in {
+  color: #56b6c2 !important;
 }
 
-.hljs-string,         /* 字符串 */
-.hljs-regexp,         /* 正则 */
-.hljs-addition {      /* Markdown添加 */
+/* 字符串 */
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
   color: #98c379 !important;
   background: rgba(152, 195, 121, 0.08);
 }
 
-.hljs-number,         /* 数字 */
-.hljs-meta,           /* 元数据 */
-.hljs-link {          /* 链接 */
+/* 数字 */
+.hljs-number,
+.hljs-subst .hljs-number,
+.hljs-literal[class*="number"],
+.hljs-meta .hljs-number {
   color: #d19a66 !important;
 }
 
-.hljs-comment,        /* 注释 */
-.hljs-quote {         /* 引用 */
-  color: #5c6370 !important;
+/* 注释 */
+.hljs-comment,
+.hljs-quote {
+  color: #7f848e !important; /* 更亮的灰色，提高可见度 */
   font-style: italic;
 }
 
-/* 2. 变量系统增强 */
-.hljs-variable,        /* 普通变量 */
-.hljs-template-variable {
+/* 2. 变量系统增强 - 全面捕获所有变量 */
+/* 所有变量名 - 通用规则，增强选择器 */
+.hljs-name,
+.hljs-attribute,
+.hljs-variable,
+.hljs-variable .hljs-name,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-template-variable,
+.hljs-params .hljs-variable,
+.hljs-attr,
+.hljs-property {
   color: #e06c75 !important;
-  font-style: italic;
 }
 
+/* 特殊变量处理 */
 .hljs-variable.language_,  /* this/super等 */
-.hljs-variable.constant_ { /* 常量 */
+.hljs-variable.constant_,  /* 常量 */
+.hljs-attr,               /* 属性 */
+.hljs-property,           /* 对象属性 */
+.hljs-meta .hljs-variable {
   color: #e5c07b !important;
-  text-decoration: underline;
 }
 
-/* 3. 函数系统 */
-.hljs-function .hljs-title,
-.hljs-function > .hljs-params {
+/* 标识符重新捕获 - 更广泛的选择器 */
+.identifier,
+.hljs-symbol .hljs-identifier,
+[class*="identifier"],
+[class*="variable"]:not([class*="language_"]):not([class*="constant_"]),
+.hljs-name:not([class*="tag"]) {
+  color: #e06c75 !important;
+}
+
+/* 函数名 */
+.hljs-title.function,
+.hljs-title.function_,
+.function_ .hljs-title,
+.function .hljs-title,
+[class*="function"] .hljs-title,
+[class*="function"] .hljs-name,
+.hljs-name[class*="function"] {
   color: #61afef !important;
 }
 
-.hljs-params .hljs-variable {
+/* 数据类型 */
+.hljs-type,
+.hljs-typedef,
+.hljs-interface,
+.hljs-namespace,
+[class*="type"] {
   color: #e5c07b !important;
 }
 
-/* 4. 类型系统 */
-.hljs-class .hljs-title,
-.hljs-type,            /* 类型声明 */
-.hljs-struct .hljs-title {
-  color: #e5c07b !important;
-}
-
-.hljs-template-tag {   /* 模板/泛型 */
+/* 3. 操作符和标点 - 增强 */
+.hljs-operator,
+.hljs-tag .hljs-attr,
+.hljs-punctuation.operator,
+.hljs-meta .hljs-operator,
+.operator,
+[class*="operator"],
+[class*="punctuation"][class*="operator"] {
   color: #56b6c2 !important;
-}
-
-/* 5. 操作符与标点 */
-.hljs-operator {
-  color: #abb2ff !important;
   font-weight: bold;
 }
 
 .hljs-punctuation {
   color: #abb2bf !important;
-  opacity: 0.75;
 }
 
-/* 6. 属性系统 */
-.hljs-attr,           /* HTML属性 */
-.hljs-property {      /* 对象属性 */
-  color: #d19a66 !important;
-}
-
-.hljs-symbol,         /* 符号 */
-.hljs-bullet {        /* 列表符号 */
+/* 算数运算符专门处理 */
+.hljs-meta .hljs-string + .hljs-punctuation,
+.hljs-meta .hljs-string ~ .hljs-punctuation,
+.hljs-keyword + .hljs-punctuation,
+.hljs-variable + .hljs-punctuation,
+[class*="arithmetic"],
+[class*="assignment"],
+[class*="logical"] {
   color: #56b6c2 !important;
+  font-weight: bold;
 }
 
-/* 7. 特殊语法 */
-.hljs-meta.string .hljs-content,
-.hljs-meta.tag .hljs-name {
+/* 4. 特殊处理 */
+/* 模板字符串和插值表达式 - 解决JS模板字符串不可见问题 */
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-subst,
+.hljs-formula {
+  color: #c678dd !important;
+}
+
+/* 插值表达式中的内容 */
+.hljs-string .hljs-subst,
+.hljs-subst .hljs-variable,
+.hljs-interpolation {
+  color: #d8d8d8 !important;
+  font-weight: bold;
+}
+
+/* 特殊字符和转义序列 */
+.hljs-char.escape_,
+.hljs-escape {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 5. 语言特定规则 */
+/* JavaScript */
+.javascript .hljs-property,
+.javascript .hljs-attr,
+.javascript .hljs-title.function,
+.javascript .hljs-variable.property_ {
   color: #e06c75 !important;
 }
 
-.hljs-namespace {
+.javascript .hljs-keyword.module,
+.javascript .hljs-built_in,
+.javascript .hljs-template-string .hljs-name {
+  color: #56b6c2 !important;
+}
+
+/* Python */
+.python .hljs-decorator,
+.python .hljs-meta,
+.python .hljs-function .hljs-title,
+.python .hljs-title.function {
+  color: #61afef !important;
+}
+
+.python .hljs-name[class*="self"] {
+  color: #e5c07b !important;
+  font-style: italic;
+}
+
+/* Java */
+.java .hljs-title.class_,
+.java .hljs-title.class,
+.java .hljs-type {
+  color: #e5c07b !important;
+  font-weight: bold;
+}
+
+.java .hljs-variable,
+.java .hljs-name,
+.java .hljs-params {
+  color: #e06c75 !important;
+}
+
+/* 增加C++语言特定规则 */
+.cpp .hljs-keyword,
+.cpp .hljs-meta .hljs-keyword,
+.cpp .hljs-meta-keyword {
   color: #c678dd !important;
-  opacity: 0.8;
+  font-weight: bold;
+}
+
+.cpp .hljs-title.function,
+.cpp .hljs-function .hljs-title,
+.cpp .hljs-function .hljs-name {
+  color: #61afef !important;
+}
+
+.cpp .hljs-title.class,
+.cpp .hljs-title.class_,
+.cpp .hljs-class .hljs-title {
+  color: #e5c07b !important;
+  font-weight: bold;
+}
+
+.cpp .hljs-built_in,
+.cpp .hljs-type,
+.cpp .hljs-keyword[class*="int"],
+.cpp .hljs-keyword[class*="float"],
+.cpp .hljs-keyword[class*="double"],
+.cpp .hljs-keyword[class*="char"],
+.cpp .hljs-keyword[class*="bool"],
+.cpp .hljs-keyword[class*="void"] {
+  color: #e5c07b !important;
+}
+
+.cpp .hljs-variable,
+.cpp .hljs-operator,
+.cpp .hljs-params .hljs-variable,
+.cpp .hljs-name:not([class*="function"]):not([class*="class"]) {
+  color: #e06c75 !important;
+}
+
+.cpp .hljs-string,
+.cpp .hljs-string .hljs-subst {
+  color: #98c379 !important;
+}
+
+/* C++模板和命名空间 */
+.cpp .hljs-meta,
+.cpp .hljs-meta .hljs-string,
+.cpp .hljs-meta .hljs-keyword {
+  color: #c678dd !important;
+}
+
+.cpp .hljs-preprocessor,
+.cpp .hljs-meta .hljs-preprocessor,
+.cpp .hljs-meta-preprocessor {
+  color: #c678dd !important;
+  font-style: italic;
+}
+
+.cpp .hljs-meta .hljs-string {
+  color: #98c379 !important;
+}
+
+.cpp .hljs-operator,
+.cpp .hljs-punctuation.operator {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 命名空间 */
+.cpp .hljs-keyword + .hljs-title.namespace_,
+.cpp .hljs-keyword + .hljs-title.namespace {
+  color: #e5c07b !important;
+}
+
+/* 指针和引用符号 */
+.cpp .hljs-operator[class*="pointer"],
+.cpp .hljs-operator[class*="reference"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 字段名 */
+.hljs-attribute,
+.hljs-name.field_,
+.hljs-title.field_,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 标签和装饰 */
+.hljs-tag,
+.hljs-name.tag_,
+.hljs-tag .hljs-name {
+  color: #e06c75 !important;
+  font-weight: bold;
+}
+
+/* ================ 特殊数据类型变量 ================ */
+/* 基本类型关键字前缀 */
+.hljs-keyword[class*="int"],
+.hljs-keyword[class*="double"],
+.hljs-keyword[class*="float"],
+.hljs-keyword[class*="char"],
+.hljs-keyword[class*="boolean"],
+.hljs-keyword[class*="bool"],
+.hljs-keyword[class*="void"],
+.hljs-keyword[class*="String"],
+.hljs-keyword[class*="wchar"],
+.hljs-keyword[class*="size_t"],
+/* SQL类型 */
+.hljs-keyword[class*="VARCHAR"],
+.hljs-keyword[class*="INTEGER"],
+.hljs-keyword[class*="TEXT"],
+.hljs-keyword[class*="DATE"],
+.hljs-keyword[class*="DATETIME"],
+.hljs-keyword[class*="TIMESTAMP"],
+.hljs-keyword[class*="BOOLEAN"],
+.hljs-keyword[class*="DECIMAL"],
+.hljs-keyword[class*="FLOAT"],
+.hljs-keyword[class*="BLOB"] {
+  color: #e5c07b !important;
+}
+
+/* ================ 通用选择器增强 ================ */
+/* 捕获代码中所有的标识符 */
+[class*="variable"]:not([class*="template"]),
+[class*="identifier"],
+[class*="property"]:not([class*="keyword"]),
+[class*="name"]:not([class*="tag"]):not([class*="keyword"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 特别处理Shell和SQL中的标识符，确保它们能够被正确高亮 */
+.shell [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.bash [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.sql [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.mysql [class*="name"]:not([class*="function"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 更好地捕获操作符 */
+[class*="operator"],
+[class*="punctuation"][class*="operator"],
+[class*="assignment"],
+[class*="arithmetic"],
+[class*="logical"],
+[class*="bitwise"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 捕获所有可能的函数名 */
+[class*="function"] [class*="title"],
+[class*="function"] [class*="name"],
+[class*="title"][class*="function"],
+[class*="name"][class*="function"] {
+  color: #61afef !important;
 }
 
 /* ================ 装饰性元素 ================ */
-
 /* 行号样式 */
 .hljs-ln-numbers {
   color: #7d7d7d !important;
@@ -176,7 +432,6 @@
 }
 
 /* ================ 交互效果 ================ */
-
 .hljs:hover {
   box-shadow: 0 0 0 3px rgba(58, 175, 124, 0.3);
   transition: all 0.3s ease;
@@ -186,88 +441,63 @@
   background: rgba(97, 175, 239, 0.3);
 }
 
-/* ================ SQL/MySQL 专属规则 ================ */
-.hljs-sql-keyword,          /* SQL 关键字 */
-.hljs-sql-function {        /* 数据库函数 */
+/* 特殊字符处理 */
+.hljs-char,
+.hljs-symbol,
+.hljs-bullet {
+  color: #56b6c2 !important;
+}
+
+/* 元素强调 */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* 捕获所有属性访问 - 如 obj.property */
+[class*="punctuation"][class*="accessor"] + [class*="property"],
+[class*="punctuation"][class*="accessor"] + [class*="name"] {
+  color: #e06c75 !important;
+}
+
+/* 变量声明后的变量名 */
+.hljs-keyword + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-keyword + .hljs-name:not([class*="class"]):not([class*="function"]),
+.hljs-type + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-type + .hljs-name:not([class*="class"]):not([class*="function"]) {
+  color: #e06c75 !important;
+}
+
+/* 模板字符串 - 确保可见 */
+.hljs-string.template_,
+.hljs-template-string,
+.template-string {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.1); /* 略微提高背景对比度 */
+}
+
+/* C++特有的STL容器和算法 */
+.cpp .hljs-built_in[class*="vector"],
+.cpp .hljs-built_in[class*="map"],
+.cpp .hljs-built_in[class*="set"],
+.cpp .hljs-built_in[class*="list"],
+.cpp .hljs-built_in[class*="queue"],
+.cpp .hljs-built_in[class*="stack"],
+.cpp .hljs-built_in[class*="array"],
+.cpp .hljs-built_in[class*="algorithm"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* C++运算符重载 */
+.cpp .hljs-keyword[class*="operator"] + .hljs-operator {
   color: #c678dd !important;
   font-weight: bold;
 }
 
-.hljs-sql-string,           /* SQL 字符串 */
-.hljs-sql-quote {
-  color: #98c379 !important;
-  background: rgba(152, 195, 121, 0.08);
-}
-
-.hljs-sql-number,           /* 数字 */
-.hljs-sql-type {            /* 数据类型 */
-  color: #d19a66 !important;
-}
-
-.hljs-sql-comment,          /* SQL 注释 */
-.hljs-sql-doctag {
-  color: #5c6370 !important;
-  font-style: italic;
-}
-
-.hljs-sql-variable,         /* 变量 */
-.hljs-sql-params {
-  color: #e06c75 !important;
-}
-
-.hljs-sql-table,            /* 表名 */
-.hljs-sql-column {
-  color: #61afef !important;
-}
-
-/* ================ Bash/Shell 专属规则 ================ */
-.hljs-bash-built_in,        /* shell 内置命令 */
-.hljs-bash-keyword {
-  color: #c678dd !important;
-  font-weight: bold;
-}
-
-.hljs-bash-string,          /* 字符串 */
-.hljs-bash-escape {
-  color: #98c379 !important;
-  background: rgba(152, 195, 121, 0.08);
-}
-
-.hljs-bash-number,          /* 数字 */
-.hljs-bash-params {         /* 参数 */
-  color: #d19a66 !important;
-}
-
-.hljs-bash-comment,         /* 注释 */
-.hljs-shebang {
-  color: #5c6370 !important;
-  font-style: italic;
-}
-
-.hljs-bash-variable,        /* 变量 */
-.hljs-envvar {
-  color: #e06c75 !important;
-}
-
-.hljs-bash-function,        /* 函数 */
-.hljs-bash-title {
-  color: #61afef !important;
-}
-
-.hljs-bash-operator {       /* 操作符 */
-  color: #abb2ff !important;
-  font-weight: bold;
-}
-
-/* ================ 更新后的兜底规则 ================ */
-.hljs *:not(.hljs-keyword):not(.hljs-string):not(.hljs-number):not(.hljs-comment):not(.hljs-title):not(.hljs-params):not(.hljs-variable):not(.hljs-doctag):not(.hljs-template-variable):not(.hljs-type):not(.hljs-section):not(.hljs-symbol):not(.hljs-bullet):not(.hljs-attribute):not(.hljs-meta):not(.hljs-link):not(.hljs-addition):not(.hljs-regexp):not(.hljs-literal):not(.hljs-built_in):not(.hljs-selector-tag):not(.hljs-quote):not(.hljs-function):not(.hljs-class):not(.hljs-struct):not(.hljs-operator):not(.hljs-punctuation):not(.hljs-attr):not(.hljs-property):not(.hljs-namespace)
-/* ================ 新增 SQL 排除项 ================ */
-:not(.hljs-sql-keyword):not(.hljs-sql-function):not(.hljs-sql-string):not(.hljs-sql-quote):not(.hljs-sql-number):not(.hljs-sql-type):not(.hljs-sql-comment):not(.hljs-sql-doctag):not(.hljs-sql-variable):not(.hljs-sql-params):not(.hljs-sql-table):not(.hljs-sql-column)
-/* ================ 新增 Bash/Shell 排除项 ================ */
-:not(.hljs-bash-built_in):not(.hljs-bash-keyword):not(.hljs-bash-string):not(.hljs-bash-escape):not(.hljs-bash-number):not(.hljs-bash-params):not(.hljs-bash-comment):not(.hljs-shebang):not(.hljs-bash-variable):not(.hljs-envvar):not(.hljs-bash-function):not(.hljs-bash-title):not(.hljs-bash-operator)
-{
-  color: inherit !important;
-}
 </style>
 <!-- 你的自定义CSS END -->
 
