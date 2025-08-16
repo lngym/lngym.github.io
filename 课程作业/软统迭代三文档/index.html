@@ -1,0 +1,1389 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E5%A4%B4%E5%83%8F.png">
+  <link rel="icon" href="/img/%E5%A4%B4%E5%83%8F.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lngym">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JClassDiagram 迭代三设计文档（第95组） 团队介绍    姓名 学号 QQ号 职责     卞浩宇 221098106 3255698603 撰写文档   翟志阳 221250161 3056593724 撰写代码   周屿杨 221870148 3591599547 撰写文档   顾益铭 221250142 2408985579 撰写代码    项目目标 在迭代三的开发周期中，我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软统迭代三文档">
+<meta property="og:url" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="lngym&#39;s Blog">
+<meta property="og:description" content="JClassDiagram 迭代三设计文档（第95组） 团队介绍    姓名 学号 QQ号 职责     卞浩宇 221098106 3255698603 撰写文档   翟志阳 221250161 3056593724 撰写代码   周屿杨 221870148 3591599547 撰写文档   顾益铭 221250142 2408985579 撰写代码    项目目标 在迭代三的开发周期中，我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/abaebbff873b32277bc285c55d3c3d32.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/image-20250509031044358.png">
+<meta property="article:published_time" content="2025-04-30T12:25:31.000Z">
+<meta property="article:modified_time" content="2025-05-08T19:14:34.000Z">
+<meta property="article:author" content="lngym">
+<meta property="article:tag" content="软统">
+<meta property="article:tag" content="文档">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/abaebbff873b32277bc285c55d3c3d32.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>软统迭代三文档 - lngym&#39;s Blog</title>
+
+<!-- 插入Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+
+<!-- 你的自定义CSS START -->
+<style>
+
+.codeblock {
+  overflow: auto;
+  max-height: 400px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+/* ================ 基础代码块样式 ================ */
+.hljs {
+  background: #2d2d2d !important;
+  border-radius: 8px;
+  padding: 1.25em !important;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border-left: 4px solid #3eaf7c;
+  color: #d3d3d3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* ================ 增强的通用选择器 ================ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d3d3d3 !important;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d !important;
+}
+
+
+/* ================ 语法元素高亮规则 ================ */
+/* 1. 基础语法元素 */
+.hljs-keyword,        /* 关键字 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量true/false/null */
+.hljs-doctag,         /* 文档标记 */
+.hljs-title.class_,   /* 类名 */
+.hljs-title.class,    /* 类名(备用) */
+.hljs-title.function_ /* 函数名 */ {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+/* 内置对象和函数 */
+.hljs-built_in {
+  color: #56b6c2 !important;
+}
+
+/* 字符串 */
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.08);
+}
+
+/* 数字 */
+.hljs-number,
+.hljs-subst .hljs-number,
+.hljs-literal[class*="number"],
+.hljs-meta .hljs-number {
+  color: #d19a66 !important;
+}
+
+/* 注释 */
+.hljs-comment,
+.hljs-quote {
+  color: #7f848e !important; /* 更亮的灰色，提高可见度 */
+  font-style: italic;
+}
+
+/* 2. 变量系统增强 - 全面捕获所有变量 */
+/* 所有变量名 - 通用规则，增强选择器 */
+.hljs-name,
+.hljs-attribute,
+.hljs-variable,
+.hljs-variable .hljs-name,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-template-variable,
+.hljs-params .hljs-variable,
+.hljs-attr,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 特殊变量处理 */
+.hljs-variable.language_,  /* this/super等 */
+.hljs-variable.constant_,  /* 常量 */
+.hljs-attr,               /* 属性 */
+.hljs-property,           /* 对象属性 */
+.hljs-meta .hljs-variable {
+  color: #e5c07b !important;
+}
+
+/* 标识符重新捕获 - 更广泛的选择器 */
+.identifier,
+.hljs-symbol .hljs-identifier,
+[class*="identifier"],
+[class*="variable"]:not([class*="language_"]):not([class*="constant_"]),
+.hljs-name:not([class*="tag"]) {
+  color: #e06c75 !important;
+}
+
+/* 函数名 */
+.hljs-title.function,
+.hljs-title.function_,
+.function_ .hljs-title,
+.function .hljs-title,
+[class*="function"] .hljs-title,
+[class*="function"] .hljs-name,
+.hljs-name[class*="function"] {
+  color: #61afef !important;
+}
+
+/* 数据类型 */
+.hljs-type,
+.hljs-typedef,
+.hljs-interface,
+.hljs-namespace,
+[class*="type"] {
+  color: #e5c07b !important;
+}
+
+/* 3. 操作符和标点 - 增强 */
+.hljs-operator,
+.hljs-tag .hljs-attr,
+.hljs-punctuation.operator,
+.hljs-meta .hljs-operator,
+.operator,
+[class*="operator"],
+[class*="punctuation"][class*="operator"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+.hljs-punctuation {
+  color: #abb2bf !important;
+}
+
+/* 算数运算符专门处理 */
+.hljs-meta .hljs-string + .hljs-punctuation,
+.hljs-meta .hljs-string ~ .hljs-punctuation,
+.hljs-keyword + .hljs-punctuation,
+.hljs-variable + .hljs-punctuation,
+[class*="arithmetic"],
+[class*="assignment"],
+[class*="logical"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 4. 特殊处理 */
+/* 模板字符串和插值表达式 - 解决JS模板字符串不可见问题 */
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-subst,
+.hljs-formula {
+  color: #c678dd !important;
+}
+
+/* 插值表达式中的内容 */
+.hljs-string .hljs-subst,
+.hljs-subst .hljs-variable,
+.hljs-interpolation {
+  color: #d8d8d8 !important;
+  font-weight: bold;
+}
+
+/* 特殊字符和转义序列 */
+.hljs-char.escape_,
+.hljs-escape {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 字段名 */
+.hljs-attribute,
+.hljs-name.field_,
+.hljs-title.field_,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 标签和装饰 */
+.hljs-tag,
+.hljs-name.tag_,
+.hljs-tag .hljs-name {
+  color: #e06c75 !important;
+  font-weight: bold;
+}
+
+/* ================ 特殊数据类型变量 ================ */
+/* 基本类型关键字前缀 */
+.hljs-keyword[class*="int"],
+.hljs-keyword[class*="double"],
+.hljs-keyword[class*="float"],
+.hljs-keyword[class*="char"],
+.hljs-keyword[class*="boolean"],
+.hljs-keyword[class*="bool"],
+.hljs-keyword[class*="void"],
+.hljs-keyword[class*="String"],
+.hljs-keyword[class*="wchar"],
+.hljs-keyword[class*="size_t"] {
+  color: #e5c07b !important;
+}
+
+/* ================ 通用选择器增强 ================ */
+/* 捕获代码中所有的标识符 */
+[class*="variable"]:not([class*="template"]),
+[class*="identifier"],
+[class*="property"]:not([class*="keyword"]),
+[class*="name"]:not([class*="tag"]):not([class*="keyword"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 特别处理Shell和SQL中的标识符，确保它们能够被正确高亮 */
+.shell [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.bash [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.sql [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.mysql [class*="name"]:not([class*="function"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 更好地捕获操作符 */
+[class*="operator"],
+[class*="punctuation"][class*="operator"],
+[class*="assignment"],
+[class*="arithmetic"],
+[class*="logical"],
+[class*="bitwise"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 捕获所有可能的函数名 */
+[class*="function"] [class*="title"],
+[class*="function"] [class*="name"],
+[class*="title"][class*="function"],
+[class*="name"][class*="function"] {
+  color: #61afef !important;
+}
+
+/* ================ 装饰性元素 ================ */
+/* 行号样式 */
+.hljs-ln-numbers {
+  color: #7d7d7d !important;
+  padding-right: 15px !important;
+  text-align: right;
+  user-select: none;
+}
+
+/* 标记重要部分 */
+.hljs-mark {
+  background: rgba(229, 192, 123, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* 删除内容 */
+.hljs-deletion {
+  background: rgba(224, 108, 117, 0.08);
+}
+
+/* ================ 交互效果 ================ */
+.hljs:hover {
+  box-shadow: 0 0 0 3px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 特殊字符处理 */
+.hljs-char,
+.hljs-symbol,
+.hljs-bullet {
+  color: #56b6c2 !important;
+}
+
+/* 元素强调 */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* 捕获所有属性访问 - 如 obj.property */
+[class*="punctuation"][class*="accessor"] + [class*="property"],
+[class*="punctuation"][class*="accessor"] + [class*="name"] {
+  color: #e06c75 !important;
+}
+
+/* 变量声明后的变量名 */
+.hljs-keyword + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-keyword + .hljs-name:not([class*="class"]):not([class*="function"]),
+.hljs-type + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-type + .hljs-name:not([class*="class"]):not([class*="function"]) {
+  color: #e06c75 !important;
+}
+
+/* 模板字符串 - 确保可见 */
+.hljs-string.template_,
+.hljs-template-string,
+.template-string {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.1); /* 略微提高背景对比度 */
+}
+
+/* C++特有的STL容器和算法 */
+.cpp .hljs-built_in[class*="vector"],
+.cpp .hljs-built_in[class*="map"],
+.cpp .hljs-built_in[class*="set"],
+.cpp .hljs-built_in[class*="list"],
+.cpp .hljs-built_in[class*="queue"],
+.cpp .hljs-built_in[class*="stack"],
+.cpp .hljs-built_in[class*="array"],
+.cpp .hljs-built_in[class*="algorithm"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* C++运算符重载 */
+.cpp .hljs-keyword[class*="operator"] + .hljs-operator {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+</style>
+<!-- 你的自定义CSS END -->
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/macpanel.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lngym.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong class="navbar-title">lngym&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软统迭代三文档"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-30 20:25" pubdate>
+          2025年4月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">软统迭代三文档</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>JClassDiagram 迭代三设计文档（第95组）</strong></p>
+<h1><strong>团队介绍</strong></h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">学号</th>
+<th style="text-align:center">QQ号</th>
+<th style="text-align:center">职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">卞浩宇</td>
+<td style="text-align:center">221098106</td>
+<td style="text-align:center">3255698603</td>
+<td style="text-align:center">撰写文档</td>
+</tr>
+<tr>
+<td style="text-align:center">翟志阳</td>
+<td style="text-align:center">221250161</td>
+<td style="text-align:center">3056593724</td>
+<td style="text-align:center">撰写代码</td>
+</tr>
+<tr>
+<td style="text-align:center">周屿杨</td>
+<td style="text-align:center">221870148</td>
+<td style="text-align:center">3591599547</td>
+<td style="text-align:center">撰写文档</td>
+</tr>
+<tr>
+<td style="text-align:center">顾益铭</td>
+<td style="text-align:center">221250142</td>
+<td style="text-align:center">2408985579</td>
+<td style="text-align:center">撰写代码</td>
+</tr>
+</tbody>
+</table>
+<h1><strong>项目目标</strong></h1>
+<p>在迭代三的开发周期中，我们将重点扩展 JClassDiagram 的系统功能，使其具备多文件解析与处理能力，以有效适配实际 Java 项目开发需求。我们将构建具备参数配置功能的命令行交互界面并集成设计模式识别模块，重点针对单例模式（Singleton Pattern）和策略模式（Strategy Pattern）进行特征提取与模式验证，同时开发支持用户自定义配置的分析器组件，允许开发人员根据具体需求调整模式检测规则。通过本阶段的升级，系统将形成完整的项目级代码分析能力，并建立可扩展的基于类图的程序分析框架。</p>
+<h1>系统设计</h1>
+<h2 id="总体设计">总体设计</h2>
+<p>项目的主要结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Plain">./src/main/java<br>├── JClassDiagram.java        # 命令行交互式主程序<br>├── Main.java                 # 简单使用示例入口<br>└── command                   # 命令行工具模块<br>    └── CommandLineTool.java  # 命令行工具实现类<br>└── diagram                   # 类图生成和分析模块<br>    ├── AccessModifier.java   # 访问修饰符枚举<br>    ├── ClassDiagram.java     # 存储类图和提供分析功能<br>    ├── ClassDiagramGenerator.java  # 解析Java代码生成类图<br>    ├── EnumConstantInfo.java # 枚举常量信息类<br>    ├── FieldInfo.java        # 字段信息类<br>    ├── MethodInfo.java       # 方法信息类<br>    ├── ParameterInfo.java    # 参数信息类<br>    ├── Relationship.java     # 类间关系实体类<br>    ├── RelationshipType.java # 关系类型枚举<br>    └── TypeInfo.java         # 类型信息类（类/接口/枚举）<br></code></pre></td></tr></table></figure>
+<p><strong>职责说明：</strong></p>
+<ul>
+<li><code>JClassDiagram</code>： 作为交互式命令行入口，创建 <code>ClassDiagramGenerator</code> 解析 Java 代码，并通过 <code>CommandLineTool</code> 处理用户输入的命令。</li>
+<li><code>command</code> 包： 提供命令行交互功能，实现了命令处理、撤销机制和查询功能。
+<ul>
+<li><code>CommandLineTool</code>： 负责解析和执行用户输入的命令，如添加/删除类、查询关系等，并支持操作撤销。</li>
+</ul>
+</li>
+<li><code>diagram</code> 包： 核心包，提供类图解析、存储和分析功能。
+<ul>
+<li><code>ClassDiagram</code>： 存储类图元素（类型和关系），提供代码异味和设计模式检测功能。</li>
+<li><code>ClassDiagramGenerator</code>： 解析 Java 源代码，支持多文件/目录递归解析。</li>
+<li><code>TypeInfo/FieldInfo/MethodInfo</code> 等： 定义类图中的基本元素。</li>
+</ul>
+</li>
+</ul>
+<p><strong>模块关系：</strong></p>
+<ul>
+<li><code>JClassDiagram</code> 依赖于 <code>CommandLineTool</code> 和 <code>ClassDiagramGenerator</code>。</li>
+<li><code>CommandLineTool</code> 依赖于 <code>ClassDiagram</code>，用于操作和查询类图。</li>
+<li><code>ClassDiagram</code> 与 <code>TypeInfo</code>、<code>Relationship</code> 等类一起构成类图数据模型。</li>
+<li><code>ClassDiagramGenerator</code> 负责创建 <code>ClassDiagram</code> 及其所有组件。</li>
+</ul>
+<h2 id="类设计">类设计</h2>
+<h5 id="类图">类图</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/abaebbff873b32277bc285c55d3c3d32.png" srcset="/img/loading.gif" lazyload alt="迭代三类图"></p>
+<h5 id="设计说明">设计说明</h5>
+<p>在迭代三中，我们对系统架构进行了重要扩展，使其能够支持多文件解析、命令行交互和设计模式检测等高级功能。系统中使用了以下设计模式：</p>
+<ol>
+<li>
+<p><strong>命令模式（Command Pattern）</strong></p>
+<ul>
+<li>在 <code>CommandLineTool</code> 类中实现，将用户输入的命令封装成 <code>Command</code> 对象</li>
+<li>每个命令类都实现了 <code>Command</code> 接口，包含执行逻辑和撤销逻辑</li>
+<li>使用 <code>Deque&lt;Command&gt;</code> 存储命令历史，支持撤销功能</li>
+<li>优点：将命令请求与具体操作解耦，支持命令的撤销和重做</li>
+</ul>
+</li>
+<li>
+<p><strong>策略模式（Strategy Pattern）</strong></p>
+<ul>
+<li>在 <code>ClassDiagram</code> 中实现了多种代码分析策略（类分析、继承分析、循环依赖分析、设计模式分析）</li>
+<li>每种分析策略作为独立方法，可以通过配置启用或禁用</li>
+<li>优点：允许动态切换分析策略，便于扩展新的分析方法</li>
+</ul>
+</li>
+<li>
+<p><strong>访问者模式（Visitor Pattern）</strong></p>
+<ul>
+<li>在 <code>ClassDiagramGenerator</code> 类中，通过 <code>LocalVariableCollector</code> 访问者来收集方法体内的局部变量</li>
+<li>继承 <code>VoidVisitorAdapter</code> 实现，遍历 AST 节点</li>
+<li>优点：将算法与对象结构分离，易于添加新的操作</li>
+</ul>
+</li>
+<li>
+<p><strong>组合模式（Composite Pattern）</strong></p>
+<ul>
+<li><code>TypeInfo</code> 类包含 <code>FieldInfo</code>、<code>MethodInfo</code>、<code>EnumConstantInfo</code> 等组件</li>
+<li>类图由多个 <code>TypeInfo</code> 和 <code>Relationship</code> 对象组成</li>
+<li>优点：统一处理复杂对象层次结构</li>
+</ul>
+</li>
+</ol>
+<p>系统的弹性扩展设计：</p>
+<ol>
+<li>
+<p><strong>可配置的分析器</strong></p>
+<ul>
+<li>通过 <code>loadConfig</code> 方法动态加载 XML 配置文件，启用/禁用不同分析器</li>
+<li>使用 <code>Set&lt;String&gt;</code> 存储已启用的分析器名称</li>
+<li>支持自定义分析规则，易于扩展新的分析模块</li>
+</ul>
+</li>
+<li>
+<p><strong>命令行交互的模块化设计</strong></p>
+<ul>
+<li>清晰的命令处理方法分类（<code>handleAddCommand</code>、<code>handleQueryCommand</code> 等）</li>
+<li>命令解析使用正则表达式，便于扩展新的命令语法</li>
+</ul>
+</li>
+<li>
+<p><strong>关系和异味检测的分离设计</strong></p>
+<ul>
+<li>关系检测与代码异味检测功能独立，可以单独使用或组合使用</li>
+<li>设计模式检测独立于代码异味检测，可以通过配置单独启用</li>
+</ul>
+</li>
+<li>
+<p><strong>多文件支持的扩展性</strong></p>
+<ul>
+<li>使用 Java NIO 的 <code>Files.walkFileTree</code> 递归遍历目录</li>
+<li>采用访问者模式处理文件，便于扩展对不同类型文件的支持</li>
+</ul>
+</li>
+<li>
+<p><strong>通用数据模型</strong></p>
+<ul>
+<li>类型和关系的数据模型设计通用，可以支持更多元素类型的扩展</li>
+<li>使用枚举类型 <code>RelationshipType</code> 和 <code>AccessModifier</code>，方便添加新的关系类型和访问修饰符</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据结构与算法设计">数据结构与算法设计</h2>
+<h3 id="多文件解析算法"><strong>多文件解析算法</strong></h3>
+<p>代码实现：<code>ClassDiagramGenerator.parse()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ClassDiagram <span class="hljs-title function_">parse</span><span class="hljs-params">(Path sourcePath)</span> <span class="hljs-keyword">throws</span> IOException {<br>    List&lt;TypeInfo&gt; types = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    Map&lt;String, Set&lt;String&gt;&gt; associations = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    Map&lt;String, Set&lt;String&gt;&gt; dependencies = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">if</span> (Files.isDirectory(sourcePath)) {<br>        <span class="hljs-comment">// 递归遍历目录</span><br>        Files.walkFileTree(sourcePath, <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleFileVisitor</span>&lt;Path&gt;() {<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> FileVisitResult <span class="hljs-title function_">visitFile</span><span class="hljs-params">(Path file, BasicFileAttributes attrs)</span> <span class="hljs-keyword">throws</span> IOException {<br>                <span class="hljs-keyword">if</span> (file.toString().endsWith(<span class="hljs-string">".java"</span>)) {<br>                    processJavaFile(file, types, associations, dependencies); <span class="hljs-comment">// 解析单个文件</span><br>                }<br>                <span class="hljs-keyword">return</span> FileVisitResult.CONTINUE;<br>            }<br>        });<br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sourcePath.toString().endsWith(<span class="hljs-string">".java"</span>)) {<br>        processJavaFile(sourcePath, types, associations, dependencies); <span class="hljs-comment">// 解析单文件</span><br>    }<br><br>    <span class="hljs-comment">// 合并关联和依赖关系</span><br>    List&lt;Relationship&gt; relationships = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Set&lt;String&gt;&gt; entry : associations.entrySet()) {<br>        <span class="hljs-keyword">for</span> (String target : entry.getValue()) {<br>            relationships.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Relationship</span>(target, entry.getKey(), RelationshipType.ASSOCIATION));<br>        }<br>    }<br>    <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Set&lt;String&gt;&gt; entry : dependencies.entrySet()) {<br>        <span class="hljs-keyword">for</span> (String target : entry.getValue()) {<br>            relationships.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Relationship</span>(target, entry.getKey(), RelationshipType.DEPENDENCY));<br>        }<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassDiagram</span>(types, relationships);<br>}<br></code></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>
+<p><strong>递归目录遍历</strong>：通过 <code>Files.walkFileTree</code> 实现多文件解析。</p>
+</li>
+<li>
+<p><strong>泛型类型提取</strong>：<code>extractCustomTypes()</code> 方法处理复杂类型（如 <code>Map&lt;String, List&lt;Entity&gt;&gt;</code>）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> Set&lt;String&gt; <span class="hljs-title function_">extractCustomTypes</span><span class="hljs-params">(String typeStr)</span> {<br>    Set&lt;String&gt; customTypes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>    <span class="hljs-comment">// 正则表达式提取主类型和嵌套泛型</span><br>    <span class="hljs-type">Pattern</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> Pattern.compile(<span class="hljs-string">"([A-Za-z0-9_]+)(?:&lt;.*?&gt;)?"</span>);<br>    <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> pattern.matcher(typeStr.replace(<span class="hljs-string">"[]"</span>, <span class="hljs-string">""</span>));<br>    <span class="hljs-keyword">while</span> (matcher.find()) {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> matcher.group(<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">if</span> (!BASIC_TYPES.contains(type) &amp;&amp; !CONTAINER_TYPES.contains(type)) {<br>            customTypes.add(type);<br>        }<br>    }<br>    <span class="hljs-keyword">return</span> customTypes;<br>}<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="命令模式与撤销机制"><strong>命令模式与撤销机制</strong></h3>
+<p>代码实现：<code>CommandLineTool.execute()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">execute</span><span class="hljs-params">(String commandStr)</span> {<br>    <span class="hljs-comment">// 命令解析</span><br>    String[] parts = commandStr.split(<span class="hljs-string">"\\s+"</span>);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">operation</span> <span class="hljs-operator">=</span> parts[<span class="hljs-number">0</span>].toLowerCase();<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">switch</span> (operation) {<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">"add"</span> -&gt; handleAddCommand(commandStr);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">"delete"</span> -&gt; handleDeleteCommand(commandStr);<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">"undo"</span> -&gt; handleUndoCommand();<br>        <span class="hljs-comment">// ... 其他命令处理</span><br>    };<br>}<br><br><span class="hljs-comment">// 添加类命令示例</span><br><span class="hljs-keyword">private</span> String <span class="hljs-title function_">addClassOrInterface</span><span class="hljs-params">(String commandStr, <span class="hljs-type">boolean</span> isInterface)</span> {<br>    <span class="hljs-type">Pattern</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> Pattern.compile(isInterface ? <span class="hljs-string">"-i\\s+(\\S+)"</span> : <span class="hljs-string">"-c\\s+(\\S+)"</span>);<br>    <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> pattern.matcher(commandStr);<br>    <span class="hljs-keyword">if</span> (matcher.find()) {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> matcher.group(<span class="hljs-number">1</span>);<br>        <span class="hljs-type">TypeInfo</span> <span class="hljs-variable">newType</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeInfo</span>(name, isInterface, commandStr.contains(<span class="hljs-string">"--abstract"</span>));<br>        <span class="hljs-comment">// 保存操作前的状态以实现撤销</span><br>        commandHistory.push(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AddTypeCommand</span>(diagram, newType, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(diagram.getTypes())));<br>        diagram.getTypes().add(newType);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">"Class added: "</span> + name;<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">"Invalid command format"</span>;<br>}<br><br><span class="hljs-comment">// 撤销操作实现</span><br><span class="hljs-keyword">private</span> String <span class="hljs-title function_">handleUndoCommand</span><span class="hljs-params">()</span> {<br>    <span class="hljs-keyword">if</span> (commandHistory.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-string">"No command to undo"</span>;<br>    <span class="hljs-type">Command</span> <span class="hljs-variable">lastCommand</span> <span class="hljs-operator">=</span> commandHistory.pop();<br>    lastCommand.undo(); <span class="hljs-comment">// 调用具体Command的撤销逻辑</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">"Undo successful"</span>;<br>}<br><br><span class="hljs-comment">// Command接口定义</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Command</span> {<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">undo</span><span class="hljs-params">()</span>;<br>}<br><br><span class="hljs-comment">// 添加类命令的具体实现</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddTypeCommand</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Command</span> {<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ClassDiagram diagram;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;TypeInfo&gt; previousTypes;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AddTypeCommand</span><span class="hljs-params">(ClassDiagram diagram, TypeInfo addedType, List&lt;TypeInfo&gt; previousTypes)</span> {<br>        <span class="hljs-built_in">this</span>.diagram = diagram;<br>        <span class="hljs-built_in">this</span>.previousTypes = previousTypes; <span class="hljs-comment">// 保存操作前的类型列表</span><br>    }<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">undo</span><span class="hljs-params">()</span> {<br>        diagram.setTypes(previousTypes); <span class="hljs-comment">// 恢复到操作前的状态</span><br>    }<br>}<br></code></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><strong>命令封装</strong>：每个操作封装为 <code>Command</code> 对象，保存操作前的状态。</li>
+<li><strong>撤销栈</strong>：通过 <code>Deque&lt;Command&gt;</code> 实现操作历史管理。</li>
+</ul>
+<h3 id="单例模式检查"><strong>单例模式检查</strong></h3>
+<p>代码实现：<code>ClassDiagram.isSingletonPattern()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSingletonPattern</span><span class="hljs-params">(TypeInfo type)</span> {<br>    <span class="hljs-comment">// 条件1：无子类</span><br>    <span class="hljs-keyword">for</span> (TypeInfo other : types) {<br>        <span class="hljs-keyword">if</span> (other.superClass != <span class="hljs-literal">null</span> &amp;&amp; other.superClass.equals(type.name)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    }<br>    <span class="hljs-comment">// 条件2：存在私有构造函数且无公共构造函数</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">hasPrivateConstructor</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>, hasPublicConstructor = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (MethodInfo method : type.methods) {<br>        <span class="hljs-keyword">if</span> (method.name.equals(getBaseName(type.name))) { <span class="hljs-comment">// 构造函数</span><br>            <span class="hljs-keyword">if</span> (method.access == AccessModifier.PRIVATE) hasPrivateConstructor = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.access == AccessModifier.PUBLIC) hasPublicConstructor = <span class="hljs-literal">true</span>;<br>        }<br>    }<br>    <span class="hljs-comment">// 条件3：静态私有字段</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">hasStaticInstanceField</span> <span class="hljs-operator">=</span> type.fields.stream()<br>        .anyMatch(f -&gt; f.isStatic &amp;&amp; f.type.equals(type.name));<br>    <span class="hljs-comment">// 条件4：静态公有获取方法</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">hasStaticGetter</span> <span class="hljs-operator">=</span> type.methods.stream()<br>        .anyMatch(m -&gt; m.isStatic &amp;&amp; m.access == AccessModifier.PUBLIC &amp;&amp; m.returnType.equals(type.name));<br>    <br>    <span class="hljs-keyword">return</span> hasPrivateConstructor &amp;&amp; !hasPublicConstructor &amp;&amp; hasStaticInstanceField &amp;&amp; hasStaticGetter;<br>}<br></code></pre></td></tr></table></figure>
+<p><strong>触发条件</strong>：在<code>getCodeSmells()</code>中调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (enabledAnalyzers.contains(<span class="hljs-string">"DesignPatternAnalyzer"</span>)) {<br>    findDesignPatterns(smells); <span class="hljs-comment">// 内部调用 isSingletonPattern()</span><br>}<br></code></pre></td></tr></table></figure>
+<h3 id="策略模式检测"><strong>策略模式检测</strong></h3>
+<p>代码实现：<code>ClassDiagram.hasStrategyPattern()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasStrategyPattern</span><span class="hljs-params">()</span> {<br>    <span class="hljs-keyword">for</span> (TypeInfo strategyType : types) {<br>        <span class="hljs-comment">// 策略接口需为接口或抽象类，且名称以 Strategy/Policy/Behavior 结尾</span><br>        <span class="hljs-keyword">if</span> (!isStrategyType(strategyType)) <span class="hljs-keyword">continue</span>;<br><br>        <span class="hljs-comment">// 统计具体策略类数量</span><br>        List&lt;TypeInfo&gt; implementations = types.stream()<br>            .filter(t -&gt; t.implementedInterfaces.contains(strategyType.name) || t.superClass.equals(strategyType.name))<br>            .toList();<br>        <span class="hljs-keyword">if</span> (implementations.size() &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">continue</span>;<br><br>        <span class="hljs-comment">// 检查上下文类的关联关系</span><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">hasContextClass</span> <span class="hljs-operator">=</span> relationships.stream()<br>            .anyMatch(rel -&gt; rel.type == RelationshipType.ASSOCIATION &amp;&amp; <br>                (rel.source.equals(strategyType.name) || rel.target.equals(strategyType.name)));<br>        <br>        <span class="hljs-keyword">if</span> (hasContextClass) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>}<br><br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isStrategyType</span><span class="hljs-params">(TypeInfo type)</span> {<br>    <span class="hljs-keyword">return</span> (type.isInterface || type.isAbstract) &amp;&amp;<br>           !type.methods.isEmpty() &amp;&amp;<br>           (type.name.endsWith(<span class="hljs-string">"Strategy"</span>) || type.name.endsWith(<span class="hljs-string">"Policy"</span>) || type.name.endsWith(<span class="hljs-string">"Behavior"</span>));<br>}<br></code></pre></td></tr></table></figure>
+<h3 id="可适配分配器"><strong>可适配分配器</strong></h3>
+<p>代码实现：<code>ClassDiagram.loadConfig()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">loadConfig</span><span class="hljs-params">(String configFile)</span> {<br>    <span class="hljs-keyword">try</span> {<br>        enabledAnalyzers.clear();<br>        <span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(configFile));<br>        <span class="hljs-type">NodeList</span> <span class="hljs-variable">nodes</span> <span class="hljs-operator">=</span> doc.getElementsByTagName(<span class="hljs-string">"analyzer"</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nodes.getLength(); i++) {<br>            <span class="hljs-type">String</span> <span class="hljs-variable">analyzerName</span> <span class="hljs-operator">=</span> nodes.item(i).getTextContent().trim();<br>            enabledAnalyzers.add(analyzerName); <span class="hljs-comment">// 仅启用配置中的分析器</span><br>        }<br>    } <span class="hljs-keyword">catch</span> (Exception e) {<br>        <span class="hljs-comment">// 出错时回退到默认配置</span><br>        enabledAnalyzers.addAll(Arrays.asList(<span class="hljs-string">"ClassAnalyzer"</span>, <span class="hljs-string">"InheritanceTreeAnalyzer"</span>, ...));<br>    }<br>}<br></code></pre></td></tr></table></figure>
+<p>通过上述代码实现，系统实现了以下核心功能：</p>
+<ul>
+<li>
+<p><strong>多文件解析</strong>：递归遍历目录，合并类图关系。</p>
+</li>
+<li>
+<p><strong>命令模式</strong>：通过 <code>Command</code> 接口和 <code>Deque</code> 实现操作撤销。</p>
+</li>
+<li>
+<p><strong>设计模式检测</strong>：单例模式通过字段和构造函数验证，策略模式通过接口关联统计。</p>
+</li>
+<li>
+<p><strong>可配置分析器</strong>：动态启用/禁用分析模块，提升灵活性。</p>
+</li>
+</ul>
+<p>每个功能模块均通过高内聚的代码实现，确保系统的可扩展性和维护性。</p>
+<h1>附录</h1>
+<h2 id="实际工作安排">实际工作安排</h2>
+<ul>
+<li><strong>卞浩宇</strong>：文档撰写，总体设计部分、类设计部分与绘图、运行结果、格式汇总。</li>
+<li><strong>翟志阳</strong>：Java 代码撰写，Part 3。</li>
+<li><strong>周屿杨</strong>：文档撰写，数据结构与算法设计部分。</li>
+<li><strong>顾益铭</strong>：Java 代码撰写，Part 1 和 Part 2、格式汇总。</li>
+</ul>
+<h2 id="运行结果">运行结果</h2>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/image-20250509031044358.png" srcset="/img/loading.gif" lazyload alt="运行结果展示"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" class="category-chain-item">课程作业</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BD%AF%E7%BB%9F/" class="print-no-link">#软统</a>
+      
+        <a href="/tags/%E6%96%87%E6%A1%A3/" class="print-no-link">#文档</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软统迭代三文档</div>
+      <div>https://lngym.top/课程作业/软统迭代三文档/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lngym</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/" title="软工III迭代二文档">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">软工III迭代二文档</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%9B%B4%E6%A3%8B/%E5%9B%B4%E6%A3%8B%E8%87%AA%E6%88%98%E8%A7%A3%E8%AF%B4with%E5%AE%89%E5%BE%B7%E9%87%8C%EF%BC%88%E4%BA%8C%EF%BC%89/" title="围棋自战解说with安德里（二）">
+                        <span class="hidden-mobile">围棋自战解说with安德里（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.luogu.com.cn/user/494815" target="_blank" rel="nofollow noopener"><span>洛谷</span></a> <i class="iconfont icon-love"></i> <a href="https://leetcode.cn/u/zealous-i3abbagesbo/" target="_blank" rel="nofollow noopener"><span>Leetcode</span></a> <i class="iconfont icon-love"></i> <a href="https://space.bilibili.com/1580882207?spm_id_from=333.1007.0.0" target="_blank" rel="nofollow noopener"><span>哔哩哔哩</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/stars.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>

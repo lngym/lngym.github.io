@@ -1,0 +1,2627 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E5%A4%B4%E5%83%8F.png">
+  <link rel="icon" href="/img/%E5%A4%B4%E5%83%8F.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lngym">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="软工三迭代二设计文档 撰写人员：吴俊宏、戴冯洋、顾益铭 项目启动文档 项目名称 RAGQuest：基于 RAG 的智能问答系统。 Prompt 评估平台：用于基于 RAGAS 框架，对检索增强生成（RAG）系统的回答质量进行自动化评估，支持多个关键指标的综合测量。 项目背景 随着大语言模型（LLM）的广泛应用，基于检索增强生成（RAG, Retrieval-Augmented Generation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软工III迭代二文档">
+<meta property="og:url" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="lngym&#39;s Blog">
+<meta property="og:description" content="软工三迭代二设计文档 撰写人员：吴俊宏、戴冯洋、顾益铭 项目启动文档 项目名称 RAGQuest：基于 RAG 的智能问答系统。 Prompt 评估平台：用于基于 RAGAS 框架，对检索增强生成（RAG）系统的回答质量进行自动化评估，支持多个关键指标的综合测量。 项目背景 随着大语言模型（LLM）的广泛应用，基于检索增强生成（RAG, Retrieval-Augmented Generation">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png">
+<meta property="article:published_time" content="2025-04-30T19:05:44.000Z">
+<meta property="article:modified_time" content="2025-05-08T02:32:14.000Z">
+<meta property="article:author" content="lngym">
+<meta property="article:tag" content="文档">
+<meta property="article:tag" content="软工III">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>软工III迭代二文档 - lngym&#39;s Blog</title>
+
+<!-- 插入Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+
+<!-- 你的自定义CSS START -->
+<style>
+
+.codeblock {
+  overflow: auto;
+  max-height: 400px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+/* ================ 基础代码块样式 ================ */
+.hljs {
+  background: #2d2d2d !important;
+  border-radius: 8px;
+  padding: 1.25em !important;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border-left: 4px solid #3eaf7c;
+  color: #d3d3d3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* ================ 增强的通用选择器 ================ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d3d3d3 !important;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d !important;
+}
+
+
+/* ================ 语法元素高亮规则 ================ */
+/* 1. 基础语法元素 */
+.hljs-keyword,        /* 关键字 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量true/false/null */
+.hljs-doctag,         /* 文档标记 */
+.hljs-title.class_,   /* 类名 */
+.hljs-title.class,    /* 类名(备用) */
+.hljs-title.function_ /* 函数名 */ {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+/* 内置对象和函数 */
+.hljs-built_in {
+  color: #56b6c2 !important;
+}
+
+/* 字符串 */
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.08);
+}
+
+/* 数字 */
+.hljs-number,
+.hljs-subst .hljs-number,
+.hljs-literal[class*="number"],
+.hljs-meta .hljs-number {
+  color: #d19a66 !important;
+}
+
+/* 注释 */
+.hljs-comment,
+.hljs-quote {
+  color: #7f848e !important; /* 更亮的灰色，提高可见度 */
+  font-style: italic;
+}
+
+/* 2. 变量系统增强 - 全面捕获所有变量 */
+/* 所有变量名 - 通用规则，增强选择器 */
+.hljs-name,
+.hljs-attribute,
+.hljs-variable,
+.hljs-variable .hljs-name,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-template-variable,
+.hljs-params .hljs-variable,
+.hljs-attr,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 特殊变量处理 */
+.hljs-variable.language_,  /* this/super等 */
+.hljs-variable.constant_,  /* 常量 */
+.hljs-attr,               /* 属性 */
+.hljs-property,           /* 对象属性 */
+.hljs-meta .hljs-variable {
+  color: #e5c07b !important;
+}
+
+/* 标识符重新捕获 - 更广泛的选择器 */
+.identifier,
+.hljs-symbol .hljs-identifier,
+[class*="identifier"],
+[class*="variable"]:not([class*="language_"]):not([class*="constant_"]),
+.hljs-name:not([class*="tag"]) {
+  color: #e06c75 !important;
+}
+
+/* 函数名 */
+.hljs-title.function,
+.hljs-title.function_,
+.function_ .hljs-title,
+.function .hljs-title,
+[class*="function"] .hljs-title,
+[class*="function"] .hljs-name,
+.hljs-name[class*="function"] {
+  color: #61afef !important;
+}
+
+/* 数据类型 */
+.hljs-type,
+.hljs-typedef,
+.hljs-interface,
+.hljs-namespace,
+[class*="type"] {
+  color: #e5c07b !important;
+}
+
+/* 3. 操作符和标点 - 增强 */
+.hljs-operator,
+.hljs-tag .hljs-attr,
+.hljs-punctuation.operator,
+.hljs-meta .hljs-operator,
+.operator,
+[class*="operator"],
+[class*="punctuation"][class*="operator"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+.hljs-punctuation {
+  color: #abb2bf !important;
+}
+
+/* 算数运算符专门处理 */
+.hljs-meta .hljs-string + .hljs-punctuation,
+.hljs-meta .hljs-string ~ .hljs-punctuation,
+.hljs-keyword + .hljs-punctuation,
+.hljs-variable + .hljs-punctuation,
+[class*="arithmetic"],
+[class*="assignment"],
+[class*="logical"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 4. 特殊处理 */
+/* 模板字符串和插值表达式 - 解决JS模板字符串不可见问题 */
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-subst,
+.hljs-formula {
+  color: #c678dd !important;
+}
+
+/* 插值表达式中的内容 */
+.hljs-string .hljs-subst,
+.hljs-subst .hljs-variable,
+.hljs-interpolation {
+  color: #d8d8d8 !important;
+  font-weight: bold;
+}
+
+/* 特殊字符和转义序列 */
+.hljs-char.escape_,
+.hljs-escape {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 字段名 */
+.hljs-attribute,
+.hljs-name.field_,
+.hljs-title.field_,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 标签和装饰 */
+.hljs-tag,
+.hljs-name.tag_,
+.hljs-tag .hljs-name {
+  color: #e06c75 !important;
+  font-weight: bold;
+}
+
+/* ================ 特殊数据类型变量 ================ */
+/* 基本类型关键字前缀 */
+.hljs-keyword[class*="int"],
+.hljs-keyword[class*="double"],
+.hljs-keyword[class*="float"],
+.hljs-keyword[class*="char"],
+.hljs-keyword[class*="boolean"],
+.hljs-keyword[class*="bool"],
+.hljs-keyword[class*="void"],
+.hljs-keyword[class*="String"],
+.hljs-keyword[class*="wchar"],
+.hljs-keyword[class*="size_t"] {
+  color: #e5c07b !important;
+}
+
+/* ================ 通用选择器增强 ================ */
+/* 捕获代码中所有的标识符 */
+[class*="variable"]:not([class*="template"]),
+[class*="identifier"],
+[class*="property"]:not([class*="keyword"]),
+[class*="name"]:not([class*="tag"]):not([class*="keyword"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 特别处理Shell和SQL中的标识符，确保它们能够被正确高亮 */
+.shell [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.bash [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.sql [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.mysql [class*="name"]:not([class*="function"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 更好地捕获操作符 */
+[class*="operator"],
+[class*="punctuation"][class*="operator"],
+[class*="assignment"],
+[class*="arithmetic"],
+[class*="logical"],
+[class*="bitwise"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 捕获所有可能的函数名 */
+[class*="function"] [class*="title"],
+[class*="function"] [class*="name"],
+[class*="title"][class*="function"],
+[class*="name"][class*="function"] {
+  color: #61afef !important;
+}
+
+/* ================ 装饰性元素 ================ */
+/* 行号样式 */
+.hljs-ln-numbers {
+  color: #7d7d7d !important;
+  padding-right: 15px !important;
+  text-align: right;
+  user-select: none;
+}
+
+/* 标记重要部分 */
+.hljs-mark {
+  background: rgba(229, 192, 123, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* 删除内容 */
+.hljs-deletion {
+  background: rgba(224, 108, 117, 0.08);
+}
+
+/* ================ 交互效果 ================ */
+.hljs:hover {
+  box-shadow: 0 0 0 3px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 特殊字符处理 */
+.hljs-char,
+.hljs-symbol,
+.hljs-bullet {
+  color: #56b6c2 !important;
+}
+
+/* 元素强调 */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* 捕获所有属性访问 - 如 obj.property */
+[class*="punctuation"][class*="accessor"] + [class*="property"],
+[class*="punctuation"][class*="accessor"] + [class*="name"] {
+  color: #e06c75 !important;
+}
+
+/* 变量声明后的变量名 */
+.hljs-keyword + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-keyword + .hljs-name:not([class*="class"]):not([class*="function"]),
+.hljs-type + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-type + .hljs-name:not([class*="class"]):not([class*="function"]) {
+  color: #e06c75 !important;
+}
+
+/* 模板字符串 - 确保可见 */
+.hljs-string.template_,
+.hljs-template-string,
+.template-string {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.1); /* 略微提高背景对比度 */
+}
+
+/* C++特有的STL容器和算法 */
+.cpp .hljs-built_in[class*="vector"],
+.cpp .hljs-built_in[class*="map"],
+.cpp .hljs-built_in[class*="set"],
+.cpp .hljs-built_in[class*="list"],
+.cpp .hljs-built_in[class*="queue"],
+.cpp .hljs-built_in[class*="stack"],
+.cpp .hljs-built_in[class*="array"],
+.cpp .hljs-built_in[class*="algorithm"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* C++运算符重载 */
+.cpp .hljs-keyword[class*="operator"] + .hljs-operator {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+</style>
+<!-- 你的自定义CSS END -->
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/macpanel.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lngym.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong class="navbar-title">lngym&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软工III迭代二文档"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-01 03:05" pubdate>
+          2025年5月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">软工III迭代二文档</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>软工三迭代二设计文档</strong></p>
+<p>撰写人员：吴俊宏、戴冯洋、顾益铭</p>
+<h1>项目启动文档</h1>
+<h2 id="项目名称">项目名称</h2>
+<p>RAGQuest：基于 RAG 的智能问答系统。</p>
+<p>Prompt 评估平台：用于基于 RAGAS 框架，对检索增强生成（RAG）系统的回答质量进行自动化评估，支持多个关键指标的综合测量。</p>
+<h2 id="项目背景">项目背景</h2>
+<p>随着大语言模型（LLM）的广泛应用，基于检索增强生成（RAG, Retrieval-Augmented Generation）的问答系统逐渐成为实现企业级智能问答的重要方案。该项目旨在构建一个结合语义向量检索与大模型生成能力的智能问答平台，满足用户自然语言提问、信息查找等需求。</p>
+<h2 id="项目目标">项目目标</h2>
+<p>搭建一个完整的 RAG 问答系统原型，支持知识库导入、模糊检索、上下文问答等功能。</p>
+<p>支持用户注册、登录，进行个性化问答管理。</p>
+<p>实现问答记录、自动标题生成、Zhipu 大模型调用等功能。</p>
+<p>后端提供 RESTful 接口，便于前端集成展示。</p>
+<p>为后续应用中部署提供参考框架。</p>
+<p>开发一个用于评估 RAG 系统性能的综合性平台，支持多版本迭代管理、自动化评估和可视化分析。</p>
+<h2 id="项目范围">项目范围</h2>
+<p>包含的内容：</p>
+<ul>
+<li>
+<p>用户系统（注册、登录、认证）。</p>
+</li>
+<li>
+<p>聊天记录管理模块。</p>
+</li>
+<li>
+<p>向量知识库构建与检索。</p>
+</li>
+<li>
+<p>大模型问答模块（调用智谱AI接口）。</p>
+</li>
+<li>
+<p>文本预处理和知识切块服务。</p>
+</li>
+<li>
+<p>系统原型后端框架（基于Spring Boot）。</p>
+</li>
+</ul>
+<p>不包含的内容：</p>
+<ul>
+<li>
+<p>复杂的权限控制或多租户架构。</p>
+</li>
+<li>
+<p>大规模并发支持。</p>
+</li>
+</ul>
+<h2 id="项目里程碑及时间表">项目里程碑及时间表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">里程碑</th>
+<th style="text-align:center">完成时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">项目初始化、环境搭建等准备工作</td>
+<td style="text-align:center">3月20日</td>
+</tr>
+<tr>
+<td style="text-align:center">模块划分与数据库设计</td>
+<td style="text-align:center">3月25日</td>
+</tr>
+<tr>
+<td style="text-align:center">用户系统开发完成</td>
+<td style="text-align:center">4月1日</td>
+</tr>
+<tr>
+<td style="text-align:center">聊天功能实现</td>
+<td style="text-align:center">4月8日</td>
+</tr>
+<tr>
+<td style="text-align:center">知识库导入与检索实现</td>
+<td style="text-align:center">4月15日</td>
+</tr>
+<tr>
+<td style="text-align:center">模型调用与问答整合</td>
+<td style="text-align:center">4月20日</td>
+</tr>
+<tr>
+<td style="text-align:center">项目测试与文档撰写</td>
+<td style="text-align:center">4月25日</td>
+</tr>
+</tbody>
+</table>
+<h2 id="资源概览和任务分配">资源概览和任务分配</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>任务模块</strong></th>
+<th style="text-align:center"><strong>工具/资源</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">项目初始化与 SpringBoot 搭建</td>
+<td style="text-align:center">Java, maven, IDEA</td>
+</tr>
+<tr>
+<td style="text-align:center">数据库与 pgvector 配置</td>
+<td style="text-align:center">PostgreSQL, pg_trgm</td>
+</tr>
+<tr>
+<td style="text-align:center">用户系统开发</td>
+<td style="text-align:center">Spring Security</td>
+</tr>
+<tr>
+<td style="text-align:center">问答服务与模型调用</td>
+<td style="text-align:center">ZhipuAI API, OkHttp</td>
+</tr>
+<tr>
+<td style="text-align:center">知识导入与切块</td>
+<td style="text-align:center">PDFBox, Lucene 分词</td>
+</tr>
+<tr>
+<td style="text-align:center">模糊搜索与 RAG 整合</td>
+<td style="text-align:center">SQL, 向量搜索</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号</th>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">221250142</td>
+<td style="text-align:center">顾益铭</td>
+<td style="text-align:center">前端开发</td>
+</tr>
+<tr>
+<td style="text-align:center">221870148</td>
+<td style="text-align:center">周屿杨</td>
+<td style="text-align:center">后端开发</td>
+</tr>
+<tr>
+<td style="text-align:center">221250181</td>
+<td style="text-align:center">李俊材</td>
+<td style="text-align:center">后端开发</td>
+</tr>
+<tr>
+<td style="text-align:center">221250107</td>
+<td style="text-align:center">马俊淇</td>
+<td style="text-align:center">项目测试</td>
+</tr>
+<tr>
+<td style="text-align:center">221250046</td>
+<td style="text-align:center">戴冯洋</td>
+<td style="text-align:center">文档</td>
+</tr>
+<tr>
+<td style="text-align:center">221250134</td>
+<td style="text-align:center">吴俊宏</td>
+<td style="text-align:center">文档</td>
+</tr>
+</tbody>
+</table>
+<h2 id="沟通计划">沟通计划</h2>
+<p>每周定期会议：每周一进行 30 分钟会议，讨论进展与问题。</p>
+<p>日常沟通工具：QQ、腾讯会议。</p>
+<p>代码协作平台：GitLab 私有仓库。</p>
+<p>文档协作：飞书文档工具。</p>
+<h1>需求规格说明书</h1>
+<h2 id="引言">引言</h2>
+<p>本项目旨在开发一个基于 RAG（Retrieval-Augmented Generation）技术的智能问答系统，名为“RagQuest”。该系统结合了语义搜索与大语言模型生成能力，能够基于知识库中的文档内容进行高质量的问答对话，适用于企业知识管理、教育培训、自助客服等场景。</p>
+<p>本说明书将详细描述系统的功能性和非功能性需求，分析主要涉众，列出关键用例，并为后续的系统设计与开发提供需求依据。</p>
+<h2 id="总体描述">总体描述</h2>
+<h3 id="系统概览">系统概览</h3>
+<p>RagQuest 系统由以下核心组件构成：</p>
+<ul>
+<li><strong>用户系统</strong>：提供用户注册、登录与认证功能。</li>
+<li><strong>聊天服务模块</strong>：支持用户基于知识库进行问答对话，保存问答记录。</li>
+<li><strong>知识导入与处理模块</strong>：支持上传文档、文本切块、向量化与存入数据库。</li>
+<li><strong>模糊搜索模块</strong>：利用 <code>pg_trgm</code> 与 <code>pgvector</code> 进行相似语义检索。</li>
+<li><strong>大模型交互模块</strong>：对接 ZhipuAI 接口，生成回答与会话标题。</li>
+<li><strong>管理与存储</strong>：基于 PostgreSQL 数据库存储用户数据、知识片段、对话记录等。</li>
+</ul>
+<p>系统整体采用前后端分离架构，后端基于 SpringBoot 实现，前端可独立拓展。</p>
+<p>评估平台功能概述：</p>
+<ul>
+<li>API 连接测试：在正式评估前，验证 ZhipuAI 配置是否正确，避免因 API 问题导致评估中断。</li>
+<li>API 概览：FastAPI 实现的 RESTful 接口，提供以下核心功能：
+<ul>
+<li>迭代版本管理</li>
+<li>RAG 评估执行</li>
+<li>评估结果查询与比较</li>
+</ul>
+</li>
+</ul>
+<h3 id="风险管控">风险管控</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风险项</th>
+<th style="text-align:center">可能性</th>
+<th style="text-align:center">影响</th>
+<th style="text-align:center">应对措施</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">评估指标不准确</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">多轮验证测试</td>
+</tr>
+<tr>
+<td style="text-align:center">大数据量性能问题</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">分页加载+缓存</td>
+</tr>
+<tr>
+<td style="text-align:center">第三方 API 限制</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">备用模型方案</td>
+</tr>
+</tbody>
+</table>
+<h3 id="错误处理">错误处理</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">HTTP 状态码</th>
+<th style="text-align:center">错误信息</th>
+<th style="text-align:center">可能原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">400</td>
+<td style="text-align:center">Invalid JSON format</td>
+<td style="text-align:center">上传的数据文件不是有效的 JSON</td>
+</tr>
+<tr>
+<td style="text-align:center">400</td>
+<td style="text-align:center">Invalid data format</td>
+<td style="text-align:center">数据缺少必要字段</td>
+</tr>
+<tr>
+<td style="text-align:center">404</td>
+<td style="text-align:center">Iteration not found</td>
+<td style="text-align:center">指定的迭代 ID 不存在</td>
+</tr>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:center">Failed to evaluate</td>
+<td style="text-align:center">评估过程中出现内部错误</td>
+</tr>
+</tbody>
+</table>
+<h3 id="迭代模型（Iteration）">迭代模型（<code>Iteration</code>）</h3>
+<p><strong>表名</strong>： <code>iterations</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">主键</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">String(100)</td>
+<td style="text-align:center">迭代名称（必填）</td>
+</tr>
+<tr>
+<td style="text-align:center">description</td>
+<td style="text-align:center">Text</td>
+<td style="text-align:center">迭代描述</td>
+</tr>
+<tr>
+<td style="text-align:center">created_at</td>
+<td style="text-align:center">DateTime</td>
+<td style="text-align:center">创建时间（自动记录）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关系</strong>：</p>
+<ul>
+<li><code>evaluations</code>：一对多关联到 <code>Evaluation</code> 模型。</li>
+</ul>
+<h3 id="评估模型（Evaluation）">评估模型（<code>Evaluation</code>）</h3>
+<p><strong>表名</strong>：<code>evaluations</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">主键</td>
+</tr>
+<tr>
+<td style="text-align:center">iteration_id</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">外键关联到迭代（必填）</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">String(100)</td>
+<td style="text-align:center">评估名称（必填）</td>
+</tr>
+<tr>
+<td style="text-align:center">description</td>
+<td style="text-align:center">Text</td>
+<td style="text-align:center">评估描述</td>
+</tr>
+<tr>
+<td style="text-align:center">data</td>
+<td style="text-align:center">Text</td>
+<td style="text-align:center">评估使用的原始数据（JSON 格式）</td>
+</tr>
+<tr>
+<td style="text-align:center">faithfulness</td>
+<td style="text-align:center">Float</td>
+<td style="text-align:center">忠实度评分（0-1）</td>
+</tr>
+<tr>
+<td style="text-align:center">answer_relevancy</td>
+<td style="text-align:center">Float</td>
+<td style="text-align:center">答案相关性评分（0-1）</td>
+</tr>
+<tr>
+<td style="text-align:center">context_recall</td>
+<td style="text-align:center">Float</td>
+<td style="text-align:center">上下文召回率评分（0-1）</td>
+</tr>
+<tr>
+<td style="text-align:center">created_at</td>
+<td style="text-align:center">DateTime</td>
+<td style="text-align:center">创建时间（自动记录）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关系</strong>：</p>
+<ul>
+<li><code>iteration</code>：多对一关联到 <code>Iteration</code> 模型。</li>
+</ul>
+<h3 id="RagasMetrics"><code>RagasMetrics</code></h3>
+<p>用于迭代比较的指标模型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">iteration_id</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">迭代 ID</td>
+</tr>
+<tr>
+<td style="text-align:center">iteration_name</td>
+<td style="text-align:center">str</td>
+<td style="text-align:center">迭代名称</td>
+</tr>
+<tr>
+<td style="text-align:center">faithfulness</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">忠实度平均分</td>
+</tr>
+<tr>
+<td style="text-align:center">answer_relevancy</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">答案相关性平均分</td>
+</tr>
+<tr>
+<td style="text-align:center">context_recall</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">上下文召回率平均分</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心评估指标">核心评估指标</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指标名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">评分范围</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">faithfulness（忠实度）</td>
+<td style="text-align:center">生成质量</td>
+<td style="text-align:center">0-1</td>
+<td style="text-align:center">衡量答案与给定上下文的一致性程度，越高表示答案越忠实于上下文</td>
+</tr>
+<tr>
+<td style="text-align:center">answer_relevancy（答案相关性）</td>
+<td style="text-align:center">生成质量</td>
+<td style="text-align:center">0-1</td>
+<td style="text-align:center">评估答案与问题的相关程度，越高表示答案越切题</td>
+</tr>
+<tr>
+<td style="text-align:center">context_precision（上下文精确度）</td>
+<td style="text-align:center">检索质量</td>
+<td style="text-align:center">0-1</td>
+<td style="text-align:center">衡量检索到的上下文中相关部分的比例</td>
+</tr>
+<tr>
+<td style="text-align:center">context_recall（上下文召回率）</td>
+<td style="text-align:center">检索质量</td>
+<td style="text-align:center">0-1</td>
+<td style="text-align:center">评估系统检索到所有相关上下文的能力</td>
+</tr>
+</tbody>
+</table>
+<p>评估执行流程：</p>
+<ul>
+<li>
+<p>参数校验：检查输入数据长度一致性。</p>
+</li>
+<li>
+<p>模型初始化：</p>
+<ul>
+<li>
+<p>使用智谱 AI GLM-4-Flash 作为 LLM。</p>
+</li>
+<li>
+<p>使用智谱 AI Embedding-3 作为嵌入模型。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>数据准备：将上下文列表转换为 <code>"\n".join(ctx)</code> 格式的参考文本。</p>
+</li>
+<li>
+<p>执行评估：使用RAGAS的 <code>evaluate</code> 函数计算四个核心指标。</p>
+</li>
+</ul>
+<h3 id="数据验证规则">数据验证规则</h3>
+<ul>
+<li>
+<p>字符串字段自动去除首尾空格。</p>
+</li>
+<li>
+<p>浮点数字段自动限制小数点精度。</p>
+</li>
+<li>
+<p>日期时间字段自动转换为ISO格式。</p>
+</li>
+<li>
+<p>所有请求字段都会进行类型验证。</p>
+</li>
+</ul>
+<p>主要依赖：</p>
+<ul>
+<li><code>ragas</code>：用于评估 RAG 任务的多指标评估框架。</li>
+<li><code>datasets</code>：用于处理和管理数据集。</li>
+<li><code>ZhipuAI</code>：调用 ZhipuAI 大模型进行辅助评估。</li>
+</ul>
+<h3 id="技术栈">技术栈</h3>
+<ul>
+<li>后端：Java + Spring Boot + JPA。</li>
+<li>数据库：PostgreSQL + pgvector + pg_trgm。</li>
+<li>ONNX 模型推理：用于本地理解支持（如选配）。</li>
+<li>接口调用：ZhipuAI GLM-4-Flash。</li>
+<li>工具类库：Gson, OkHttp。</li>
+</ul>
+<h2 id="详细需求描述">详细需求描述</h2>
+<h3 id="RAG-应用涉众分析">RAG 应用涉众分析</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">涉众</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">主要需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">项目开发者</td>
+<td style="text-align:center">系统设计与实现人员</td>
+<td style="text-align:center">模块可分、接口清晰、便于调试</td>
+</tr>
+<tr>
+<td style="text-align:center">普通用户</td>
+<td style="text-align:center">访问系统进行问答</td>
+<td style="text-align:center">问题响应快、界面友好、记录完整</td>
+</tr>
+<tr>
+<td style="text-align:center">知识提供者</td>
+<td style="text-align:center">上传/更新知识库</td>
+<td style="text-align:center">数据导入便捷、内容更新及时</td>
+</tr>
+</tbody>
+</table>
+<h3 id="RAG-应用功能性需求">RAG 应用功能性需求</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能需求</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">用户注册与登录</td>
+<td style="text-align:center">支持用户名/手机号注册，密码加密存储</td>
+</tr>
+<tr>
+<td style="text-align:center">聊天管理</td>
+<td style="text-align:center">支持按用户保存会话、自动生成标题</td>
+</tr>
+<tr>
+<td style="text-align:center">提问与回答</td>
+<td style="text-align:center">用户输入问题，系统生成回答</td>
+</tr>
+<tr>
+<td style="text-align:center">知识导入</td>
+<td style="text-align:center">上传目录下 txt 文件自动切块、入库</td>
+</tr>
+<tr>
+<td style="text-align:center">相似匹配</td>
+<td style="text-align:center">使用 pg_trgm 和 pgvector 检索相关知识片段</td>
+</tr>
+<tr>
+<td style="text-align:center">会话历史查看</td>
+<td style="text-align:center">用户可查看所有问答内容</td>
+</tr>
+<tr>
+<td style="text-align:center">知识更新</td>
+<td style="text-align:center">知识可重复导入并更新</td>
+</tr>
+</tbody>
+</table>
+<h3 id="RAG-应用非功能性需求">RAG 应用非功能性需求</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">需求类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">性能</td>
+<td style="text-align:center">每次问答响应时间少于 5 秒</td>
+</tr>
+<tr>
+<td style="text-align:center">安全性</td>
+<td style="text-align:center">密码加密存储，用户身份验证</td>
+</tr>
+<tr>
+<td style="text-align:center">可扩展性</td>
+<td style="text-align:center">支持后续更换大模型接口或添加新模型</td>
+</tr>
+<tr>
+<td style="text-align:center">可维护性</td>
+<td style="text-align:center">模块职责清晰，便于维护与测试</td>
+</tr>
+<tr>
+<td style="text-align:center">可用性</td>
+<td style="text-align:center">具有良好的容错能力，不因单点失败崩溃</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Prompt-评估平台功能性需求">Prompt 评估平台功能性需求</h3>
+<h4 id="迭代管理"><strong>迭代管理</strong></h4>
+<ul>
+<li>创建/查看迭代版本（名称、描述、时间）。</li>
+<li>迭代版本关联评估任务。</li>
+</ul>
+<h4 id="评估执行"><strong>评估执行</strong></h4>
+<ul>
+<li>上传评估数据集（JSON 格式）。</li>
+<li>自动计算三大核心指标。</li>
+</ul>
+<h4 id="可视化分析"><strong>可视化分析</strong></h4>
+<ul>
+<li>多版本指标对比柱状图。</li>
+<li>单次评估雷达图分析。</li>
+<li>评估历史趋势图。</li>
+</ul>
+<h4 id="数据管理"><strong>数据管理</strong></h4>
+<ul>
+<li>评估结果存储（SQLite）。</li>
+<li>原始数据版本控制。</li>
+</ul>
+<h3 id="Prompt-评估平台关键业务规则">Prompt 评估平台关键业务规则</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">规则编号</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">BR001</td>
+<td style="text-align:center">每次评估必须关联到具体迭代版本</td>
+</tr>
+<tr>
+<td style="text-align:center">BR002</td>
+<td style="text-align:center">评估数据必须包含 questions/answers/contexts 字段</td>
+</tr>
+<tr>
+<td style="text-align:center">BR003</td>
+<td style="text-align:center">指标评分范围标准化为 0-1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Prompt-评估平台非功能性需求">Prompt 评估平台非功能性需求</h3>
+<h4 id="质量属性">质量属性</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">要求</th>
+<th style="text-align:center">验收标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">性能</td>
+<td style="text-align:center">评估响应时间 &lt; 30 s</td>
+<td style="text-align:center">95% 请求达标</td>
+</tr>
+<tr>
+<td style="text-align:center">可靠性</td>
+<td style="text-align:center">评估任务成功率 &gt; 99%</td>
+<td style="text-align:center">错误重试机制</td>
+</tr>
+<tr>
+<td style="text-align:center">安全性</td>
+<td style="text-align:center">数据访问控制</td>
+<td style="text-align:center">RBAC 实现</td>
+</tr>
+</tbody>
+</table>
+<h4 id="技术约束">技术约束</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">约束项</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">C001</td>
+<td style="text-align:center">支持主流浏览器（Chrome/Firefox/Edge）</td>
+</tr>
+<tr>
+<td style="text-align:center">C002</td>
+<td style="text-align:center">评估数据集 &lt; 5MB</td>
+</tr>
+<tr>
+<td style="text-align:center">C003</td>
+<td style="text-align:center">同时运行评估任务 ≤ 3个</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关键用例描述">关键用例描述</h3>
+<h4 id="RAG应用">RAG应用</h4>
+<h5 id="用例1：用户注册"><strong>用例1：用户注册</strong></h5>
+<ul>
+<li>
+<p>参与者：普通用户。</p>
+</li>
+<li>
+<p>前置条件：</p>
+<ul>
+<li>
+<p>用户未在本系统注册过。</p>
+</li>
+<li>
+<p>用户拥有一个合法的手机号码。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>后置条件：系统中新建一个有效的用户账号，状态为“正常”。</p>
+</li>
+<li>
+<p>触发条件：用户打开注册页面并提交注册请求。</p>
+</li>
+<li>
+<p>主事件流程：</p>
+<ul>
+<li>
+<p>用户在前端页面输入用户名、手机号、密码，并点击注册按钮。</p>
+</li>
+<li>
+<p>系统接收请求，首先根据用户名查询数据库，检查是否存在同名用户。</p>
+<ul>
+<li>若存在，抛出异常提示“Username is already in use”，注册流程终止。</li>
+</ul>
+</li>
+<li>
+<p>系统根据手机号查询数据库，检查是否存在同手机号用户。</p>
+<ul>
+<li>若存在，抛出异常提示“Phone number is already in use”，注册流程终止。</li>
+</ul>
+</li>
+<li>
+<p>系统使用加密模块（PasswordEncoder）对用户输入的密码进行加密处理。</p>
+</li>
+<li>
+<p>将用户名、手机号和加密后的密码封装为 <code>UserPO</code>对象并保存至数据库（通过 <code>userRepository.save</code> 方法）。</p>
+</li>
+<li>
+<p>系统返回注册成功响应，并生成对应的 <code>UserVO</code> 返回给前端。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>异常流程：</p>
+<ul>
+<li>
+<p>输入的用户名已被占用 → 注册失败，提示“用户名已被使用”。</p>
+</li>
+<li>
+<p>输入的手机号已被注册 → 注册失败，提示“手机号已被使用”。</p>
+</li>
+<li>
+<p>系统内部错误（如数据库故障）→ 注册失败，提示“服务器错误”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="用例2：用户登录">用例2：用户登录</h5>
+<ul>
+<li>
+<p>参与者：普通用户。</p>
+</li>
+<li>
+<p>前置条件：用户已经成功注册。</p>
+</li>
+<li>
+<p>后置条件：用户成功登录，获得访问授权。</p>
+</li>
+<li>
+<p>触发条件：用户打开登录页面并提交登录请求。</p>
+</li>
+<li>
+<p>主事件流程：</p>
+<ul>
+<li>
+<p>用户输入用户名和密码，点击登录按钮。</p>
+</li>
+<li>
+<p>系统根据用户名查询用户信息（<code>userRepository.findUserByUsername</code>）。</p>
+<ul>
+<li>若无匹配用户，抛出异常提示“User not found”，登录流程终止。</li>
+</ul>
+</li>
+<li>
+<p>系统使用密码加密模块，验证输入密码与数据库中保存的加密密码是否匹配。</p>
+<ul>
+<li>若不匹配，抛出异常提示“Incorrect password”，登录流程终止。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>登录验证成功，系统封装用户信息为 <code>UserVO</code> 对象返回前端，供后续会话管理。</p>
+</li>
+<li>
+<p>异常流程：</p>
+<ul>
+<li>
+<p>用户名输入错误（用户不存在） → 登录失败，提示“用户未找到”。</p>
+</li>
+<li>
+<p>密码输入错误 → 登录失败，提示“密码错误”。</p>
+</li>
+<li>
+<p>系统内部错误 → 登录失败，提示“服务器错误”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="用例3：用户提问并获取回答（RAG检索）"><strong>用例3：用户提问并获取回答（RAG检索）</strong></h5>
+<ul>
+<li>
+<p>参与者：普通用户。</p>
+</li>
+<li>
+<p>前置条件：</p>
+<ul>
+<li>用户已完成登录，拥有有效会话。</li>
+<li>系统内已有知识数据（数据库中有知识切块）。</li>
+</ul>
+</li>
+<li>
+<p>后置条件：系统返回与用户问题相关的回答。</p>
+</li>
+<li>
+<p>触发条件：用户在聊天窗口输入问题并提交。</p>
+</li>
+<li>
+<p>主事件流程：</p>
+<ul>
+<li>
+<p>用户在前端界面输入问题文本（Prompt）并发送请求。</p>
+</li>
+<li>
+<p>系统调用 <code>FuzzySearchService</code> 模块，基于 <code>pg_trgm</code> 模糊匹配技术，从知识库中检索与问题最相关的知识块（Top-N 召回）。</p>
+</li>
+<li>
+<p>将检索到的知识内容与用户原问题一起打包成 Prompt。</p>
+</li>
+<li>
+<p>调用 <code>ZhipuAIClient</code> 模块，将 Prompt 发送到 ZhipuAI 大模型（glm-4-flash）。</p>
+</li>
+<li>
+<p>接收大模型返回的回答内容。</p>
+</li>
+<li>
+<p>调用 <code>ChatService</code> 模块，将用户问题和模型回答一起保存为一条聊天记录。</p>
+</li>
+<li>
+<p>系统将回答内容发送回前端页面，供用户查看。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>异常流程：</p>
+<ul>
+<li>
+<p>检索不到相关知识 → 返回提示“未找到相关信息”，可选择直接调用模型进行自由问答。</p>
+</li>
+<li>
+<p>大模型接口调用失败 → 返回提示“当前服务不可用，请稍后再试”。</p>
+</li>
+<li>
+<p>系统内部错误（如数据库连接失败） → 返回统一错误提示。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="用例4：导入知识到数据库"><strong>用例4：导入知识到数据库</strong></h5>
+<ul>
+<li>
+<p>参与者：系统管理员、开发者。</p>
+</li>
+<li>
+<p>前置条件：</p>
+<ul>
+<li>
+<p>系统部署完成，数据库可用。</p>
+</li>
+<li>
+<p>指定的 data 文件夹存在文本格式的知识文件（.txt）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>后置条件：知识文件被切块并存入数据库（PostgreSQL + pgvector）。</p>
+</li>
+<li>
+<p>触发条件：管理员启动应用并手动调用导入服务。</p>
+</li>
+<li>
+<p>主事件流程：</p>
+<ul>
+<li>
+<p>管理员将知识文件（如常见问题、产品手册）放置到后端项目 <code>/data</code> 目录。</p>
+</li>
+<li>
+<p>启动 SpringBoot 应用，或者通过调用 <code>KnowledgeImportService.importFromDirectoryByParagraphs(Path dataDir)</code> 方法触发导入。</p>
+</li>
+<li>
+<p>系统读取每一个 .txt 文件，将其按段落（或者指定逻辑）切分成小块。</p>
+</li>
+<li>
+<p>使用文本向量化技术（如基于 ONNX 模型，或者其他 Embedding 方法）为每个知识块生成向量表示。</p>
+</li>
+<li>
+<p>将原文和向量存储到 PostgreSQL 数据库，供后续模糊检索或向量检索使用。</p>
+<p>系统输出导入完成日志，记录成功导入的知识数量。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>异常流程：</p>
+<ul>
+<li>
+<p>未找到文件夹或文件为空 → 提示“未找到待导入的知识文件”。</p>
+</li>
+<li>
+<p>文件格式不正确（非 .txt 等） → 忽略并提示警告。</p>
+</li>
+<li>
+<p>数据库保存失败 → 记录错误日志并终止当前批次导入。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="评估平台：">评估平台：</h4>
+<h5 id="用例1：执行新版本评估">用例1：执行新版本评估</h5>
+<ul>
+<li>
+<p>前置条件：已创建迭代版本。</p>
+</li>
+<li>
+<p>主事件流程：</p>
+<ul>
+<li>
+<p>系统显示上传表单。</p>
+</li>
+<li>
+<p>用户选择迭代版本。</p>
+</li>
+<li>
+<p>用户上传 JSON 数据文件。</p>
+</li>
+<li>
+<p>系统验证数据格式。</p>
+</li>
+<li>
+<p>系统执行 RAGAS 评估。</p>
+</li>
+<li>
+<p>系统保存评估结果。</p>
+</li>
+<li>
+<p>系统显示可视化报告。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>异常流程：</p>
+<ul>
+<li>
+<p>E1 数据格式错误 → 显示具体错误位置。</p>
+</li>
+<li>
+<p>E2 评估超时 → 自动重试（最多3次）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="用例2：对比迭代版本">用例2：对比迭代版本</h5>
+<ul>
+<li>
+<p>触发条件：存在 ≥ 2 个迭代版本</p>
+</li>
+<li>
+<p>交互流程：</p>
+<ul>
+<li>
+<p>用户进入比较页面。</p>
+</li>
+<li>
+<p>系统加载所有迭代列表。</p>
+</li>
+<li>
+<p>用户选择 2-4 个迭代版本。</p>
+</li>
+<li>
+<p>系统获取各版本最新评估。</p>
+</li>
+<li>
+<p>系统生成对比柱状图/雷达图。</p>
+</li>
+<li>
+<p>用户可查看详细指标差异。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="用例3：查看评估趋势">用例3：查看评估趋势</h5>
+<ul>
+<li>
+<p>数据需求：至少 3 次历史评估。</p>
+</li>
+<li>
+<p>功能要点：</p>
+<ul>
+<li>
+<p>系统自动按时间排序评估记录。</p>
+</li>
+<li>
+<p>生成四大指标的趋势折线图。</p>
+</li>
+<li>
+<p>支持时间范围筛选。</p>
+</li>
+<li>
+<p>可点击数据点查看详情。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1>项目设计文档</h1>
+<h2 id="引言-2">引言</h2>
+<h3 id="编制目的">编制目的</h3>
+<ul>
+<li>
+<p>本报告详细完成对 RagQuest 系统的详细设计，达到指导后续软件构造的目的，同时实现和测试人员以及用户的沟通。</p>
+</li>
+<li>
+<p>本报告面向开发人员、测试人员及最终用户而编写，是了解系统的导航。</p>
+</li>
+</ul>
+<h2 id="产品概述">产品概述</h2>
+<p>本项目旨在开发一个基于 RAG（Retrieval-Augmented Generation）技术的智能问答系统，名为“RagQuest”。该系统结合了语义搜索与大语言模型生成能力，能够基于知识库中的文档内容进行高质量的问答对话，适用于企业知识管理、教育培训、自助客服等场景。</p>
+<p>RAG 架构图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic1.png" srcset="/img/loading.gif" lazyload alt="RAG 架构图"></p>
+<p>评估平台架构图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic2.png" srcset="/img/loading.gif" lazyload alt="评估平台架构图 1"></p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic3.png" srcset="/img/loading.gif" lazyload alt="评估平台架构图 2"></p>
+<h2 id="体系结构设计概述">体系结构设计概述</h2>
+<p>RAGAS 部分系统整体采用前后端分离架构，后端基于 SpringBoot 实现，前端采用 Vue 3 架构。</p>
+<p>Evaluator 部分采用前后端分离架构，后端基于 FastAPI 实现，前端采用 Vue 3 架构。</p>
+<h2 id="结构视角">结构视角</h2>
+<h3 id="RAG-搭建过程">RAG 搭建过程</h3>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic4.png" srcset="/img/loading.gif" lazyload alt="RAG 搭建过程"></p>
+<h3 id="RAG-应用业务逻辑层的分解">RAG 应用业务逻辑层的分解</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">开发包</th>
+<th style="text-align:center">依赖的开发包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">com.nju.ragquest.config</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.controller</td>
+<td style="text-align:center">com.nju.ragquest.service, com.nju.ragquest.config</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.exception</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.repository</td>
+<td style="text-align:center">com.nju.ragquest.config</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.postgresRepository</td>
+<td style="text-align:center">com.nju.ragquest.config</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.model.po</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.model.vo</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.service</td>
+<td style="text-align:center">com.nju.ragquest.repository, com.nju.ragquest.postgresRepository, com.nju.ragquest.model</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.service.serviceImpl</td>
+<td style="text-align:center">com.nju.ragquest.model, com.nju.ragquest.utils, com.nju.ragquest.ONNXModelLoader</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.utils</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">com.nju.ragquest.ONNXModelLoader</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>开发包图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic5.png" srcset="/img/loading.gif" lazyload alt="RAG 应用业务逻辑层开发包图"></p>
+<h4 id="config">config</h4>
+<h5 id="模块概述">模块概述</h5>
+<p>config 模块是系统的基础设施配置中心，负责整合 SpringBoot 框架能力与项目特定配置需求。</p>
+<p>核心职责为：多数据源管理、安全认证体系、框架整合配置、接口安全策略。</p>
+<h5 id="整体结构">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic6.png" srcset="/img/loading.gif" lazyload alt="config 整体结构"></p>
+<h4 id="controller">controller</h4>
+<h5 id="模块概述-2">模块概述</h5>
+<p>controller 模块负责处理 HTTP 请求和响应。</p>
+<p>核心职责包括路由处理、参数绑定、权限控制和响应封装。</p>
+<h5 id="整体结构-2">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic7.png" srcset="/img/loading.gif" lazyload alt="controller 整体结构"></p>
+<h4 id="exception">exception</h4>
+<h5 id="模块概述-3">模块概述</h5>
+<p>exception 模块负责对异常进行集中处理，给前端或调用者提供统一、规范的错误响应。</p>
+<p>核心职责为捕获所有异常。</p>
+<h5 id="整体结构-3">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic8.png" srcset="/img/loading.gif" lazyload alt="exception 整体结构"></p>
+<h4 id="repository">repository</h4>
+<h5 id="模块概述-4">模块概述</h5>
+<p>repository 模块主要负责与数据库进行交互，承担数据持久化的任务。它为上层服务提供数据的增删改查等操作，保证数据能在应用程序和数据库之间正确流转。</p>
+<p>核心职责是通过不同的 repository 类实现与数据库的交互，包括基本的 CRUD 操作、自定义查询和批量插入等功能。</p>
+<h5 id="整体结构-4">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic9.png" srcset="/img/loading.gif" lazyload alt="repository 整体结构"></p>
+<h4 id="postgresRepository">postgresRepository</h4>
+<h5 id="模块概述-5">模块概述</h5>
+<p>postgresRepository 模块主要负责与 PostgreSQL 数据库进行交互，处理与知识块数据相关的存储、查询等操作。</p>
+<h5 id="整体结构-5">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic10.png" srcset="/img/loading.gif" lazyload alt="postgresRepository 整体结构"></p>
+<h4 id="model">model</h4>
+<h5 id="模块概述-6">模块概述</h5>
+<p>model 模块承担着将数据库中的数据映射到 Java 对象，以及在应用程序和数据库之间进行数据交互的重要任务。</p>
+<p>核心职责为：定义数据库实体、管理实体生命周期、处理实体关联关系、实现数据转换方法。</p>
+<h5 id="整体结构-6">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic11.png" srcset="/img/loading.gif" lazyload alt="model 整体结构"></p>
+<h4 id="model-vo">model.vo</h4>
+<h5 id="模块概述-7">模块概述</h5>
+<p>model.vo 模块用于前端展示或接口传输，封装业务层返回的数据。</p>
+<p>核心职责为：封装业务数据、定义接口响应格式、支持前后端交互。</p>
+<h5 id="整体结构-7">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic12.png" srcset="/img/loading.gif" lazyload alt="model.vo 整体结构"></p>
+<h4 id="service">service</h4>
+<h5 id="模块概述-8">模块概述</h5>
+<p>service 模块在项目里处于业务逻辑处理的核心位置，衔接了控制器层与数据访问层，负责实现具体的业务功能。</p>
+<p>核心职责为：业务逻辑实现、数据交互协调、外部服务调用、数据导入处理。</p>
+<h5 id="整体结构-8">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic13.png" srcset="/img/loading.gif" lazyload alt="service 整体结构"></p>
+<h5 id="关键方法">关键方法</h5>
+<ul>
+<li>知识库构建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">importFromDirectoryByParagraphs</span><span class="hljs-params">(Path directory)</span> <span class="hljs-keyword">throws</span> IOException {<br>    Files.walk(directory)<br>           .filter(Files::isRegularFile)<br>           .filter(p -&gt; p.toString().endsWith(<span class="hljs-string">".txt"</span>))<br>           .forEach(<span class="hljs-built_in">this</span>::processFileByParagraphs);<br>}<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processFileByParagraphs</span><span class="hljs-params">(Path file)</span> {<br>    <span class="hljs-keyword">try</span> {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> Files.readString(file, StandardCharsets.UTF_8);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> file.getFileName().toString();<br><br>        List&lt;String&gt; chunks = textProcessor.processTextByParagraphs(content);<br><br>        List&lt;KnowledgeChunk&gt; knowledgeChunks = IntStream.range(<span class="hljs-number">0</span>, chunks.size())<br>                .mapToObj(i -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">KnowledgeChunk</span>(chunks.get(i), fileName, i))<br>                .toList();<br><br>        repository.batchInsert(knowledgeChunks);<br>    } <span class="hljs-keyword">catch</span> (IOException e) {<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">"Failed to process file: "</span> + file, e);<br>    }<br>}<br></code></pre></td></tr></table></figure>
+<p>遍历所有文件，构建外部知识库。</p>
+<ul>
+<li>语义检索</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;KnowledgeChunk&gt; <span class="hljs-title function_">smartSearch</span><span class="hljs-params">(String keyword, <span class="hljs-type">int</span> minResults)</span> {<br>    <span class="hljs-comment">// 计算需要获取的最大结果数</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxLimit</span> <span class="hljs-operator">=</span> calculateLimit(minResults, STEP);<br><br>    <span class="hljs-comment">// 单次数据库查询</span><br>    List&lt;FuzzySearchRepository.SearchResult&gt; results = repository.similaritySearch(<br>            keyword,<br>            MIN_THRESHOLD,<br>            maxLimit<br>    );<br>            ;<br><br>    <span class="hljs-keyword">if</span> (results.isEmpty()) {<br>        results = repository.easySearch(keyword);<br>    }<br><br>    <span class="hljs-keyword">if</span> (results.isEmpty()) {<br>        results = repository.normalSearch(keyword);<br>    }<br><br>    <span class="hljs-comment">// 内存中过滤</span><br>    <span class="hljs-keyword">return</span> applyDynamicThreshold(results, minResults);<br>}<br></code></pre></td></tr></table></figure>
+<p>在外部知识库中根据语义查询需要的信息。</p>
+<h4 id="serviceImpl">serviceImpl</h4>
+<h5 id="模块概述-9">模块概述</h5>
+<p>serviceImpl 模块作为 service 接口的具体实现层，承担着将业务逻辑具体化、与数据访问层交互以及调用外部服务来完成复杂业务功能的需求。</p>
+<h5 id="整体结构-9">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic14.png" srcset="/img/loading.gif" lazyload alt="serviceImpl 整体结构"></p>
+<h5 id="关键方法-2">关键方法</h5>
+<ul>
+<li>问答生成</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ContentVO <span class="hljs-title function_">ask</span><span class="hljs-params">(Long chatId, String question)</span> {<br>    <span class="hljs-type">ChatPO</span> <span class="hljs-variable">chatPO</span> <span class="hljs-operator">=</span> chatRepository.findChatPOById(chatId);<br><br>    <span class="hljs-type">ChatQuestionPO</span> <span class="hljs-variable">chatQuestionPO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChatQuestionPO</span>();<br>    chatQuestionPO.setQuestion(question);<br>    chatQuestionPO.setChat(chatPO);<br>    chatPO.getChatQuestions().add(chatQuestionPO);<br><br>    <span class="hljs-type">ZhipuAIClient</span> <span class="hljs-variable">zhipuAIClient</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZhipuAIClient</span>();<br><br>    <span class="hljs-keyword">if</span> (chatPO.getChatQuestions().size() == <span class="hljs-number">1</span>) {<br>        <span class="hljs-comment">// update title</span><br>        String newTitle;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">title_prompt</span> <span class="hljs-operator">=</span> <span class="hljs-string">"The following is the first question in my conversation with the large model. "</span> +<br>                <span class="hljs-string">"Please help me come up with a title for this conversation. The language should be consistent with my prompt and highly summarize the content of the conversation, with no more than 10 words. \n"</span> +<br>                question;<br>        <span class="hljs-keyword">try</span> {<br>            <span class="hljs-type">String</span> <span class="hljs-variable">jsonResponse</span> <span class="hljs-operator">=</span> zhipuAIClient.sendRequest(title_prompt);<br>            newTitle = zhipuAIClient.extractContent(jsonResponse);<br>            chatPO.setTitle(newTitle);<br>            System.out.println(newTitle);<br>        } <span class="hljs-keyword">catch</span> (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    String answer;<br>    <span class="hljs-keyword">try</span> {<br>        <span class="hljs-type">String</span> <span class="hljs-variable">jsonResponse</span> <span class="hljs-operator">=</span> zhipuAIClient.sendRequest(<span class="hljs-string">"用户问题："</span> + question +<br>                <span class="hljs-string">"\n\n可用的知识库文件：2000年到2024年诺贝尔文学奖\n\n请直接返回需要查阅的一个文件名，格式为“20XX年诺贝尔文学奖”，如果需要多个文件请用英文逗号分隔。不要解释。"</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">needFiles</span> <span class="hljs-operator">=</span> zhipuAIClient.extractContent(jsonResponse);<br>        System.out.println(needFiles);<br>        String[] files = needFiles.split(<span class="hljs-string">","</span>);<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">knowledgeFiles</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">if</span> (!fuzzySearchService.smartSearch(files[<span class="hljs-number">0</span>], <span class="hljs-number">1</span>).isEmpty()) {<br>            <span class="hljs-keyword">for</span> (String file : files) {<br>                knowledgeFiles.append(fuzzySearchService.smartSearch(file, <span class="hljs-number">1</span>).get(<span class="hljs-number">0</span>).getContent()).append(<span class="hljs-string">"\n\n"</span>);<br>            }<br>        }<span class="hljs-keyword">else</span> {<br>            jsonResponse = zhipuAIClient.sendRequest(<span class="hljs-string">"用户问题："</span> + question +<br>                    <span class="hljs-string">"\n\n可用的知识库文件：2000年到2024年诺贝尔文学奖\n\n请直接返回需要查阅的文件名，请一定遵照回答格式，格式为“20XX年诺贝尔文学奖”，如果需要多个文件请用英文逗号分隔。不要解释。"</span>);<br>            needFiles = zhipuAIClient.extractContent(jsonResponse);<br>            files = needFiles.split(<span class="hljs-string">","</span>);<br>            <span class="hljs-keyword">if</span> (!fuzzySearchService.smartSearch(files[<span class="hljs-number">0</span>], <span class="hljs-number">1</span>).isEmpty()) {<br>                <span class="hljs-keyword">for</span> (String file : files) {<br>                    knowledgeFiles.append(fuzzySearchService.smartSearch(file, <span class="hljs-number">1</span>).get(<span class="hljs-number">0</span>).getContent()).append(<span class="hljs-string">"\n\n"</span>);<br>                }<br>            }<span class="hljs-keyword">else</span> {<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">"No file found"</span>);<br>            }<br>        }<br>        <span class="hljs-type">String</span> <span class="hljs-variable">supplyFile</span> <span class="hljs-operator">=</span> zhipuAIClient.sendRequest(<span class="hljs-string">"用户问题："</span> + question + <span class="hljs-string">"\n\n参考知识库内容：\n"</span> + knowledgeFiles + <span class="hljs-string">"\n\n请结合上述信息给出专业回答"</span>);<br>        answer = zhipuAIClient.extractContent(supplyFile);<br>    } <span class="hljs-keyword">catch</span> (Exception e) {<br>        e.printStackTrace();<br>        answer = <span class="hljs-string">"Failed to fetch the answer due to an exception"</span>;<br>    }<br><br>    <span class="hljs-type">ChatAnswerPO</span> <span class="hljs-variable">answerPO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChatAnswerPO</span>();<br>    answerPO.setAnswer(answer);<br>    answerPO.setChat(chatPO);<br>    chatPO.getChatAnswers().add(answerPO);<br>    chatRepository.save(chatPO);<br><br>    <span class="hljs-keyword">return</span> answerPO.toAnswerVO();<br>}<br></code></pre></td></tr></table></figure>
+<p>该方法实现了自动重试机制（当首次文件查询失败时）和多步骤的 AI 协作流程，最终形成包含知识库内容支撑的专业回答。</p>
+<h4 id="utils">utils</h4>
+<h5 id="模块概述-10">模块概述</h5>
+<p>utils 模块在整个项目里主要承担辅助性、通用性的功能需求，为其他模块提供基础支持，以保障项目的正常运行和功能的顺利实现。</p>
+<p>核心职责为与 ZhipuAI 接口进行交互，为项目中的聊天服务等业务模块提供了获取 AI 回答的能力。</p>
+<h5 id="整体结构-10">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic15.png" srcset="/img/loading.gif" lazyload alt="utils 整体结构"></p>
+<h3 id="RAG-应用展示层的分解">RAG 应用展示层的分解</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">开发包</th>
+<th style="text-align:center">依赖的开发包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ChatDashBoard</td>
+<td style="text-align:center">index, ChatsAPI</td>
+</tr>
+<tr>
+<td style="text-align:center">UserLogin</td>
+<td style="text-align:center">index, UserAPI</td>
+</tr>
+<tr>
+<td style="text-align:center">UserRegister</td>
+<td style="text-align:center">index, UserAPI</td>
+</tr>
+<tr>
+<td style="text-align:center">index</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">ChatsAPI</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">UserAPI</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>开发包图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic16.png" srcset="/img/loading.gif" lazyload alt="RAG 应用展示层开发包图"></p>
+<h4 id="ChatDashBoard">ChatDashBoard</h4>
+<h5 id="模块概述-11">模块概述</h5>
+<p>ChatDashBoard 模块主要用于与 AI 对话，并管理多会话状态。</p>
+<p>核心职责为：会话管理、消息处理、状态同步。</p>
+<h5 id="整体结构-11">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic17.png" srcset="/img/loading.gif" lazyload alt="ChatDashBoard 整体结构"></p>
+<h4 id="UserLogin">UserLogin</h4>
+<h5 id="模块概述-12">模块概述</h5>
+<p>UserLogin 模块主要用于实现用户凭证验证，并提供安全登录流程，支持登录状态持久化。</p>
+<p>主要职责为：认证流程控制、安全信息管理、UI 交互协调。</p>
+<h5 id="整体结构-12">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic18.png" srcset="/img/loading.gif" lazyload alt="UserLogin 整体结构"></p>
+<h4 id="UserRegister">UserRegister</h4>
+<h5 id="模块概述-13">模块概述</h5>
+<p>UserRegister 模块主要用于新用户注册，采集用户信息并验证。</p>
+<p>主要职责为：注册流程控制。</p>
+<h5 id="整体结构-13">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic19.png" srcset="/img/loading.gif" lazyload alt="UserRegister 整体结构"></p>
+<h4 id="index">index</h4>
+<h5 id="模块概述-14">模块概述</h5>
+<p>index 模块主要负责路由模块负责管理应用的不同页面之间的导航，定义 URL 路径与组件的映射关系，以及处理路由相关的逻辑。</p>
+<p>主要职责为：认证隔离、会话保持。</p>
+<h5 id="整体结构-14">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic20.png" srcset="/img/loading.gif" lazyload alt="index 整体结构"></p>
+<h4 id="ChatsAPI">ChatsAPI</h4>
+<h5 id="模块概述-15">模块概述</h5>
+<p>ChatsAPI 模块主要承担与聊天功能相关的 API 请求操作。</p>
+<p>主要职责为：获取会话相关信息、创建新会话、获取聊天消息、向 AI 发送消息。</p>
+<h5 id="整体结构-15">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic21.png" srcset="/img/loading.gif" lazyload alt="ChatsAPI 整体结构"></p>
+<h4 id="UserAPI">UserAPI</h4>
+<h5 id="模块概述-16">模块概述</h5>
+<p>ChatsAPI 模块主要承担与用户功能相关的 API 请求操作。</p>
+<p>主要职责为：处理用户登录和注册。</p>
+<h5 id="整体结构-16">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic22.png" srcset="/img/loading.gif" lazyload alt="UserAPI 整体结构"></p>
+<h3 id="Prompt-评估业务逻辑层的分解">Prompt 评估业务逻辑层的分解</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">开发包</th>
+<th style="text-align:center">依赖的开发包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">app</td>
+<td style="text-align:center">schemas, ragas_evaluator, models, database</td>
+</tr>
+<tr>
+<td style="text-align:center">schemas</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">ragas_evaluator</td>
+<td style="text-align:center">RAGAS</td>
+</tr>
+<tr>
+<td style="text-align:center">models</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">database</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>开发包图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic23.png" srcset="/img/loading.gif" lazyload alt="Prompt 评估业务逻辑层开发包图"></p>
+<h4 id="app">app</h4>
+<h5 id="模块概述-17">模块概述</h5>
+<p>app 模块主要承担 RAG 迭代管理和评估流程控制以及数据可视化支持。</p>
+<p>主要职责是管理评估平台的后端核心业务逻辑。</p>
+<h5 id="整体结构-17">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic24.png" srcset="/img/loading.gif" lazyload alt="app 整体结构"></p>
+<h5 id="关键函数">关键函数</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_evaluation</span>(<span class="hljs-params"></span><br><span class="hljs-params">        iteration_id: <span class="hljs-built_in">int</span> = Form(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        name: <span class="hljs-built_in">str</span> = Form(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        description: <span class="hljs-type">Optional</span>[<span class="hljs-built_in">str</span>] = Form(<span class="hljs-params"><span class="hljs-literal">None</span></span>),</span><br><span class="hljs-params">        data_file: UploadFile = File(<span class="hljs-params">...</span>),</span><br><span class="hljs-params">        db: Session = Depends(<span class="hljs-params">get_db</span>)</span><br><span class="hljs-params"></span>):<br>    <span class="hljs-string">"""上传数据并评估RAG性能"""</span><br>    <span class="hljs-comment"># 检查迭代是否存在</span><br>    iteration = db.query(models.Iteration).<span class="hljs-built_in">filter</span>(models.Iteration.<span class="hljs-built_in">id</span> == iteration_id).first()<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> iteration:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">404</span>, detail=<span class="hljs-string">"Iteration not found"</span>)<br><br>    <span class="hljs-comment"># 读取上传的数据</span><br>    contents = <span class="hljs-keyword">await</span> data_file.read()<br><br>    <span class="hljs-comment"># 解析数据格式 (假设是JSON格式)</span><br>    <span class="hljs-keyword">try</span>:<br>        data = json.loads(contents)<br>        <span class="hljs-comment"># 验证数据结构</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">all</span>(key <span class="hljs-keyword">in</span> data <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-string">"questions"</span>, <span class="hljs-string">"answers"</span>, <span class="hljs-string">"contexts"</span>]):<br>            <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">400</span>,<br>                                detail=<span class="hljs-string">"Invalid data format. Required fields: questions, answers, contexts"</span>)<br><br>        <span class="hljs-comment"># 执行RAGAS评估 (添加重试机制)</span><br>        max_retries = <span class="hljs-number">3</span><br>        retry_count = <span class="hljs-number">0</span><br>        last_error = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">while</span> retry_count &lt; max_retries:<br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-comment"># 确保上下文格式正确</span><br>                <span class="hljs-comment"># 检查contexts是否是字符串列表的列表</span><br>                <span class="hljs-keyword">if</span> data[<span class="hljs-string">"contexts"</span>] <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(data[<span class="hljs-string">"contexts"</span>][<span class="hljs-number">0</span>], <span class="hljs-built_in">list</span>):<br>                    <span class="hljs-comment"># 如果contexts是字符串列表而不是字符串列表的列表，则转换它</span><br>                    data[<span class="hljs-string">"contexts"</span>] = [[ctx] <span class="hljs-keyword">for</span> ctx <span class="hljs-keyword">in</span> data[<span class="hljs-string">"contexts"</span>]]<br><br>                metrics = evaluate_rag_data(data[<span class="hljs-string">"questions"</span>], data[<span class="hljs-string">"answers"</span>], data[<span class="hljs-string">"contexts"</span>])<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                last_error = e<br>                retry_count += <span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> retry_count &gt;= max_retries:<br>                    <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">500</span>,<br>                                        detail=<span class="hljs-string">f"Failed to evaluate after <span class="hljs-subst">{max_retries}</span> attempts: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Evaluation attempt <span class="hljs-subst">{retry_count}</span> failed: <span class="hljs-subst">{e}</span>. Retrying..."</span>)<br>                <span class="hljs-keyword">import</span> time<br>                time.sleep(<span class="hljs-number">2</span>)  <span class="hljs-comment"># 短暂暂停后重试</span><br><br>        <span class="hljs-comment"># 保存评估结果</span><br>        db_evaluation = models.Evaluation(<br>            iteration_id=iteration_id,<br>            name=name,<br>            description=description,<br>            data=contents.decode(),<br>            faithfulness=metrics.faithfulness,<br>            answer_relevancy=metrics.answer_relevancy,<br>            context_precision=metrics.context_precision,<br>            context_recall=metrics.context_recall<br>        )<br>        db.add(db_evaluation)<br>        db.commit()<br>        db.refresh(db_evaluation)<br><br>        <span class="hljs-keyword">return</span> db_evaluation<br>    <span class="hljs-keyword">except</span> json.JSONDecodeError:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">400</span>, detail=<span class="hljs-string">"Invalid JSON format"</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">raise</span> HTTPException(status_code=<span class="hljs-number">500</span>, detail=<span class="hljs-string">f"Evaluation failed: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br></code></pre></td></tr></table></figure>
+<p>提供和前端交互的创建评估的 API。</p>
+<h4 id="schemas">schemas</h4>
+<h5 id="模块概述-18">模块概述</h5>
+<p>schemas 模块主要承担 API 的数据验证和序列化，主要用于定义传输的数据类型。</p>
+<p>主要职责包括验证 API 请求数据、序列化数据库模型到响应，以及定义数据传输对象。</p>
+<h5 id="整体结构-18">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic25.png" srcset="/img/loading.gif" lazyload alt="schemas 整体结构"></p>
+<h4 id="ragas-evaluator">ragas_evaluator</h4>
+<h5 id="模块概述-19">模块概述</h5>
+<p>ragas_evaluator 模块主要承担自动化评估流程、多维度指标计算和 AI 适配。</p>
+<p>主要职责为：评估流程控制、评估指标计算、接入 AI 模型。</p>
+<h5 id="整体结构-19">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic26.png" srcset="/img/loading.gif" lazyload alt="ragas_evaluator 整体结构"></p>
+<h5 id="关键函数-2">关键函数</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">evaluate_rag_data</span>(<span class="hljs-params"></span><br><span class="hljs-params">        questions: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>],</span><br><span class="hljs-params">        answers: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>],</span><br><span class="hljs-params">        contexts: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]]</span><br><span class="hljs-params"></span>) -&gt; RagasResult:<br>    <span class="hljs-string">"""</span><br><span class="hljs-string">    使用RAGAS评估RAG系统的性能（智谱AI版本）</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Args:</span><br><span class="hljs-string">        questions: 评估问题列表</span><br><span class="hljs-string">        answers: RAG系统生成的回答列表</span><br><span class="hljs-string">        contexts: 每个问题的上下文列表（每个元素是字符串列表）</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Returns:</span><br><span class="hljs-string">        RagasResult: 包含各项评估指标的结果对象</span><br><span class="hljs-string">    """</span><br>    <span class="hljs-comment"># 参数校验</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">all</span>(<span class="hljs-built_in">len</span>(questions) == <span class="hljs-built_in">len</span>(lst) <span class="hljs-keyword">for</span> lst <span class="hljs-keyword">in</span> [answers, contexts]):<br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"输入数据长度不一致"</span>)<br><br>    <span class="hljs-comment"># 初始化API密钥</span><br>    api_key = os.getenv(<span class="hljs-string">"ZHIPUAI_API_KEY"</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> api_key:<br>        <span class="hljs-keyword">raise</span> EnvironmentError(<span class="hljs-string">"ZHIPUAI_API_KEY 环境变量未设置"</span>)<br><br>    <span class="hljs-comment"># 初始化模型</span><br>    chat_model = ChatZhipuAI(model=<span class="hljs-string">"glm-4-flash"</span>, api_key=api_key)<br>    embedding_model = ZhipuAIEmbeddings(model=<span class="hljs-string">"embedding-3"</span>, api_key=api_key)<br><br>    <span class="hljs-comment"># 包装模型供RAGAS使用</span><br>    ragas_llm = LangchainLLMWrapper(chat_model)<br>    ragas_embeddings = LangchainEmbeddingsWrapper(embedding_model)<br><br>    <span class="hljs-comment"># 准备数据集 - 处理上下文格式</span><br>    dataset_dict = {<br>        <span class="hljs-string">"question"</span>: questions,<br>        <span class="hljs-string">"answer"</span>: answers,<br>        <span class="hljs-string">"reference"</span>: [<span class="hljs-string">"\n"</span>.join(ctx) <span class="hljs-keyword">for</span> ctx <span class="hljs-keyword">in</span> contexts],<br>        <span class="hljs-string">"contexts"</span>: contexts<br>    }<br><br>    <span class="hljs-comment"># 创建数据集</span><br>    dataset = Dataset.from_dict(dataset_dict)<br><br>    <span class="hljs-comment"># 执行评估</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 使用RAGAS的evaluate函数</span><br>        result = ragas.evaluate(<br>            dataset,<br>            metrics=[<br>                ragas.metrics.faithfulness,<br>                ragas.metrics.answer_relevancy,<br>                ragas.metrics.context_precision,<br>                ragas.metrics.context_recall<br>            ],<br>            llm=ragas_llm,<br>            embeddings=ragas_embeddings<br>        )<br><br>        <span class="hljs-comment"># 提取结果</span><br>        <span class="hljs-comment"># 修改后的返回结果部分（取指标的平均值）</span><br>        <span class="hljs-keyword">return</span> RagasResult(<br>            faithfulness=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'faithfulness'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'faithfulness'</span>]),<br>            answer_relevancy=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'answer_relevancy'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'answer_relevancy'</span>]),<br>            context_precision=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'context_precision'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'context_precision'</span>]),<br>            context_recall=<span class="hljs-built_in">sum</span>(result[<span class="hljs-string">'context_recall'</span>]) / <span class="hljs-built_in">len</span>(result[<span class="hljs-string">'context_recall'</span>])<br>        )<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">f"评估过程出错: <span class="hljs-subst">{<span class="hljs-built_in">str</span>(e)}</span>"</span>)<br></code></pre></td></tr></table></figure>
+<p>使用 RAGAS 评估 RAG 系统的性能（智谱 AI 版本）。</p>
+<h4 id="models">models</h4>
+<h5 id="模块概述-20">模块概述</h5>
+<p>models 模块主要负责管理不同迭代版本和评估数据持久化。</p>
+<p>主要职责是定义 ORM 模型，存储数据。</p>
+<h5 id="整体结构-20">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic27.png" srcset="/img/loading.gif" lazyload alt="models 整体结构"></p>
+<h4 id="database">database</h4>
+<h5 id="模块概述-21">模块概述</h5>
+<p>database 模块主要负责数据库连接管理和会话工厂管理。</p>
+<p>主要职责为：配置数据库连接，使用 SQLAlchemy 创建引擎和会话工厂。</p>
+<h5 id="整体结构-21">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic28.png" srcset="/img/loading.gif" lazyload alt="database 整体结构"></p>
+<h3 id="Prompt-评估展示层的分解">Prompt 评估展示层的分解</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">开发包</th>
+<th style="text-align:center">依赖的开发包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">app</td>
+<td style="text-align:center">Dashboard, IterationManagement, DataUpload, CompareView</td>
+</tr>
+<tr>
+<td style="text-align:center">index</td>
+<td style="text-align:center">Dashboard, IterationManagement, DataUpload, CompareView</td>
+</tr>
+<tr>
+<td style="text-align:center">Dashboard</td>
+<td style="text-align:center">api</td>
+</tr>
+<tr>
+<td style="text-align:center">IterationManagement</td>
+<td style="text-align:center">api</td>
+</tr>
+<tr>
+<td style="text-align:center">DataUpload</td>
+<td style="text-align:center">api</td>
+</tr>
+<tr>
+<td style="text-align:center">CompareView</td>
+<td style="text-align:center">api</td>
+</tr>
+<tr>
+<td style="text-align:center">api</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>开发包图：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic29.png" srcset="/img/loading.gif" lazyload alt="Prompt 评估展示层整体结构"></p>
+<h4 id="app-2">app</h4>
+<h5 id="模块概述-22">模块概述</h5>
+<p>app 模块作为父界面，用于展示通用的模块以及入口的作用。</p>
+<p>主要职责：展示通用模块，作为程序入口。</p>
+<h5 id="整体结构-22">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic30.png" srcset="/img/loading.gif" lazyload alt="app 整体结构"></p>
+<h4 id="index-2">index</h4>
+<h5 id="模块概述-23">模块概述</h5>
+<p>index 模块主要负责路由模块负责管理应用的不同页面之间的导航，定义 URL 路径与组件的映射关系，以及处理路由相关的逻辑。</p>
+<p>主要职责为：导入依赖、定义路由规则、创建路由实例、导出路由实例。</p>
+<h5 id="整体结构-23">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic31.png" srcset="/img/loading.gif" lazyload alt="index 整体结构"></p>
+<h4 id="Dashboard">Dashboard</h4>
+<h5 id="模块概述-24">模块概述</h5>
+<p>Dashboard 模块主要负责展示评估结果。</p>
+<h5 id="整体结构-24">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic32.png" srcset="/img/loading.gif" lazyload alt="Dashboard 整体结构"></p>
+<h4 id="IterationManagement">IterationManagement</h4>
+<h5 id="模块概述-25">模块概述</h5>
+<p>IterationManagement 模块主要负责迭代管理，用于展示和管理多个迭代。</p>
+<h5 id="整体结构-25">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic33.png" srcset="/img/loading.gif" lazyload alt="IterationManagement 整体结构"></p>
+<h5 id="关键函数-3">关键函数</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建新迭代</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">createIteration</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {<br>  <span class="hljs-keyword">if</span> (!iterationForm.<span class="hljs-property">value</span>.<span class="hljs-property">name</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请输入迭代名称'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  submitLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span><br>  <span class="hljs-keyword">try</span> {<br>    <span class="hljs-comment">// eslint-disable-next-line no-unused-vars</span><br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">post</span>(<span class="hljs-string">'http://localhost:8000/iterations/'</span>, iterationForm.<span class="hljs-property">value</span>)<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">success</span>(<span class="hljs-string">'创建迭代成功'</span>)<br>    dialogVisible.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span><br><br>    <span class="hljs-comment">// 重置表单</span><br>    iterationForm.<span class="hljs-property">value</span> = {<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>,<br>      <span class="hljs-attr">description</span>: <span class="hljs-string">''</span><br>    }<br><br>    <span class="hljs-comment">// 刷新数据</span><br>    <span class="hljs-title function_">fetchData</span>()<br>  } <span class="hljs-keyword">catch</span> (error) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'创建迭代失败:'</span>, error)<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'创建迭代失败'</span>)<br>  } <span class="hljs-keyword">finally</span> {<br>    submitLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span><br>  }<br>}<br></code></pre></td></tr></table></figure>
+<p>用于创建新迭代。</p>
+<h4 id="DataUpload">DataUpload</h4>
+<h5 id="模块概述-26">模块概述</h5>
+<p>DataUpload 模块主要负责上传迭代数据。</p>
+<h5 id="整体结构-26">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic34.png" srcset="/img/loading.gif" lazyload alt="DataUpload 整体结构"></p>
+<h5 id="关键函数-4">关键函数</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 提交上传</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">submitUpload</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {<br>  <span class="hljs-comment">// 表单验证</span><br>  <span class="hljs-keyword">if</span> (!uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">iteration_id</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请选择迭代版本'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">if</span> (!uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">name</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请输入评估名称'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">if</span> (!uploadFile.<span class="hljs-property">value</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请上传数据文件'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-comment">// 验证文件格式</span><br>  <span class="hljs-keyword">if</span> (uploadFile.<span class="hljs-property">value</span>.<span class="hljs-property">type</span> !== <span class="hljs-string">'application/json'</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请上传JSON格式的文件'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  uploading.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span><br><br>  <span class="hljs-keyword">try</span> {<br>    <span class="hljs-comment">// 创建FormData</span><br>    <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>()<br>    formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">'iteration_id'</span>, uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">iteration_id</span>)<br>    formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">'name'</span>, uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">name</span>)<br>    <span class="hljs-keyword">if</span> (uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">description</span>) {<br>      formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">'description'</span>, uploadForm.<span class="hljs-property">value</span>.<span class="hljs-property">description</span>)<br>    }<br>    formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">'data_file'</span>, uploadFile.<span class="hljs-property">value</span>)<br><br>    <span class="hljs-comment">// 发送请求</span><br>    <span class="hljs-comment">// eslint-disable-next-line no-unused-vars</span><br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">post</span>(<span class="hljs-string">'http://localhost:8000/evaluations/'</span>,<br>        formData,<br>        {<br>          <span class="hljs-attr">headers</span>: {<br>            <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'multipart/form-data'</span><br>          }<br>        }<br>    )<br><br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">success</span>(<span class="hljs-string">'评估提交成功'</span>)<br><br>    <span class="hljs-comment">// 导航到仪表板</span><br>    router.<span class="hljs-title function_">push</span>(<span class="hljs-string">'/'</span>)<br>  } <span class="hljs-keyword">catch</span> (error) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'提交评估失败:'</span>, error)<br><br>    <span class="hljs-comment">// 显示错误信息</span><br>    <span class="hljs-keyword">if</span> (error.<span class="hljs-property">response</span> &amp;&amp; error.<span class="hljs-property">response</span>.<span class="hljs-property">data</span> &amp;&amp; error.<span class="hljs-property">response</span>.<span class="hljs-property">data</span>.<span class="hljs-property">detail</span>) {<br>      <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`提交失败: <span class="hljs-subst">${error.response.data.detail}</span>`</span>)<br>    } <span class="hljs-keyword">else</span> {<br>      <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'提交评估失败，请检查数据格式'</span>)<br>    }<br>  } <span class="hljs-keyword">finally</span> {<br>    uploading.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span><br>  }<br>}<br></code></pre></td></tr></table></figure>
+<p>用于提交上传。</p>
+<h4 id="CompareView">CompareView</h4>
+<h5 id="模块概述-27">模块概述</h5>
+<p>CompareView 模块用于比较不同的迭代。</p>
+<h5 id="整体结构-27">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic35.png" srcset="/img/loading.gif" lazyload alt="CompareView 整体结构"></p>
+<h5 id="关键函数-5">关键函数</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 比较选定的迭代</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">compareIterations</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {<br>  <span class="hljs-keyword">if</span> (selectedIterations.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-number">2</span>) {<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">'请至少选择两个迭代进行比较'</span>)<br>    <span class="hljs-keyword">return</span><br>  }<br><br>  <span class="hljs-keyword">try</span> {<br>    <span class="hljs-comment">// 将数组转换为 "iteration_ids=1&amp;iteration_ids=2"</span><br>    <span class="hljs-keyword">const</span> queryString = selectedIterations.<span class="hljs-property">value</span><br>        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> <span class="hljs-string">`iteration_ids=<span class="hljs-subst">${id}</span>`</span>)<br>        .<span class="hljs-title function_">join</span>(<span class="hljs-string">'&amp;'</span>);<br><br>    <span class="hljs-keyword">const</span> url = <span class="hljs-string">`http://localhost:8000/metrics/compare/?<span class="hljs-subst">${queryString}</span>`</span>;<br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(url);<br><br>    comparisonData.<span class="hljs-property">value</span> = response.<span class="hljs-property">data</span>;<br>  } <span class="hljs-keyword">catch</span> (error) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'比较数据获取失败:'</span>, error);<br>    <span class="hljs-title class_">ElMessage</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'比较数据获取失败'</span>);<br>  }<br>}<br></code></pre></td></tr></table></figure>
+<p>用于比较选定的迭代。</p>
+<h4 id="api">api</h4>
+<h5 id="模块概述-28">模块概述</h5>
+<p>api 模块主要承担所有的 API 请求操作。</p>
+<p>主要职责为：与后端交互，传递迭代和评估信息。</p>
+<h5 id="整体结构-28">整体结构</h5>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic36.png" srcset="/img/loading.gif" lazyload alt="api 整体结构"></p>
+<h2 id="依赖视角">依赖视角</h2>
+<p>下图是项目中各个包之间的依赖关系。</p>
+<p>RAG 应用业务逻辑层：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic37.png" srcset="/img/loading.gif" lazyload alt="RAG 应用业务逻辑层包间依赖关系"></p>
+<p>RAG 应用展示层：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic38.png" srcset="/img/loading.gif" lazyload alt="RAG 应用展示层包间依赖关系"></p>
+<p>Prompt 评估业务逻辑层：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic39.png" srcset="/img/loading.gif" lazyload alt="Prompt 评估业务逻辑层包间依赖关系"></p>
+<p>Prompt 评估展示层：</p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E5%B7%A5III%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/pic40.png" srcset="/img/loading.gif" lazyload alt="Prompt 评估展示层包间依赖关系"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" class="category-chain-item">课程作业</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%96%87%E6%A1%A3/" class="print-no-link">#文档</a>
+      
+        <a href="/tags/%E8%BD%AF%E5%B7%A5III/" class="print-no-link">#软工III</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软工III迭代二文档</div>
+      <div>https://lngym.top/课程作业/软工III迭代二文档/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lngym</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94%E4%B8%80/" title="随笔（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">随笔（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%B8%89%E6%96%87%E6%A1%A3/" title="软统迭代三文档">
+                        <span class="hidden-mobile">软统迭代三文档</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.luogu.com.cn/user/494815" target="_blank" rel="nofollow noopener"><span>洛谷</span></a> <i class="iconfont icon-love"></i> <a href="https://leetcode.cn/u/zealous-i3abbagesbo/" target="_blank" rel="nofollow noopener"><span>Leetcode</span></a> <i class="iconfont icon-love"></i> <a href="https://space.bilibili.com/1580882207?spm_id_from=333.1007.0.0" target="_blank" rel="nofollow noopener"><span>哔哩哔哩</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/stars.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>

@@ -1,0 +1,1539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E5%A4%B4%E5%83%8F.png">
+  <link rel="icon" href="/img/%E5%A4%B4%E5%83%8F.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lngym">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JClassDiagram 迭代二设计文档（第95组） 团队介绍    姓名 学号 QQ号 职责     卞浩宇 221098106 3255698603 撰写文档   翟志阳 221250161 3056593724 撰写文档   周屿杨 221870148 3591599547 撰写代码   顾益铭 221250142 2408985579 撰写文档    项目目标 在迭代二中，进一步完善类图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软统迭代二文档">
+<meta property="og:url" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="lngym&#39;s Blog">
+<meta property="og:description" content="JClassDiagram 迭代二设计文档（第95组） 团队介绍    姓名 学号 QQ号 职责     卞浩宇 221098106 3255698603 撰写文档   翟志阳 221250161 3056593724 撰写文档   周屿杨 221870148 3591599547 撰写代码   顾益铭 221250142 2408985579 撰写文档    项目目标 在迭代二中，进一步完善类图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851907-7.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851892-5.png">
+<meta property="og:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851893-6.png">
+<meta property="article:published_time" content="2025-04-15T15:00:52.000Z">
+<meta property="article:modified_time" content="2025-05-09T18:17:02.000Z">
+<meta property="article:author" content="lngym">
+<meta property="article:tag" content="软统">
+<meta property="article:tag" content="文档">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lngym.top/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851907-7.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>软统迭代二文档 - lngym&#39;s Blog</title>
+
+<!-- 插入Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+
+<!-- 你的自定义CSS START -->
+<style>
+
+.codeblock {
+  overflow: auto;
+  max-height: 400px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+/* ================ 基础代码块样式 ================ */
+.hljs {
+  background: #2d2d2d !important;
+  border-radius: 8px;
+  padding: 1.25em !important;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border-left: 4px solid #3eaf7c;
+  color: #d3d3d3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* ================ 增强的通用选择器 ================ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d3d3d3 !important;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d !important;
+}
+
+
+/* ================ 语法元素高亮规则 ================ */
+/* 1. 基础语法元素 */
+.hljs-keyword,        /* 关键字 */
+.hljs-selector-tag,   /* CSS选择器 */
+.hljs-literal,        /* 字面量true/false/null */
+.hljs-doctag,         /* 文档标记 */
+.hljs-title.class_,   /* 类名 */
+.hljs-title.class,    /* 类名(备用) */
+.hljs-title.function_ /* 函数名 */ {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+/* 内置对象和函数 */
+.hljs-built_in {
+  color: #56b6c2 !important;
+}
+
+/* 字符串 */
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.08);
+}
+
+/* 数字 */
+.hljs-number,
+.hljs-subst .hljs-number,
+.hljs-literal[class*="number"],
+.hljs-meta .hljs-number {
+  color: #d19a66 !important;
+}
+
+/* 注释 */
+.hljs-comment,
+.hljs-quote {
+  color: #7f848e !important; /* 更亮的灰色，提高可见度 */
+  font-style: italic;
+}
+
+/* 2. 变量系统增强 - 全面捕获所有变量 */
+/* 所有变量名 - 通用规则，增强选择器 */
+.hljs-name,
+.hljs-attribute,
+.hljs-variable,
+.hljs-variable .hljs-name,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-template-variable,
+.hljs-params .hljs-variable,
+.hljs-attr,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 特殊变量处理 */
+.hljs-variable.language_,  /* this/super等 */
+.hljs-variable.constant_,  /* 常量 */
+.hljs-attr,               /* 属性 */
+.hljs-property,           /* 对象属性 */
+.hljs-meta .hljs-variable {
+  color: #e5c07b !important;
+}
+
+/* 标识符重新捕获 - 更广泛的选择器 */
+.identifier,
+.hljs-symbol .hljs-identifier,
+[class*="identifier"],
+[class*="variable"]:not([class*="language_"]):not([class*="constant_"]),
+.hljs-name:not([class*="tag"]) {
+  color: #e06c75 !important;
+}
+
+/* 函数名 */
+.hljs-title.function,
+.hljs-title.function_,
+.function_ .hljs-title,
+.function .hljs-title,
+[class*="function"] .hljs-title,
+[class*="function"] .hljs-name,
+.hljs-name[class*="function"] {
+  color: #61afef !important;
+}
+
+/* 数据类型 */
+.hljs-type,
+.hljs-typedef,
+.hljs-interface,
+.hljs-namespace,
+[class*="type"] {
+  color: #e5c07b !important;
+}
+
+/* 3. 操作符和标点 - 增强 */
+.hljs-operator,
+.hljs-tag .hljs-attr,
+.hljs-punctuation.operator,
+.hljs-meta .hljs-operator,
+.operator,
+[class*="operator"],
+[class*="punctuation"][class*="operator"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+.hljs-punctuation {
+  color: #abb2bf !important;
+}
+
+/* 算数运算符专门处理 */
+.hljs-meta .hljs-string + .hljs-punctuation,
+.hljs-meta .hljs-string ~ .hljs-punctuation,
+.hljs-keyword + .hljs-punctuation,
+.hljs-variable + .hljs-punctuation,
+[class*="arithmetic"],
+[class*="assignment"],
+[class*="logical"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 4. 特殊处理 */
+/* 模板字符串和插值表达式 - 解决JS模板字符串不可见问题 */
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-subst,
+.hljs-formula {
+  color: #c678dd !important;
+}
+
+/* 插值表达式中的内容 */
+.hljs-string .hljs-subst,
+.hljs-subst .hljs-variable,
+.hljs-interpolation {
+  color: #d8d8d8 !important;
+  font-weight: bold;
+}
+
+/* 特殊字符和转义序列 */
+.hljs-char.escape_,
+.hljs-escape {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 字段名 */
+.hljs-attribute,
+.hljs-name.field_,
+.hljs-title.field_,
+.hljs-property {
+  color: #e06c75 !important;
+}
+
+/* 标签和装饰 */
+.hljs-tag,
+.hljs-name.tag_,
+.hljs-tag .hljs-name {
+  color: #e06c75 !important;
+  font-weight: bold;
+}
+
+/* ================ 特殊数据类型变量 ================ */
+/* 基本类型关键字前缀 */
+.hljs-keyword[class*="int"],
+.hljs-keyword[class*="double"],
+.hljs-keyword[class*="float"],
+.hljs-keyword[class*="char"],
+.hljs-keyword[class*="boolean"],
+.hljs-keyword[class*="bool"],
+.hljs-keyword[class*="void"],
+.hljs-keyword[class*="String"],
+.hljs-keyword[class*="wchar"],
+.hljs-keyword[class*="size_t"] {
+  color: #e5c07b !important;
+}
+
+/* ================ 通用选择器增强 ================ */
+/* 捕获代码中所有的标识符 */
+[class*="variable"]:not([class*="template"]),
+[class*="identifier"],
+[class*="property"]:not([class*="keyword"]),
+[class*="name"]:not([class*="tag"]):not([class*="keyword"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 特别处理Shell和SQL中的标识符，确保它们能够被正确高亮 */
+.shell [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.bash [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.sql [class*="name"]:not([class*="function"]):not([class*="built_in"]),
+.mysql [class*="name"]:not([class*="function"]):not([class*="built_in"]) {
+  color: #e06c75 !important;
+}
+
+/* 更好地捕获操作符 */
+[class*="operator"],
+[class*="punctuation"][class*="operator"],
+[class*="assignment"],
+[class*="arithmetic"],
+[class*="logical"],
+[class*="bitwise"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* 捕获所有可能的函数名 */
+[class*="function"] [class*="title"],
+[class*="function"] [class*="name"],
+[class*="title"][class*="function"],
+[class*="name"][class*="function"] {
+  color: #61afef !important;
+}
+
+/* ================ 装饰性元素 ================ */
+/* 行号样式 */
+.hljs-ln-numbers {
+  color: #7d7d7d !important;
+  padding-right: 15px !important;
+  text-align: right;
+  user-select: none;
+}
+
+/* 标记重要部分 */
+.hljs-mark {
+  background: rgba(229, 192, 123, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* 删除内容 */
+.hljs-deletion {
+  background: rgba(224, 108, 117, 0.08);
+}
+
+/* ================ 交互效果 ================ */
+.hljs:hover {
+  box-shadow: 0 0 0 3px rgba(58, 175, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hljs::selection {
+  background: rgba(97, 175, 239, 0.3);
+}
+
+/* 特殊字符处理 */
+.hljs-char,
+.hljs-symbol,
+.hljs-bullet {
+  color: #56b6c2 !important;
+}
+
+/* 元素强调 */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* 捕获所有属性访问 - 如 obj.property */
+[class*="punctuation"][class*="accessor"] + [class*="property"],
+[class*="punctuation"][class*="accessor"] + [class*="name"] {
+  color: #e06c75 !important;
+}
+
+/* 变量声明后的变量名 */
+.hljs-keyword + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-keyword + .hljs-name:not([class*="class"]):not([class*="function"]),
+.hljs-type + .hljs-title:not(.hljs-class):not(.hljs-function),
+.hljs-type + .hljs-name:not([class*="class"]):not([class*="function"]) {
+  color: #e06c75 !important;
+}
+
+/* 模板字符串 - 确保可见 */
+.hljs-string.template_,
+.hljs-template-string,
+.template-string {
+  color: #98c379 !important;
+  background: rgba(152, 195, 121, 0.1); /* 略微提高背景对比度 */
+}
+
+/* C++特有的STL容器和算法 */
+.cpp .hljs-built_in[class*="vector"],
+.cpp .hljs-built_in[class*="map"],
+.cpp .hljs-built_in[class*="set"],
+.cpp .hljs-built_in[class*="list"],
+.cpp .hljs-built_in[class*="queue"],
+.cpp .hljs-built_in[class*="stack"],
+.cpp .hljs-built_in[class*="array"],
+.cpp .hljs-built_in[class*="algorithm"] {
+  color: #56b6c2 !important;
+  font-weight: bold;
+}
+
+/* C++运算符重载 */
+.cpp .hljs-keyword[class*="operator"] + .hljs-operator {
+  color: #c678dd !important;
+  font-weight: bold;
+}
+
+</style>
+<!-- 你的自定义CSS END -->
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/macpanel.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lngym.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong class="navbar-title">lngym&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软统迭代二文档"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-15 23:00" pubdate>
+          2025年4月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">软统迭代二文档</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>JClassDiagram 迭代二设计文档（第95组）</strong></p>
+<h1><strong>团队介绍</strong></h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">学号</th>
+<th style="text-align:center">QQ号</th>
+<th style="text-align:center">职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">卞浩宇</td>
+<td style="text-align:center">221098106</td>
+<td style="text-align:center">3255698603</td>
+<td style="text-align:center">撰写文档</td>
+</tr>
+<tr>
+<td style="text-align:center">翟志阳</td>
+<td style="text-align:center">221250161</td>
+<td style="text-align:center">3056593724</td>
+<td style="text-align:center">撰写文档</td>
+</tr>
+<tr>
+<td style="text-align:center">周屿杨</td>
+<td style="text-align:center">221870148</td>
+<td style="text-align:center">3591599547</td>
+<td style="text-align:center">撰写代码</td>
+</tr>
+<tr>
+<td style="text-align:center">顾益铭</td>
+<td style="text-align:center">221250142</td>
+<td style="text-align:center">2408985579</td>
+<td style="text-align:center">撰写文档</td>
+</tr>
+</tbody>
+</table>
+<h1>项目目标</h1>
+<p>在迭代二中，进一步完善类图解析工具，增强对复杂 Java 元素（泛型、容器、数组、抽象类及枚举）的规范化处理能力，并实现关联与依赖关系的粗略分析。</p>
+<p>同时，设计并实现三类基于类图的代码质量分析器，支持检测类规模异常（过大/过小类、数据类）、继承结构缺陷及循环依赖问题，最终输出符合 PlantUML 规范的文本形式类图和代码质量分析报告。</p>
+<h1>系统设计</h1>
+<h2 id="总体设计">总体设计</h2>
+<p>系统主要分为主程序模块和测试模块，主程序模块负责核心功能实现，测试模块用于验证主程序功能的正确性和稳定性。</p>
+<h3 id="主要模块及关系">主要模块及关系</h3>
+<h4 id="主程序模块（main-java）">主程序模块（<code>main/java</code>）</h4>
+<ul>
+<li><code>Main.java</code>：作为程序的入口，负责启动整个系统，协调各功能模块完成类图生成等核心任务。</li>
+<li><code>diagram</code> 包：
+<ul>
+<li><code>AccessModifier.java</code>：用于定义和处理类、方法、字段等的访问修饰符。</li>
+<li><code>ClassDiagram.java</code>：表示类图这一数据结构，包含类、接口、关系等元素。</li>
+<li><code>ClassDiagramGenerator.java</code>：核心生成器，根据输入的 Java 文件，分析并生成类图。</li>
+<li><code>EnumConstantInfo.java</code>：存储枚举常量的相关信息。</li>
+<li><code>FieldInfo.java</code>：存储类的字段信息，如字段名、类型等。</li>
+<li><code>MethodInfo.java</code>：存储类的方法信息，如方法名、参数、返回值等。</li>
+<li><code>ParameterInfo.java</code>：存储方法参数的详细信息。</li>
+<li><code>Relationship.java</code>：表示类与类、类与接口之间的关系。</li>
+<li><code>RelationshipType.java</code>：定义关系的类型，如继承、实现等。</li>
+<li><code>TypeInfo.java</code>：存储类型信息，如类、接口的类型。</li>
+</ul>
+</li>
+</ul>
+<h4 id="测试模块（test）">测试模块（<code>test</code>）</h4>
+<ul>
+<li><code>test/java</code> 包：
+<ul>
+<li><code>lab1</code> 子包：包含多个测试类，对主程序在基础场景下的功能进行测试，如单类、多类、关系等测试。</li>
+<li><code>lab2</code> 子包：包含更复杂场景的测试类，如类分析、复杂关系、依赖分析等测试。</li>
+</ul>
+</li>
+<li><code>test/resources</code> 包：
+<ul>
+<li><code>lab1</code> 子包：提供基础测试用的 Java 文件，为 <code>lab1</code> 子包的测试类提供数据。</li>
+<li><code>lab2</code> 子包：提供复杂测试用的 Java 文件，为 <code>lab2</code> 子包的测试类提供数据。</li>
+</ul>
+</li>
+</ul>
+<h4 id="模块关系">模块关系</h4>
+<ul>
+<li><code>Main.java</code> 调用 <code>diagram</code> 包中的类来完成类图的生成工作。</li>
+<li><code>test/java</code> 包中的测试类调用 <code>main/java</code> 中的类进行功能测试，验证其正确性。</li>
+<li><code>test/resources</code> 包中的 Java 文件为 <code>test/java</code> 包中的测试类提供测试数据。</li>
+</ul>
+<h3 id="图形描述">图形描述</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs Plain">+-----------------+<br>|    Main.java    |<br>+-----------------+<br>       |<br>       v<br>+-----------------+<br>|   diagram 包    |<br>| - AccessModifier|<br>| - ClassDiagram  |<br>| - ClassDiagramGenerator |<br>| - EnumConstantInfo |<br>| - FieldInfo     |<br>| - MethodInfo    |<br>| - ParameterInfo |<br>| - Relationship  |<br>| - RelationshipType |<br>| - TypeInfo      |<br>+-----------------+<br>       ^<br>       |<br>+-----------------+<br>|   test/java 包  |<br>| - lab1          |<br>| - lab2          |<br>+-----------------+<br>       ^<br>       |<br>+-----------------+<br>| test/resources  |<br>| - lab1          |<br>| - lab2          |<br>+-----------------+<br></code></pre></td></tr></table></figure>
+<h2 id="类设计">类设计</h2>
+<h3 id="系统主要类及其关系">系统主要类及其关系</h3>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851907-7.png" srcset="/img/loading.gif" lazyload alt="迭代一类图"></p>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851892-5.png" srcset="/img/loading.gif" lazyload alt="迭代二类图"></p>
+<h3 id="设计说明">设计说明</h3>
+<h4 id="设计模式（迭代一）">设计模式（迭代一）</h4>
+<ul>
+<li>
+<p><strong>访问者模式（Visitor Pattern）</strong></p>
+<ul>
+<li>
+<p>体现在 <code>ClassDiagramGenerator</code> 类中，它通过遍历 Java 源代码的 AST（抽象语法树）来访问不同类型的节点（类、接口、方法、字段等）。</p>
+</li>
+<li>
+<p>这种模式使得添加新的访问操作变得容易，而不需要修改现有的类结构。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>组合模式（Composite Pattern）</strong></p>
+<ul>
+<li>
+<p>体现在类型信息的组织上，<code>TypeInfo</code> 包含了 <code>FieldInfo</code>、<code>MethodInfo</code> 等子组件。</p>
+</li>
+<li>
+<p>这种结构使得可以统一处理复杂对象和简单对象。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>策略模式（Strategy Pattern）</strong></p>
+<ul>
+<li>
+<p>体现在访问修饰符的处理上，通过 <code>AccessModifier</code> 枚举和不同的访问修饰符处理策略。</p>
+</li>
+<li>
+<p>使得可以灵活地改变访问修饰符的处理方式。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="设计模式（迭代二）">设计模式（迭代二）</h4>
+<ul>
+<li>
+<p><strong>访问者模式（Visitor Pattern）</strong></p>
+<ul>
+<li>
+<p>在 <code>ClassDiagramGenerator</code> 中使用了 <code>LocalVariableCollector</code> 作为访问者来收集局部变量信息。</p>
+</li>
+<li>
+<p>通过继承 <code>VoidVisitorAdapter</code> 实现，用于遍历 AST（抽象语法树）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>工厂模式（Factory Pattern）</strong></p>
+<ul>
+<li>
+<p><code>ClassDiagramGenerator</code> 作为工厂类，负责创建 <code>ClassDiagram</code> 对象。</p>
+</li>
+<li>
+<p>通过 <code>parse</code> 方法封装了复杂的对象创建过程。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>组合模式（Composite Pattern）</strong></p>
+<ul>
+<li>
+<p>在类图结构中，<code>TypeInfo</code>、<code>FieldInfo</code>、<code>MethodInfo</code> 等类形成了组合结构。</p>
+</li>
+<li>
+<p>允许统一处理单个对象和组合对象。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="系统扩展性设计">系统扩展性设计</h4>
+<ul>
+<li>
+<p><strong>模块化设计</strong></p>
+<ul>
+<li>
+<p>核心类职责明确：</p>
+<ul>
+<li>
+<p><code>ClassDiagram</code>: 负责 UML 图的生成和代码异味检测。</p>
+</li>
+<li>
+<p><code>ClassDiagramGenerator</code>: 负责解析 Java 源代码。</p>
+</li>
+<li>
+<p><code>TypeInfo</code>: 存储类型信息。</p>
+</li>
+<li>
+<p><code>Relationship</code>: 处理类之间的关系。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>可扩展的数据结构</strong></p>
+<ul>
+<li>
+<p>使用枚举类型 <code>RelationshipType</code> 定义关系类型，便于添加新的关系类型。</p>
+</li>
+<li>
+<p><code>AccessModifier</code> 枚举处理访问修饰符，支持扩展新的访问级别。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>代码异味检测框架</strong></p>
+</li>
+<li>
+<p><code>getCodeSmells()</code> 方法提供了可扩展的代码异味检测框架。</p>
+</li>
+<li>
+<p>分别实现了类分析、继承分析和循环依赖检测。</p>
+</li>
+</ul>
+<h4 id="重要类-接口详细介绍">重要类/接口详细介绍</h4>
+<ul>
+<li>
+<p><strong>ClassDiagram 类</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassDiagram</span> {<br>    <span class="hljs-keyword">private</span> List&lt;TypeInfo&gt; types;<br>    <span class="hljs-keyword">private</span> List&lt;Relationship&gt; relationships;<br>    <br>    主要方法：<br>    - generateUML(): 生成UML图<br>    - getCodeSmells(): 检测代码异味<br>    - findClassAnalysisSmells(): 分析类级别的代码异味<br>    - findInheritanceSmells(): 分析继承相关的代码异味<br>    - findCircularDependencies(): 检测循环依赖<br>}<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>ClassDiagramGenerator 类</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassDiagramGenerator</span> {<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Set&lt;String&gt; BASIC_TYPES;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Set&lt;String&gt; CONTAINER_TYPES;<br>    <br>    主要方法：<br>    - parse(Path sourcePath): 解析Java源代码文件<br>    - analyzeAssociation(): 分析类之间的关联关系<br>    - analyzeType(): 分析类型依赖<br>    - extractCustomTypes(): 提取自定义类型<br>}<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="系统扩展建议">系统扩展建议</h4>
+<ul>
+<li>
+<p><strong>关系类型扩展</strong></p>
+<ul>
+<li>
+<p>可以通过扩展 <code>RelationshipType</code> 枚举来支持更多的 UML 关系类型。</p>
+</li>
+<li>
+<p>在 <code>generateUML()</code> 方法中添加相应的处理逻辑。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>代码异味检测扩展</strong></p>
+<ul>
+<li>
+<p>可以添加新的检测方法，如 <code>findMethodSmells()</code>、<code>findFieldSmells()</code> 等。</p>
+</li>
+<li>
+<p>实现新的检测规则，如方法复杂度、参数数量等。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>输出格式扩展</strong></p>
+<ul>
+<li>
+<p>可以添加新的输出格式支持，如 JSON、XML 等。</p>
+</li>
+<li>
+<p>实现新的生成器类，如 <code>JSONDiagramGenerator</code>、<code>XMLDiagramGenerator</code> 等。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>语言支持扩展</strong></p>
+<ul>
+<li>
+<p>可以添加对其他编程语言的支持。</p>
+</li>
+<li>
+<p>实现新的解析器，如 <code>PythonDiagramGenerator</code>、<code>CSharpDiagramGenerator</code> 等。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据结构与算法设计">数据结构与算法设计</h2>
+<h3 id="关键算法设计">关键算法设计</h3>
+<h4 id="泛型与容器类型提取">泛型与容器类型提取</h4>
+<p>为了正确处理泛型参数和容器类型，系统设计了 <code>extractCustomTypes</code> 方法对类型字符串进行解析。从类型表示中移除数组符号（<code>[]</code>），然后检查基本类型集合（如<code>int</code>, <code>String</code>等）来跳过原生类型。接下来，提取类型字符串中主类型名称（若包含泛型尖括号，则取尖括号前部分）。如果主类型不是预定义的容器类（如<code>List</code>, <code>Map</code>等），则将其视为自定义类型加入结果。若类型含有泛型参数，则进一步解析尖括号内的内容：利用正则表达式匹配所有泛型参数中的类型标识符，过滤出非基本类型且非容器类型的名称加入结果。该方法通过递归处理嵌套泛型结构 ，确保无论是简单类型、泛型嵌套还是容器嵌套，都能提取出其中引用的自定义类型。例如，对于类型 <code>List&lt;Map&lt;String, CustomType&gt;&gt;</code>，解析后会提取出 <code>CustomType</code> 作为自定义类型，而不会错误地将 <code>List</code> 或 <code>Map</code> 当作关联关系。</p>
+<h4 id="关联与依赖关系分析">关联与依赖关系分析</h4>
+<p>类图生成过程中，系统对每个类的字段和方法进行扫描，分别收集“关联关系（Association）”和“依赖关系（Dependency）”。关联关系表示类的拥有关系（通常由属性成员产生），依赖关系表示类的使用关系（通常由方法参数、返回值或局部变量产生）。算法实现上，针对每个字段，调用 <code>analyzeAssociation(sourceClass, fieldType, associationsMap)</code>：该函数对字段类型字符串调用 <code>extractCustomTypes</code> 提取所有自定义类型，并将它们记录为当前类的关联目标（忽略来源类自身的类型以避免自关联）。方法部分则使用 <code>analyzeType(sourceClass, someType, dependenciesMap, sourceAssociations)</code>：对方法返回值类型、每个参数类型，以及方法体内的本地变量类型执行类似解析。不同的是，在记录依赖关系时会避开已存在的关联关系（因为如果某类型已经作为属性出现过，则应视为关联而非依赖）。通过这两个分析过程，系统分别构建了 <code>associations</code> 和 <code>dependencies</code> 映射表，用于稍后生成关系连线。当解析完所有类型后，程序会遍历这两个映射，将其中的条目转化为 Relationship 对象列表：对于每个关联关系，添加 “target &lt;-- source”的关系；对于每个依赖关系，则添加“target &lt;.. source”的关系（但需排除已被标记为关联的情形）。这样就实现了关联和依赖的初步区分：例如，类 A 持有类 B 的实例作为字段，则记为 A 与 B 的关联；类 C 在方法参数或返回值中用到了类 D，则记为 C 依赖于 D。</p>
+<h4 id="代码异味检测（God-Class-Lazy-Class-Data-Class）">代码异味检测（God Class, Lazy Class, Data Class）</h4>
+<p>迭代二扩展了类图工具，增加对三种经典代码异味的检测功能。**God Class（上帝类）**指过度庞大的类。实现中简单采用字段数或方法数的阈值判断：若一个非接口非枚举的类字段数量 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="4.651ex" height="1.819ex" role="img" focusable="false" viewbox="0 -666 2055.8 804"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1055.8,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" style="stroke-width: 3;"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)" style="stroke-width: 3;"/></g></g></g></svg></mjx-container> <em>或</em> 方法（不含构造函数）数量 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="4.651ex" height="1.819ex" role="img" focusable="false" viewbox="0 -666 2055.8 804"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1055.8,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" style="stroke-width: 3;"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)" style="stroke-width: 3;"/></g></g></g></svg></mjx-container>，则判定为 God Class。一旦检测到 God Class，直接记录臭味并跳过对此类的后续异味分析，以免重复标记。**Lazy Class（冗类）**指内容过于稀少的类。判断条件为字段数 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="3.394ex" height="2.149ex" role="img" focusable="false" viewbox="0 -750 1500 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">＝</text></g><g data-mml-node="mn" transform="translate(1000,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" style="stroke-width: 3;"/></g></g></g></svg></mjx-container> <em>或</em> 非构造方法数量 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="1.819ex" role="img" focusable="false" viewbox="0 -666 1555.8 804"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1055.8,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" style="stroke-width: 3;"/></g></g></g></svg></mjx-container>。满足条件的类会被记录为 Lazy Class。**Data Class（数据类）**指大部分方法都只是简单地存取数据而无复杂逻辑的类。实现中遍历类中的所有方法，忽略构造函数后检查其余方法名是否全部以“get”或“set”开头；如果是，则认定为 Data Class。通过上述规则，系统会汇总检测到的代码异味列表，供用户在报告中查看。例如，当某个类只有大量属性的 getter/setter 且无其他逻辑时，会被识别为 Data Class；又如一个类定义了许多字段或方法，则会被标记为 God Class 加以警示。</p>
+<h4 id="继承结构分析（Too-Many-Children-Inheritance-Abuse）">继承结构分析（Too Many Children, Inheritance Abuse）</h4>
+<p>除了单个类的规模问题，系统还分析了类之间的继承层次结构以发现潜在问题。首先，类图生成完毕后，工具会构建一个继承关系映射：遍历所有非接口非枚举的类，初始化每个类名对应一个子类列表；然后再次遍历这些类型，查找每个类的父类，如果存在继承则将子类登记到父类名的子类列表中。由此可以统计每个类的直接子类数量以及计算继承深度。<strong>Too Many Children</strong> 检测通过遍历上述子类列表映射，检查任何一个父类名下的直接子类数量是否达到阈值（例如 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="4.651ex" height="1.819ex" role="img" focusable="false" viewbox="0 -666 2055.8 804"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1055.8,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" style="stroke-width: 3;"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)" style="stroke-width: 3;"/></g></g></g></svg></mjx-container> 个）。若是，则记录“Too Many Children: 父类名”，提示该类的继承层次可能过于扁平（子类过多）。**Inheritance Abuse（继承滥用）**检测则着眼于继承深度。对每一个类，沿着父类映射向上追溯，计算其继承链长度（根节点深度为 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.557ex" role="img" focusable="false" viewbox="0 -666 500 688"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" style="stroke-width: 3;"/></g></g></g></svg></mjx-container>，每往上一层 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewbox="0 -666 1278 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" style="stroke-width: 3;"/></g></g></g></svg></mjx-container>）。如果发现某条继承链长度 <mjx-container class="MathJax" jax="SVG" style="direction: ltr;"><svg style="overflow: visible; min-height: 1px; min-width: 1px; vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="1.819ex" role="img" focusable="false" viewbox="0 -666 1555.8 804"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z" style="stroke-width: 3;"/></g><g data-mml-node="mn" transform="translate(1055.8,0)"><path data-c="35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z" style="stroke-width: 3;"/></g></g></g></svg></mjx-container>（即超过五层继承），则判定为继承滥用。系统会构建该继承链的字符串表示，将各级类名用继承箭头 <code>&lt;|--</code> 串联，记录为“Inheritance Abuse: 类A &lt;|-- 类B &lt;|-- ... &lt;|-- 类N”这样的提示。这一检测有助于发现过深的继承层次可能导致的设计僵化问题。</p>
+<h4 id="循环依赖检测">循环依赖检测</h4>
+<p>为捕获模块间循环依赖风险，迭代二实现了基于图遍历的循环依赖检测算法。工具将先前收集的所有关联和依赖关系视为有向图的边，构造一个依赖图数据结构（邻接表）：图中的节点是所有类型名称（使用类型基本名，即去除泛型标记后的名称）。初始化时先将每个类型加入图的节点集，确保没有解析遗漏。然后遍历关系列表，对于每一条依赖或关联关系，在图中添加一条从源类型指向目标类型的有向边（表示“源类依赖/关联目标类”）。构造完成后，采用深度优先搜索（DFS）算法来寻找环路：维护一个全局访问标记 map 和一个当前递归路径列表。对每个尚未访问的节点调用递归 DFS 方法 <code>findCycleDFS</code>，在 DFS 过程中，沿着依赖边向下探索。如果遇到已访问节点，检查其是否在当前递归路径中；若是，则从该节点在路径中的位置截取出一条完整的循环路径，并将循环各节点名称连接成提示字符串，如“Circular Dependency: A &lt;. B &lt;. C &lt;. A”。一旦找到一个循环，算法即可终止进一步搜索（当前实现找到第一环路后跳出）。这种 DFS 找环的方法可以有效发现类之间直接或间接的循环引用，为用户提供架构上的警示。</p>
+<h3 id="数据结构设计">数据结构设计</h3>
+<h4 id="核心模型类"><strong>核心模型类</strong></h4>
+<p>本系统采用分层的数据模型来表示解析得到的类图元素，每种元素对应一个信息类：</p>
+<ul>
+<li><strong>TypeInfo</strong>：表示一个类型（类/接口/枚举）的信息，包含字段：
+<ul>
+<li><code>name</code>：类型名称（包括泛型参数表示，如 <code>ClassA&lt;T&gt;</code>），用于输出展示。</li>
+<li><code>isInterface</code>：是否为接口类型。</li>
+<li><code>isAbstract</code>：是否为抽象类（仅对类有效，接口默认抽象不使用此标志）。</li>
+<li><code>isEnum</code>：是否为枚举类型。</li>
+<li><code>fields</code>：该类型的字段列表，元素类型为 <code>FieldInfo</code>。</li>
+<li><code>methods</code>：该类型的方法列表，元素类型为 <code>MethodInfo</code>。</li>
+<li><code>enumConstants</code>：枚举常量列表，元素类型为 <code>EnumConstantInfo</code>（非枚举类型该列表为空）。</li>
+<li><code>superClass</code>：父类名称（字符串，类继承关系，仅类有值）。</li>
+<li><code>implementedInterfaces</code>：实现的接口名称列表（仅类有值，接口的该列表为空）。</li>
+<li><code>extendedInterfaces</code>：继承的父接口列表（仅接口有值，类的该列表为空）。</li>
+</ul>
+</li>
+<li><strong>FieldInfo</strong>：表示一个字段的详细信息，包含：
+<ul>
+<li><code>name</code>：字段名。</li>
+<li><code>type</code>：字段类型名称（可能包含泛型，如 <code>List&lt;String&gt;</code>）。</li>
+<li><code>isStatic</code>：是否为静态字段。</li>
+<li><code>access</code>：访问修饰符（枚举 <code>AccessModifier</code> 表示，如 PUBLIC/PROTECTED/...）。</li>
+</ul>
+</li>
+<li><strong>MethodInfo</strong>：表示一个方法的详细信息，包含：
+<ul>
+<li><code>name</code>：方法名。</li>
+<li><code>returnType</code>：返回类型名称。</li>
+<li><code>isStatic</code>：是否为静态方法。</li>
+<li><code>isAbstract</code>：是否为抽象方法。</li>
+<li><code>access</code>：访问修饰符。</li>
+<li><code>genericParams</code>：方法的泛型参数列表字符串表示（如果方法定义了泛型类型参数，则如 <code>&lt;T, U&gt;</code> 这样存储；否则为空字符串）。</li>
+<li><code>parameters</code>：方法参数列表，元素类型为 <code>ParameterInfo</code>，按声明顺序保存。</li>
+</ul>
+</li>
+<li><strong>ParameterInfo</strong>：表示方法的一个参数，包含 <code>name</code> 参数名和 <code>type</code> 参数类型。</li>
+<li><strong>EnumConstantInfo</strong>：表示枚举类型的一个常量，包含 <code>name</code> 常量名和 <code>hasArguments</code> 是否带有初始化参数（用于区分输出时是否在常量后加上 <code>()</code>）。</li>
+<li><strong>Relationship</strong>：表示两个类型之间的关系。包含 <code>source</code> 源类型名、<code>target</code> 目标类型名，以及关系类型 <code>type</code>（枚举 <code>RelationshipType</code>，可为 ASSOCIATION 或 DEPENDENCY）。在本设计中，为方便表示“源 -&gt; 目标”的连线方向，我们将 <code>Relationship.source</code> 定义为关系箭头指向的一端，<code>target</code> 为箭头起始端。例如，若类 A 关联类 B，则生成 Relationship 的<code>source = B, target = A, type = ASSOCIATION</code>，输出时呈现为 <code>A --＞ B</code> 的形式。</li>
+</ul>
+<h4 id="新增字段的作用"><strong>新增字段的作用</strong></h4>
+<p>迭代二相对于迭代一在模型类中引入了若干新的字段，以支持对复杂 Java 元素的表示和分析需求：</p>
+<ul>
+<li>
+<p>在 <strong>TypeInfo</strong> 中新增了 <code>isAbstract</code> 和 <code>isEnum</code> 字段，用于标识抽象类和枚举。<code>isAbstract</code> 使我们在生成 UML 时可以加上“abstract”关键字修饰类声明；而 <code>isEnum</code> 则用于区别枚举类型，确保在输出时使用“enum”关键字并在类体内列出枚举常量。此外，TypeInfo 的 <code>name</code> 属性在创建时即考虑了泛型类型参数，如果类型声明包含泛型，则将参数列表附加于名称（例如 <code>ClassA&lt;T&gt;</code>），这样可以在类图中直观地体现泛型。</p>
+</li>
+<li>
+<p>在 <strong>MethodInfo</strong> 中新增了 <code>isAbstract</code> 和 <code>genericParams</code> 字段。其中，<code>isAbstract</code> 用于标记抽象方法（主要出现在抽象类或接口中），以便在生成类图文本时对抽象方法增加 <code>{abstract}</code> 标识，提高可读性。<code>genericParams</code> 则保存方法的类型参数列表字符串，使得如果方法本身是泛型方法（例如 <code>public &lt;T&gt; void foo(T t)</code>），我们也能在类图的方法签名中体现 <code>&lt;T&gt;</code>。这些新增字段保证了对抽象及泛型的完整支持，避免信息丢失。</p>
+</li>
+<li>
+<p>引入 <strong>EnumConstantInfo</strong> 类及在 TypeInfo 中的 <code>enumConstants</code> 列表，是为了支持枚举类型的特殊结构。相比普通类，枚举需要存储其常量集合。通过将每个常量名和是否含参数打包成 EnumConstantInfo，我们可以在输出时逐行列出枚举常量，并针对带参数的常量添加一对括号，符合 Java 枚举语法习惯。这使得生成的类图对枚举的展示更规范易读。</p>
+</li>
+<li>
+<p><strong>Relationship</strong> 模型类在迭代二中也被引入，用于统一存储类与类之间的关联、依赖关系。相比迭代一直接在生成UML 时拼接关系字符串的做法，使用 Relationship 对象列表可以先行整理和去重关系，再在输出时统一处理符号表示（如 <code>&lt;--</code> 表示关联，<code>&lt;..</code> 表示依赖）。这提升了关系处理的清晰度，也方便后续对关系进行分析（例如循环依赖检测正是遍历 Relationship 列表构建图来实现）。</p>
+</li>
+<li>
+<p><strong>类型扩展的支持方式</strong>：数据结构的设计使系统具备一定的扩展弹性来应对泛型、容器和枚举等复杂类型：</p>
+<ul>
+<li><strong>泛型类型</strong>：采用在名称和专有字段中存储泛型信息的方式。<code>TypeInfo.name</code> 保留类声明的泛型参数语法，以确保类图中类型定义完整；<code>MethodInfo.genericParams</code> 保存方法声明的泛型参数。对于字段和参数的类型，由于直接存储字符串即可包含泛型信息（如 <code>"List&lt;CustomType&gt;"</code>），因此 <code>FieldInfo.type</code> 和 <code>ParameterInfo.type</code> 已经天然支持泛型表示。<code>extractCustomTypes</code> 算法则负责从这些字符串中提炼出基础的自定义类型名，用于关系分析，不受具体泛型符号干扰。这种处理方式相对简洁地扩展了对泛型的支持。</li>
+<li><strong>容器与数组</strong>：容器类被视为特殊的泛型，其类型参数内的自定义类型会被提取而容器本身不计入关联/依赖关系。通过在 CONTAINER_TYPES 集合列出常见容器名（如 List, Map 等），<code>extractCustomTypes</code> 能识别这些容器并跳过将它们加入关系，只提取其中承载的元素类型作为关联或依赖。例如字段类型为 <code>ArrayList&lt;Foo&gt;</code> 时，关系只会记录对 <code>Foo</code> 的关联而不会记录 <code>ArrayList</code>。数组则通过简单去除<code>[]</code>后按元素类型处理，实现上与泛型提取共享逻辑。因此，无论是 <code>Bar[]</code> 还是 <code>List&lt;Bar&gt;</code>，最终都能正确提取出 <code>Bar</code> 这个自定义类型用于关系分析。</li>
+<li><strong>抽象类与接口</strong>：数据结构本身区分了抽象类（isAbstract）和接口（isInterface），这在算法中主要影响输出和某些检测。例如接口的方法在解析时被统一标记为 public（Java接口默认 public），即通过 <code>getAccessModifierForMethod</code> 策略保证接口中方法的访问修饰符正确设定。抽象类和接口在代码异味检测中被跳过了部分规则（如不参与God Class/Lazy Class判定），也是利用这些标志位实现的。这样保证了模型对这些特殊类型的恰当处理。</li>
+<li><strong>枚举类型</strong>：通过 <code>TypeInfo.isEnum</code> 标识，配合 enumConstants 列表，系统能够在保持与类相同结构的同时，特殊对待枚举的内容解析和输出。在解析阶段，对 EnumDeclaration 会新建 TypeInfo 并设 <code>isEnum=true</code>，然后提取枚举常量加入 enumConstants；同时枚举的字段和方法依然作为常规 FieldInfo、MethodInfo 处理，以复用已有逻辑。输出时则根据 isEnum 决定使用 <code>enum 名称 { ... }</code> 语法，并在花括号内首先列出所有枚举常量，再列出字段和方法。这种适配方式使得无需为枚举单独定义复杂模型，复用了大部分类的结构，又能正确表示枚举特有的信息。</li>
+</ul>
+</li>
+</ul>
+<p>通过上述算法与数据结构设计，迭代二的类图解析工具可以支持更复杂的 Java 语言元素（泛型、容器、抽象类、枚举），并在此基础上增加关系分析和代码质量检测功能。关键算法保证了关联、依赖关系的合理提取和各类代码异味的识别；而健全的模型数据结构为信息的存储和输出提供了良好的组织，使系统具有较好的扩展性和维护性。</p>
+<h1>附录</h1>
+<h2 id="实际工作安排">实际工作安排</h2>
+<p>卞浩宇：文档撰写，数据结构与算法设计部分。</p>
+<p>翟志阳：文档撰写，类设计部分与绘图。</p>
+<p>周屿杨：Java 代码撰写。</p>
+<p>顾益铭：文档撰写，总体设计部分、运行结果与格式汇总。</p>
+<h2 id="运行结果">运行结果</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs javascript">@startuml<br>abstract <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractVehicle</span> {<br>    # <span class="hljs-attr">licensePlate</span>: <span class="hljs-title class_">String</span><br>    # <span class="hljs-attr">state</span>: <span class="hljs-title class_">VehicleState</span><br>    + <span class="hljs-title function_">getLicensePlate</span>(): <span class="hljs-title class_">String</span><br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> {<br>    + <span class="hljs-title function_">start</span>(): <span class="hljs-title class_">VehicleState</span><br>    + <span class="hljs-title function_">stop</span>(): <span class="hljs-title class_">VehicleState</span><br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SportsCar</span> {<br>    - <span class="hljs-attr">horsepower</span>: int<br>    + <span class="hljs-title function_">start</span>(): <span class="hljs-title class_">VehicleState</span><br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Garage</span> {<br>    - <span class="hljs-attr">vehicleMap</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Vehicle</span>&gt;<br>    - <span class="hljs-attr">maintenanceService</span>: <span class="hljs-title class_">VehicleService</span>&lt;<span class="hljs-title class_">Vehicle</span>&gt;<br>    + <span class="hljs-title function_">addVehicle</span>(<span class="hljs-attr">key</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">vehicle</span>: <span class="hljs-title class_">Vehicle</span>): <span class="hljs-keyword">void</span><br>    + <span class="hljs-title function_">getVehiclesByState</span>(): <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">VehicleState</span>, <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">Vehicle</span>&gt;&gt;<br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">VehicleService</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Vehicle</span>&gt; {<br>    + <span class="hljs-title function_">groupByState</span>(<span class="hljs-attr">vehicles</span>: <span class="hljs-title class_">List</span>&lt;T&gt;): <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">VehicleState</span>, <span class="hljs-title class_">List</span>&lt;T&gt;&gt;<br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {<br>    + {<span class="hljs-keyword">static</span>} <span class="hljs-title function_">main</span>(<span class="hljs-attr">args</span>: <span class="hljs-title class_">String</span>[]): <span class="hljs-keyword">void</span><br>}<br>interface <span class="hljs-title class_">Vehicle</span> {<br>    + <span class="hljs-title function_">start</span>(): <span class="hljs-title class_">VehicleState</span><br>    + <span class="hljs-title function_">stop</span>(): <span class="hljs-title class_">VehicleState</span><br>}<br>enum <span class="hljs-title class_">VehicleState</span> {<br>    <span class="hljs-variable constant_">RUNNING</span><br>    <span class="hljs-variable constant_">STOPPED</span><br>    <span class="hljs-variable constant_">MAINTENANCE</span><br>}<br><span class="hljs-title class_">Vehicle</span> &lt;|.. <span class="hljs-title class_">AbstractVehicle</span><br><span class="hljs-title class_">AbstractVehicle</span> &lt;|-- <span class="hljs-title class_">Car</span><br><span class="hljs-title class_">Car</span> &lt;|-- <span class="hljs-title class_">SportsCar</span><br><span class="hljs-title class_">Vehicle</span> &lt;-- <span class="hljs-title class_">Garage</span><br><span class="hljs-title class_">VehicleService</span> &lt;-- <span class="hljs-title class_">Garage</span><br><span class="hljs-title class_">VehicleState</span> &lt;-- <span class="hljs-title class_">AbstractVehicle</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">Vehicle</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">SportsCar</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">Garage</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">Car</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">VehicleService</span><br>T &lt;.. <span class="hljs-title class_">VehicleService</span><br><span class="hljs-title class_">Vehicle</span> &lt;.. <span class="hljs-title class_">Main</span><br><span class="hljs-title class_">Garage</span> &lt;.. <span class="hljs-title class_">Main</span><br><span class="hljs-title class_">VehicleState</span> &lt;.. <span class="hljs-title class_">Main</span><br><span class="hljs-title class_">VehicleService</span> &lt;.. <span class="hljs-title class_">Main</span><br>@enduml<br></code></pre></td></tr></table></figure>
+<p><img src="/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E8%BD%AF%E7%BB%9F%E8%BF%AD%E4%BB%A3%E4%BA%8C%E6%96%87%E6%A1%A3/1746730851893-6.png" srcset="/img/loading.gif" lazyload alt="运行结果展示"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" class="category-chain-item">课程作业</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BD%AF%E7%BB%9F/" class="print-no-link">#软统</a>
+      
+        <a href="/tags/%E6%96%87%E6%A1%A3/" class="print-no-link">#文档</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软统迭代二文档</div>
+      <div>https://lngym.top/课程作业/软统迭代二文档/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lngym</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9F%B3%E4%B9%90/%E6%B6%9F%E6%BC%AA%E5%B0%8F%E5%BE%84/" title="涟漪小径">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">涟漪小径</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9F%B3%E4%B9%90/%E7%A9%BA%E8%B0%B7%E5%AF%BB%E4%BA%91/" title="空谷寻云">
+                        <span class="hidden-mobile">空谷寻云</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.luogu.com.cn/user/494815" target="_blank" rel="nofollow noopener"><span>洛谷</span></a> <i class="iconfont icon-love"></i> <a href="https://leetcode.cn/u/zealous-i3abbagesbo/" target="_blank" rel="nofollow noopener"><span>Leetcode</span></a> <i class="iconfont icon-love"></i> <a href="https://space.bilibili.com/1580882207?spm_id_from=333.1007.0.0" target="_blank" rel="nofollow noopener"><span>哔哩哔哩</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/stars.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
