@@ -1,0 +1,113 @@
+/* ===================== 全局通用样式 - 极致统一核心【所有提示块大小完全一致+字体1rem放大】 ===================== */
+.admonition {
+  margin: 1.5625em 0 !important;
+  padding: .6rem !important;
+  overflow: hidden !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  page-break-inside: avoid !important;
+  border-left: .3rem solid #42b983 !important;
+  border-radius: .3rem !important;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.08), 0 0 0.05rem rgba(0,0,0,.12) !important;
+  transition: all 0.2s ease-in-out !important;
+  box-sizing: border-box !important;
+}
+
+/* 标题全局极致统一：字体1.05rem+高度固定+圆点居中+核心新增【标题文字颜色与圆点绑定】 */
+p.admonition-title {
+  position: relative !important;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.8 !important;
+  min-height: 2.2rem !important;
+  font-size: 1.05rem !important;
+  box-sizing: border-box !important;
+  border-top-left-radius: .3rem !important;
+  border-top-right-radius: .3rem !important;
+}
+
+/* 小圆点：绝对垂直居中+永不偏移+颜色固定，所有类型一致写法 */
+.admonition-title::before {
+  position: absolute !important;
+  top: 50% !important;
+  left: 1rem !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  content: ' ' !important;
+  transform: translateY(-50%) !important;
+}
+
+/* 内容区域统一：字体1rem+间距一致，无任何差异 */
+.admonition > *:not(.admonition-title) {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* ===================== ✅ 浅色模式 (data-user-color-scheme="light") 精准适配 ===================== */
+html[data-user-color-scheme="light"] .admonition {
+  background-color: #fafafa !important;
+  color: #333333 !important;
+}
+/* note 浅色 - 绿点+绿标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.note { border-left-color: #42b983 !important; }
+html[data-user-color-scheme="light"] .note>.admonition-title { background-color: rgba(66, 185, 131, .1) !important; color: #42b983 !important;}
+html[data-user-color-scheme="light"] .note>.admonition-title::before { background-color: #42b983 !important; }
+/* info/todo 浅色 - 青点+青标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.info, html[data-user-color-scheme="light"] .admonition.todo { border-left-color: #00b8d4 !important; }
+html[data-user-color-scheme="light"] .info>.admonition-title, html[data-user-color-scheme="light"] .todo>.admonition-title { background-color: rgba(0,184,212,.1) !important; color: #00b8d4 !important;}
+html[data-user-color-scheme="light"] .info>.admonition-title::before, html[data-user-color-scheme="light"] .todo>.admonition-title::before { background-color: #00b8d4 !important; }
+/* warning/caution 浅色 - 橙黄点+橙黄标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.warning, html[data-user-color-scheme="light"] .admonition.caution { border-left-color: #ff9100 !important; }
+html[data-user-color-scheme="light"] .warning>.admonition-title, html[data-user-color-scheme="light"] .caution>.admonition-title { background-color: rgba(255,145,0,.1) !important; color: #ff9100 !important;}
+html[data-user-color-scheme="light"] .warning>.admonition-title::before, html[data-user-color-scheme="light"] .caution>.admonition-title::before { background-color: #ff9100 !important; }
+/* failure/error 浅色 - 红点+红标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.failure, html[data-user-color-scheme="light"] .admonition.error { border-left-color: #ff5252 !important; }
+html[data-user-color-scheme="light"] .failure>.admonition-title, html[data-user-color-scheme="light"] .error>.admonition-title { background-color: rgba(255,82,82,.1) !important; color: #ff5252 !important;}
+html[data-user-color-scheme="light"] .failure>.admonition-title::before, html[data-user-color-scheme="light"] .error>.admonition-title::before { background-color: #ff5252 !important; }
+/* important 浅色 - 橙色点+橙色标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.important { border-left-color: #ed8936 !important; }
+html[data-user-color-scheme="light"] .important>.admonition-title { background-color: rgba(237, 137, 54, .1) !important; color: #ed8936 !important;}
+html[data-user-color-scheme="light"] .important>.admonition-title::before { background-color: #ed8936 !important; }
+/* tip 浅色 - 蓝点+蓝标题字+固定色不变化 */
+html[data-user-color-scheme="light"] .admonition.tip { border-left-color: #4a90e2 !important; }
+html[data-user-color-scheme="light"] .tip>.admonition-title { background-color: rgba(74, 144, 226, .1) !important; color: #4a90e2 !important;}
+html[data-user-color-scheme="light"] .tip>.admonition-title::before { background-color: #4a90e2 !important; }
+
+/* ===================== ✅ 深色模式 (data-user-color-scheme="dark") 精准适配 ===================== */
+html[data-user-color-scheme="dark"] .admonition {
+  background-color: #2a2c32 !important;
+  color: #e2e2e2 !important;
+}
+/* note 深色 - 绿点+绿标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.note { border-left-color: #42b983 !important; }
+html[data-user-color-scheme="dark"] .note>.admonition-title { background-color: rgba(66, 185, 131, .12) !important; color: #42b983 !important;}
+html[data-user-color-scheme="dark"] .note>.admonition-title::before { background-color: #42b983 !important; }
+/* info/todo 深色 - 青点+青标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.info, html[data-user-color-scheme="dark"] .admonition.todo { border-left-color: #00b8d4 !important; }
+html[data-user-color-scheme="dark"] .info>.admonition-title, html[data-user-color-scheme="dark"] .todo>.admonition-title { background-color: rgba(0,184,212,.12) !important; color: #00b8d4 !important;}
+html[data-user-color-scheme="dark"] .info>.admonition-title::before, html[data-user-color-scheme="dark"] .todo>.admonition-title::before { background-color: #00b8d4 !important; }
+/* warning/caution 深色 - 橙黄点+橙黄标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.warning, html[data-user-color-scheme="dark"] .admonition.caution { border-left-color: #ff9100 !important; }
+html[data-user-color-scheme="dark"] .warning>.admonition-title, html[data-user-color-scheme="dark"] .caution>.admonition-title { background-color: rgba(255,145,0,.12) !important; color: #ff9100 !important;}
+html[data-user-color-scheme="dark"] .warning>.admonition-title::before, html[data-user-color-scheme="dark"] .caution>.admonition-title::before { background-color: #ff9100 !important; }
+/* failure/error 深色 - 红点+红标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.failure, html[data-user-color-scheme="dark"] .admonition.error { border-left-color: #ff5252 !important; }
+html[data-user-color-scheme="dark"] .failure>.admonition-title, html[data-user-color-scheme="dark"] .error>.admonition-title { background-color: rgba(255,82,82,.12) !important; color: #ff5252 !important;}
+html[data-user-color-scheme="dark"] .failure>.admonition-title::before, html[data-user-color-scheme="dark"] .error>.admonition-title::before { background-color: #ff5252 !important; }
+/* important 深色 - 橙色点+橙色标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.important { border-left-color: #ed8936 !important; }
+html[data-user-color-scheme="dark"] .important>.admonition-title { background-color: rgba(237, 137, 54, .12) !important; color: #ed8936 !important;}
+html[data-user-color-scheme="dark"] .important>.admonition-title::before { background-color: #ed8936 !important; }
+/* tip 深色 - 蓝点+蓝标题字【颜色完全不变】+深色背景适配 */
+html[data-user-color-scheme="dark"] .admonition.tip { border-left-color: #4a90e2 !important; }
+html[data-user-color-scheme="dark"] .tip>.admonition-title { background-color: rgba(74, 144, 226, .12) !important; color: #4a90e2 !important;}
+html[data-user-color-scheme="dark"] .tip>.admonition-title::before { background-color: #4a90e2 !important; }
+
+/* 底部间距重置 - 通用兜底 */
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
